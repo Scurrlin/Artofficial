@@ -23,28 +23,32 @@ const Home = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-
+  
       try {
         const response = await fetch('https://artofficial.onrender.com/api/v1/post', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
           },
-      })
-
+        });
+  
         if (response.ok) {
           const result = await response.json();
           setAllPosts(result.data.reverse());
+        } else {
+          console.error('Error fetching posts:', response.status, response.statusText);
+          // Handle the error more gracefully (e.g., set an error state, show a message)
         }
       } catch (err) {
-        alert(err);
+        console.error('Error during fetch:', err);
+        // Handle the error more gracefully (e.g., set an error state, show a message)
       } finally {
         setLoading(false);
       }
-    }
-
+    };
+  
     fetchPosts();
-  }, []);
+  }, []);  
 
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout);
