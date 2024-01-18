@@ -16,7 +16,8 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const errorHandler = (res, status, message) => {
+const errorHandler = (res, status, message, error) => {
+  console.error(`Error: ${message}`, error);
   res.status(status).json({ success: false, message });
 };
 
@@ -25,7 +26,7 @@ router.route('/').get(async (req, res) => {
     const posts = await Post.find({});
     res.status(200).json({ success: true, data: posts });
   } catch (err) {
-    errorHandler(res, 500, 'Fetching posts failed, please try again');
+    errorHandler(res, 500, 'Fetching posts failed, please try again', err);
   }
 });
 
@@ -42,7 +43,7 @@ router.route('/').post(async (req, res) => {
 
     res.status(201).json({ success: true, data: newPost });
   } catch (err) {
-    errorHandler(res, 500, 'Unable to create a post, please try again');
+    errorHandler(res, 500, 'Unable to create a post, please try again', err);
   }
 });
 
