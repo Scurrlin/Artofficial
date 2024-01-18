@@ -6,7 +6,13 @@ dotenv.config();
 
 const router = express.Router();
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY});
+router.use(express.json());
+
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
+const errorHandler = (res, status, message) => {
+  res.status(status).json({ success: false, message });
+};
 
 router.route('/').get((req, res) => {
   res.status(200).json({ message: 'Hello from DALL-E!' });
@@ -27,7 +33,7 @@ router.route('/').post(async (req, res) => {
     res.status(200).json({ photo: image });
   } catch (error) {
     console.error(error);
-    res.status(500).send(error?.response.data.error.message || 'Something went wrong');
+    errorHandler(res, 500, error?.response?.data?.error?.message || 'Something went wrong');
   }
 });
 
