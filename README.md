@@ -1,4 +1,4 @@
-## Artofficial
+# Artofficial
 A full MERN stack AI Image Generator powered by Cloudinary and DALL-E-3; built with React, MongoDB, Express, Node, and Hostinger.
 
 ![banner_image](https://i.imgur.com/lJhF6nZ.png)
