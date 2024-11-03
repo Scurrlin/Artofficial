@@ -16,7 +16,3 @@ A full MERN stack AI Image Generator powered by Cloudinary and DALL-E-3; built w
 * Express
 * NodeJS
 * Hostinger
-
-## Credits
-
-**Project Model** - ["AI Image Generation App"](https://www.youtube.com/watch?v=EyIvuigqDoA) by [JS Mastery](https://www.youtube.com/@javascriptma
