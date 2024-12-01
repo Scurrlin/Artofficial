@@ -22,17 +22,21 @@
   border-radius: 5px;
 }
 
+/* Fix for LazyLoadImage wrapper */
 .lazy-load-image-background {
-    border-radius: inherit; /* Match the parent container's border-radius */
-    overflow: hidden; /* Prevent any placeholder overflow */
-    margin: 0; /* Remove any potential margin */
-    padding: 0; /* Remove padding */
-  }
-  
-  .lazy-load-image-background img {
-    display: block; /* Remove inline spacing */
-    width: 100%; /* Ensure the image fills the container */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: inherit; /* Match the parent container's border-radius */
-  }
-  
+  display: block !important; /* Force it to behave as a block element */
+  width: 100% !important; /* Match parent container */
+  height: 100% !important; /* Match parent container */
+  margin: 0 !important; /* Reset any margin */
+  padding: 0 !important; /* Reset any padding */
+  border-radius: inherit; /* Match parent card's border-radius */
+  overflow: hidden; /* Prevent any content overflow */
+}
+
+/* Fix for LazyLoadImage itself */
+.lazy-load-image-background img {
+  display: block; /* Remove inline spacing issues */
+  width: 100%; /* Ensure it fills the wrapper */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: inherit; /* Match parent wrapper's border-radius */
+}
