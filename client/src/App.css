@@ -34,11 +34,25 @@
 }
 
 .card {
-  padding: 0; /* Prevent extra space inside the card */
-  overflow: hidden; /* Ensure no overflow from the lazy-loaded image */
-  border-radius: 1rem; /* Matches LazyLoadImage's border radius */
+  padding: 0; /* Remove padding to avoid layout shifts */
+  border-radius: 1rem; /* Ensure the container has a consistent border radius */
+  overflow: hidden; /* Clip any overflow from the lazy-loading placeholder */
 }
 
+.lazy-load-image-background {
+  margin: 0; /* Ensure no extra space around the wrapper */
+  padding: 0;
+  border-radius: inherit; /* Match the parent container's border radius */
+  overflow: hidden; /* Prevent placeholder from extending outside bounds */
+}
+
+.lazy-load-image-background img {
+  display: block; /* Remove any inline spacing */
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensure the image scales correctly */
+  border-radius: inherit; /* Match the container's border radius */
+}
 
 .read-the-docs {
   color: #888;

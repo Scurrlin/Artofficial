@@ -9,6 +9,7 @@ const Card = ({ _id, name, prompt, photo }) => (
   <div className="rounded-xl group relative shadow-card hover:shadow-cardhover card">
     <LazyLoadImage
       className="w-full h-auto object-cover rounded-xl"
+      wrapperClassName="rounded-xl overflow-hidden"
       src={photo}
       alt={prompt}
       effect="blur"
