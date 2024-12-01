@@ -34,8 +34,11 @@
 }
 
 .card {
-  padding: 2em;
+  padding: 0; /* Prevent extra space inside the card */
+  overflow: hidden; /* Ensure no overflow from the lazy-loaded image */
+  border-radius: 1rem; /* Matches LazyLoadImage's border radius */
 }
+
 
 .read-the-docs {
   color: #888;
