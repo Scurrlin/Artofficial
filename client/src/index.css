@@ -21,3 +21,18 @@
   background-color: #666e75;
   border-radius: 5px;
 }
+
+.lazy-load-image-background {
+    border-radius: inherit; /* Match the parent container's border-radius */
+    overflow: hidden; /* Prevent any placeholder overflow */
+    margin: 0; /* Remove any potential margin */
+    padding: 0; /* Remove padding */
+  }
+  
+  .lazy-load-image-background img {
+    display: block; /* Remove inline spacing */
+    width: 100%; /* Ensure the image fills the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: inherit; /* Match the parent container's border-radius */
+  }
+  
