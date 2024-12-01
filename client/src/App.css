@@ -1,3 +1,4 @@
+/* Root container */
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,6 +6,7 @@
   text-align: center;
 }
 
+/* Logo animations (unchanged) */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -18,6 +20,7 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* Keyframes for animations (unchanged) */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -26,34 +29,43 @@
     transform: rotate(360deg);
   }
 }
-
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
 }
 
+/* Card styling */
 .card {
-  padding: 0; /* Remove padding to avoid layout shifts */
-  border-radius: 1rem; /* Ensure the container has a consistent border radius */
-  overflow: hidden; /* Clip any overflow from the lazy-loading placeholder */
+  padding: 0; /* Remove internal padding */
+  border-radius: 1rem; /* Ensure consistent border-radius */
+  overflow: hidden; /* Prevent child elements from overflowing */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: box-shadow 0.3s ease; /* Smooth hover transition */
 }
 
+.card:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Slightly larger shadow on hover */
+}
+
+/* LazyLoad wrapper styling */
+.lazy-load-wrapper {
+  border-radius: inherit; /* Match the card’s border-radius */
+  overflow: hidden; /* Prevent any placeholder from overflowing */
+}
+
+/* Lazy-loaded image and its placeholder */
 .lazy-load-image-background {
-  margin: 0; /* Ensure no extra space around the wrapper */
+  margin: 0;
   padding: 0;
-  border-radius: inherit; /* Match the parent container's border radius */
-  overflow: hidden; /* Prevent placeholder from extending outside bounds */
+  border-radius: inherit; /* Ensure placeholder matches the parent */
+  overflow: hidden; /* Clip the placeholder content */
 }
 
 .lazy-load-image-background img {
-  display: block; /* Remove any inline spacing */
-  width: 100%;
-  height: auto;
-  object-fit: cover; /* Ensure the image scales correctly */
-  border-radius: inherit; /* Match the container's border radius */
-}
-
-.read-the-docs {
-  color: #888;
+  display: block; /* Prevent inline spacing issues */
+  width: 100%; /* Ensure the image fully covers the container */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure proper scaling */
+  border-radius: inherit; /* Match the parent’s border-radius */
 }
