@@ -34,15 +34,14 @@
 }
 
 .card {
-  padding: 0; /* Remove padding inside the card */
-  border-radius: 1rem; /* Ensure consistent rounding with LazyLoadImage */
-  overflow: hidden; /* Clip any overflow from the lazy loading effect */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
-  transition: box-shadow 0.3s ease; /* Smooth hover effect */
-}
-
-.card:hover {
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 0; /* Remove all padding */
+  margin: 0; /* Remove any default margins */
+  border-radius: 1rem; /* Match the border-radius with the image */
+  overflow: hidden; /* Ensure content stays clipped */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
 }
 
 /*

@@ -8,7 +8,7 @@ import { downloadImage } from '../utils';
 const Card = ({ _id, name, prompt, photo }) => (
   <div className="rounded-xl group relative shadow-card hover:shadow-cardhover card">
     <LazyLoadImage
-      className="w-full h-auto object-cover rounded-xl"
+      className="block w-full h-full object-cover rounded-xl"
       src={photo}
       alt={prompt}
       effect="blur"
