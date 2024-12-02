@@ -5,7 +5,6 @@ import { logo } from './assets';
 import { Home, CreatePost } from './pages';
 
 const App = () => {
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -18,17 +17,22 @@ const App = () => {
           <img src={logo} alt="logo" className="w-28 object-contain cursor-pointer" />
         </Link>
 
-        <button
-          onClick={scrollToTop}
-          className="hidden md:flex font-inter font-medium bg-green-700 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-colors"
-          aria-label="Scroll to top"
-        >
-          Back to Top
-        </button>
+        <div className="flex space-x-4">
+          <button
+            onClick={scrollToTop}
+            className="font-inter font-medium bg-green-700 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-colors"
+            aria-label="Scroll to top"
+          >
+            Back to Top
+          </button>
 
-        <Link to="/create-post" className="font-inter font-medium bg-[#6469ff] text-white px-4 py-2 rounded-md hover:bg-[#5358c9] transition-colors">
-          Create
-        </Link>
+          <Link
+            to="/create-post"
+            className="font-inter font-medium bg-[#6469ff] text-white px-4 py-2 rounded-md hover:bg-[#7b7eff] transition-colors"
+          >
+            Create
+          </Link>
+        </div>
       </header>
 
       <main className="sm:p-8 px-4 py-8 w-full bg-[#f9fafe] min-h-[calc(100vh-73px)]">
