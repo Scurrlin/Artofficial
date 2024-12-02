@@ -27,21 +27,17 @@ const Home = () => {
       try {
         const response = await fetch('https://artofficial.onrender.com/api/v1/post', {
           method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
         });
 
-        if (response.ok) {
-          const result = await response.json();
-          setAllPosts(result.data.reverse());
-        } else {
-          console.error('Error fetching posts:', response.status, response.statusText);
-          // Handle the error more gracefully (e.g., set an error state, show a message)
+        if (!response.ok) {
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
+
+        const result = await response.json();
+        setAllPosts(result.data.reverse());
       } catch (err) {
-        console.error('Error during fetch:', err);
-        // Handle the error more gracefully (e.g., set an error state, show a message)
+        console.error('Error fetching posts:', err.message);
       } finally {
         setLoading(false);
       }
@@ -52,29 +48,31 @@ const Home = () => {
 
   const handleSearchChange = (e) => {
     const query = e.target.value.toLowerCase();
+    const trimmedQuery = query.trim();
     setSearchText(query);
 
-    if (searchTimeout) {
-      clearTimeout(searchTimeout);
-    }
+    clearTimeout(searchTimeout);
 
     setSearchTimeout(
       setTimeout(() => {
-        if (query.trim() === '') {
+        if (trimmedQuery === '') {
           setSearchedResults(null);
           return;
         }
 
         const searchResult = allPosts.filter(
           (item) =>
-            item.name.toLowerCase().includes(query) ||
-            item.prompt.toLowerCase().includes(query)
+            item.name.toLowerCase().includes(trimmedQuery) ||
+            item.prompt.toLowerCase().includes(trimmedQuery)
         );
 
         setSearchedResults(searchResult);
       }, 500)
     );
   };
+
+  const renderData = searchText ? searchedResults : allPosts;
+  const renderTitle = searchText ? "No Search Results Found" : "No posts found";
 
   return (
     <section className="max-w-7xl mx-auto">
@@ -109,17 +107,7 @@ const Home = () => {
               </h2>
             )}
             <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
-              {searchText ? (
-                <RenderCards
-                  data={searchedResults}
-                  title="No Search Results Found"
-                />
-              ) : (
-                <RenderCards
-                  data={allPosts}
-                  title="No posts found"
-                />
-              )}
+              <RenderCards data={renderData} title={renderTitle} />
             </div>
           </>
         )}
