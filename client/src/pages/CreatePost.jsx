@@ -105,7 +105,7 @@ const CreatePost = () => {
             handleSurpriseMe={handleSurpriseMe}
           />
 
-          <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-3 h-64 flex justify-center items-center">
+          <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-3 h-64 flex justify-center items-center">
             { form.photo ? (
               <img
                 src={form.photo}
@@ -132,7 +132,7 @@ const CreatePost = () => {
           <button
             type="button"
             onClick={generateImage}
-            className=" text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center hover:bg-green-600 transition-colors"
+            className=" text-white bg-green-700 font-medium rounded-md text-base w-full sm:w-auto px-5 py-2.5 text-center hover:bg-green-600 transition-colors"
           >
             {generatingImg ? 'Generating...' : 'Generate'}
           </button>
@@ -142,7 +142,7 @@ const CreatePost = () => {
           <p className="mt-2 text-[#666e75] text-[14px]">Once you have created the image you want, you can share it with others by clicking below!</p>
           <button
             type="submit"
-            className="mt-3 text-white bg-[#6469ff] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center hover:bg-[#7b7eff] transition-colors"
+            className="mt-3 text-white bg-[#6469ff] font-medium rounded-md text-base w-full sm:w-auto px-5 py-2.5 text-center hover:bg-[#7b7eff] transition-colors"
           >
             {loading ? 'Sharing...' : 'Add to Community Showcase'}
           </button>
