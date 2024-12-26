@@ -45,7 +45,7 @@ const CreatePost = () => {
         setGeneratingImg(false);
       }
     } else {
-      alert('Please provide proper prompt');
+      alert('Please provide a prompt');
     }
   };
 
@@ -98,7 +98,7 @@ const CreatePost = () => {
             labelName="Prompt"
             type="text"
             name="prompt"
-            placeholder="Baby Yoda drinking tea on the beach under a parasol"
+            placeholder="Enter your prompt here"
             value={form.prompt}
             handleChange={handleChange}
             isSurpriseMe
