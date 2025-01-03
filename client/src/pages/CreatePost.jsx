@@ -144,7 +144,7 @@ const CreatePost = () => {
             type="submit"
             className="mt-3 text-white bg-[#6469ff] font-medium rounded-md text-base w-full sm:w-auto px-5 py-2.5 text-center hover:bg-[#7b7eff] transition-colors"
           >
-            {loading ? 'Sharing...' : 'Add to Community Showcase'}
+            {loading ? 'Sharing...' : 'Add to Feed'}
           </button>
         </div>
       </form>
