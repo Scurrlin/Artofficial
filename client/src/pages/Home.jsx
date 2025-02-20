@@ -35,7 +35,10 @@ const Home = () => {
         }
 
         const result = await response.json();
-        setAllPosts(result.data.reverse());
+
+        // Sort posts by _id in descending order
+        const sortedPosts = result.data.sort((a, b) => b._id.localeCompare(a._id));
+        setAllPosts(sortedPosts);
       } catch (err) {
         console.error('Error fetching posts:', err.message);
       } finally {
