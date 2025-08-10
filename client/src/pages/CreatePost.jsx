@@ -139,6 +139,7 @@ const CreatePost = () => {
         </div>
 
         <div className="mt-10">
+          <h1 className="font-extrabold text-[#222328] text-[32px]">Share Image</h1>
           <p className="mt-2 text-[#666e75] text-[16px]">Once you have created the image you want, you can share it with others by clicking below!</p>
           <button
             type="submit"
