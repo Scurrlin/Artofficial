@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 import { logo } from './assets';
 import { Home, CreatePost } from './pages';
@@ -10,7 +10,7 @@ const App = () => {
   };
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <header className="sticky top-0 z-50 shadow-md w-full flex justify-between items-center bg-white sm:px-8 px-4 py-4 border-b border-b-[#e6ebf4]">
 
         <Link to="/" aria-label="Go to home">
@@ -41,7 +41,7 @@ const App = () => {
           <Route path="/create-post" element={<CreatePost />} />
         </Routes>
       </main>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
