@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import { Loader, Card, FormField } from '../components';
 
 const RenderCards = ({ data, title }) => {
@@ -25,7 +24,7 @@ const Home = () => {
       setLoading(true);
 
       try {
-        const response = await fetch('https://artofficial.onrender.com/api/v1/post', {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/post`, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' },
         });
@@ -47,7 +46,14 @@ const Home = () => {
     };
 
     fetchPosts();
-  }, []);
+
+    // Cleanup timeout on unmount
+    return () => {
+      if (searchTimeout) {
+        clearTimeout(searchTimeout);
+      }
+    };
+  }, [searchTimeout]);
 
   const handleSearchChange = (e) => {
     const query = e.target.value.toLowerCase();

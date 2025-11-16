@@ -16,9 +16,33 @@ router.route('/').post(async (req, res) => {
   try {
     const { prompt } = req.body;
 
+    // Validate prompt
+    if (!prompt || typeof prompt !== 'string') {
+      return res.status(400).json({
+        success: false,
+        message: 'Prompt is required and must be a string',
+      });
+    }
+
+    const trimmedPrompt = prompt.trim();
+
+    if (trimmedPrompt.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: 'Prompt cannot be empty',
+      });
+    }
+
+    if (trimmedPrompt.length > 1000) {
+      return res.status(400).json({
+        success: false,
+        message: 'Prompt must be less than 1000 characters',
+      });
+    }
+
     const aiResponse = await openai.images.generate({
       model: 'dall-e-3',
-      prompt,
+      prompt: trimmedPrompt,
       n: 1,
       size: '1024x1024',
       response_format: 'b64_json',

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import toast from 'react-hot-toast';
 import { preview } from '../assets';
 import { getRandomPrompt } from '../utils';
 import { FormField, Loader } from '../components';
@@ -27,7 +27,7 @@ const CreatePost = () => {
     if (form.prompt) {
       try {
         setGeneratingImg(true);
-        const response = await fetch('https://artofficial.onrender.com/api/v1/dalle', {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/dalle`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -37,15 +37,22 @@ const CreatePost = () => {
           }),
         });
 
+        if (!response.ok) {
+          const errorData = await response.text();
+          throw new Error(errorData || `Error ${response.status}: ${response.statusText}`);
+        }
+
         const data = await response.json();
         setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+        toast.success('Image generated successfully!');
       } catch (err) {
-        alert(err);
+        console.error('Error generating image:', err);
+        toast.error(err.message || 'Failed to generate image. Please try again.');
       } finally {
         setGeneratingImg(false);
       }
     } else {
-      alert('Please provide a prompt');
+      toast.error('Please provide a prompt');
     }
   };
 
@@ -55,7 +62,7 @@ const CreatePost = () => {
     if (form.prompt && form.photo) {
       setLoading(true);
       try {
-        const response = await fetch('https://artofficial.onrender.com/api/v1/post', {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/post`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -63,16 +70,22 @@ const CreatePost = () => {
           body: JSON.stringify({ ...form }),
         });
 
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || `Error ${response.status}: ${response.statusText}`);
+        }
+
         await response.json();
-        alert('Success');
+        toast.success('Image shared successfully!');
         navigate('/');
       } catch (err) {
-        alert(err);
+        console.error('Error sharing post:', err);
+        toast.error(err.message || 'Failed to share image. Please try again.');
       } finally {
         setLoading(false);
       }
     } else {
-      alert('Please generate an image with proper details');
+      toast.error('Please generate an image with proper details');
     }
   };
 
@@ -80,7 +93,7 @@ const CreatePost = () => {
     <section className="max-w-7xl mx-auto">
       <div>
         <h1 className="font-extrabold text-[#222328] text-[32px]">Create Image</h1>
-        <p className="mt-2 text-[#666e75] text-[16px]">Can't think of a prompt? Click the "Suprise me" button for one of 50 curated options!</p>
+        <p className="mt-2 text-[#666e75] text-[16px]">Can't think of a prompt? Click the "Surprise me" button for one of 50 curated options!</p>
       </div>
 
       <form className="mt-16 max-w-3xl" onSubmit={handleSubmit}>
