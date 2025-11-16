@@ -31,9 +31,9 @@ const app = express();
 
 // Configure CORS with specific origins
 const allowedOrigins = [
+  'https://www.artofficial.fun',
   'https://artofficial.fun',
   'http://localhost:5173',
-  'http://localhost:3000',
 ];
 
 app.use(cors({
