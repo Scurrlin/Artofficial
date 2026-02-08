@@ -45,7 +45,7 @@ router.route('/').post(async (req, res) => {
       prompt: trimmedPrompt,
       n: 1,
       size: '1024x1024',
-      quality: 'medium',
+      quality: 'high',
     });
 
     const image = aiResponse.data[0].b64_json;
