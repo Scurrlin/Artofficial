@@ -9,6 +9,7 @@ const FormField = ({
   handleChange,
   isSurpriseMe,
   handleSurpriseMe,
+  isTextarea,
 }) => (
   <div>
     <div className="flex items-center gap-2 mb-2">
@@ -28,16 +29,29 @@ const FormField = ({
         </button>
       )}
     </div>
-    <input
-      type={type}
-      id={name}
-      name={name}
-      placeholder={placeholder}
-      value={value}
-      onChange={handleChange}
-      required
-      className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-[#6469ff] focus:border-[#6469ff] outline-none block w-full p-3"
-    />
+    {isTextarea ? (
+      <textarea
+        id={name}
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={handleChange}
+        required
+        rows={2}
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-[#6469ff] focus:border-[#6469ff] outline-none block w-full p-3 resize-none overflow-y-auto"
+      />
+    ) : (
+      <input
+        type={type}
+        id={name}
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={handleChange}
+        required
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-[#6469ff] focus:border-[#6469ff] outline-none block w-full p-3"
+      />
+    )}
   </div>
 );
 
