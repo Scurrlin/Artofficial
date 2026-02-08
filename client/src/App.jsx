@@ -11,7 +11,21 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Toaster position="top-center" />
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          style: {
+            background: '#1a1a2e',
+            color: '#fff',
+          },
+          success: {
+            iconTheme: {
+              primary: '#15803d',
+              secondary: '#fff',
+            },
+          },
+        }}
+      />
       <header className="sticky top-0 z-50 shadow-md w-full flex justify-between items-center bg-white sm:px-8 px-4 py-4 border-b border-b-[#e6ebf4]">
 
         <Link to="/" aria-label="Go to home">
