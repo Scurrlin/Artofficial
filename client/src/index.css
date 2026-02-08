@@ -22,6 +22,29 @@
   border-radius: 5px;
 }
 
+.prompt-textarea::-webkit-scrollbar {
+    width: 5px;
+}
+
+.prompt-textarea::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.prompt-textarea:hover::-webkit-scrollbar-thumb {
+    background-color: #666e75;
+}
+
+.prompt-textarea {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.prompt-textarea:hover {
+    scrollbar-color: #666e75 transparent;
+}
+
 .lazy-load-image-background {
   display: block !important;
   width: 100% !important;

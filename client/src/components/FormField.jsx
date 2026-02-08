@@ -38,7 +38,7 @@ const FormField = ({
         onChange={handleChange}
         required
         rows={2}
-        className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-[#6469ff] focus:border-[#6469ff] outline-none block w-full p-3 resize-none overflow-y-auto"
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-[#6469ff] focus:border-[#6469ff] outline-none block w-full p-3 resize-none overflow-y-auto prompt-textarea"
       />
     ) : (
       <input
