@@ -27,7 +27,7 @@ const CreatePost = () => {
     if (form.prompt) {
       try {
         setGeneratingImg(true);
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/dalle`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/image`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const CreatePost = () => {
         }
 
         const data = await response.json();
-        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+        setForm({ ...form, photo: `data:image/png;base64,${data.photo}` });
         toast.success('Image generated successfully!');
       } catch (err) {
         console.error('Error generating image:', err);

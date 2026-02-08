@@ -9,7 +9,7 @@ const router = express.Router();
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 router.route('/').get((req, res) => {
-  res.status(200).json({ message: 'Hello from DALL-E!' });
+  res.status(200).json({ message: 'Hello from GPT Image 1.5!' });
 });
 
 router.route('/').post(async (req, res) => {
@@ -41,18 +41,19 @@ router.route('/').post(async (req, res) => {
     }
 
     const aiResponse = await openai.images.generate({
-      model: 'dall-e-3',
+      model: 'gpt-image-1.5',
       prompt: trimmedPrompt,
       n: 1,
       size: '1024x1024',
-      response_format: 'b64_json',
+      quality: 'medium',
     });
 
     const image = aiResponse.data[0].b64_json;
     res.status(200).json({ photo: image });
   } catch (error) {
     console.error(error);
-    res.status(500).send(error?.response.data.error.message || 'Something went wrong');
+    const errorMessage = error?.message || 'Something went wrong';
+    res.status(500).send(errorMessage);
   }
 });
 
