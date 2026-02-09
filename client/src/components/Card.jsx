@@ -21,7 +21,7 @@ const Card = ({ _id, name, prompt, photo }) => {
         effect="blur"
       />
       <div className="hidden group-hover:flex flex-col absolute bottom-0 left-0 right-0 bg-[#10131f] m-2 p-4 rounded-md">
-        <p className="text-white text-sm overflow-y-auto prompt">{prompt.length > 100 ? `${prompt.slice(0, 100)}...` : prompt}</p>
+        <p className="text-white text-sm overflow-y-auto prompt">{prompt.length > 80 ? `${prompt.slice(0, 80)}...` : prompt}</p>
 
         <div className="mt-5 flex justify-between items-center gap-2">
           <div className="flex items-center gap-2">
