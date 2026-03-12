@@ -13,7 +13,7 @@ const ImageStatCard = ({ count }) => {
           <p className="mt-1 text-[#666e75] text-[16px]">Images created</p>
         </div>
 
-        <div className="flex-1 overflow-hidden rounded-xl border border-black/[0.06] bg-white/60">
+        <div className="flex-1 overflow-hidden rounded-xl border border-black/10 bg-white/60">
           <svg
             viewBox="0 0 200 80"
             className="h-full w-full"
@@ -23,7 +23,7 @@ const ImageStatCard = ({ count }) => {
           >
             <defs>
               <linearGradient id="areaFade" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="rgba(15,23,42,0.10)" />
+                <stop offset="0%" stopColor="rgba(15,23,42,0.15)" />
                 <stop offset="100%" stopColor="rgba(15,23,42,0.00)" />
               </linearGradient>
             </defs>
@@ -35,7 +35,7 @@ const ImageStatCard = ({ count }) => {
                 x2="200"
                 y1={i * 20}
                 y2={i * 20}
-                stroke="rgba(15,23,42,0.05)"
+                stroke="rgba(15,23,42,0.10)"
                 strokeWidth="0.5"
               />
             ))}
@@ -47,7 +47,7 @@ const ImageStatCard = ({ count }) => {
                 x2={i * 40}
                 y1="0"
                 y2="80"
-                stroke="rgba(15,23,42,0.05)"
+                stroke="rgba(15,23,42,0.10)"
                 strokeWidth="0.5"
               />
             ))}
