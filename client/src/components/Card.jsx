@@ -19,7 +19,7 @@ const Card = ({ _id, name, prompt, photo }) => {
       if (cardRef.current) {
         cardRef.current.style.backgroundColor = '#f9fafe';
       }
-    }, 100);
+    }, 350);
   };
 
   return (
