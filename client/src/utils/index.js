@@ -15,7 +15,7 @@ export async function downloadImage(_id, photo) {
     FileSaver.saveAs(photo, `${_id}.jpg`);
 }
 
-export function optimizedImageUrl(url, width = 512) {
+export function optimizedImageUrl(url, width = 1024) {
     if (!url || !url.includes('res.cloudinary.com')) return url;
-    return url.replace('/upload/', `/upload/f_auto,q_auto,w_${width},c_fill/`);
+    return url.replace('/upload/', `/upload/f_auto,q_auto:good,w_${width},c_fill/`);
 }
