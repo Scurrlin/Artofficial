@@ -2,7 +2,7 @@ import React from 'react';
 
 const ImageStatCard = ({ count }) => {
   return (
-    <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-black/10 bg-white/80 px-6 py-5 shadow-[0_12px_40px_rgba(0,0,0,0.06)] backdrop-blur-md">
+    <div className="relative w-full min-w-[380px] max-w-md overflow-hidden rounded-2xl border border-black/10 bg-white/80 px-6 py-5 shadow-[0_12px_40px_rgba(0,0,0,0.06)] backdrop-blur-md">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-black/15 to-transparent" />
 
       <div className="flex items-center gap-6">
