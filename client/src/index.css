@@ -13,6 +13,11 @@
     }
 }
 
+.prompt {
+    scrollbar-width: thin;
+    scrollbar-color: #666e75 transparent;
+}
+
 .prompt::-webkit-scrollbar {
     width: 5px;
 }

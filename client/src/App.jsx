@@ -20,7 +20,13 @@ const App = () => {
           },
           success: {
             iconTheme: {
-              primary: '#15803d',
+              primary: '#22c55e',
+              secondary: '#fff',
+            },
+          },
+          error: {
+            iconTheme: {
+              primary: '#ef4444',
               secondary: '#fff',
             },
           },
@@ -35,7 +41,7 @@ const App = () => {
         <div className="flex space-x-4">
           <button
             onClick={scrollToTop}
-            className="font-inter font-medium bg-green-700 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-colors"
+            className="font-inter font-medium bg-[#10131f] text-white px-4 py-2 rounded-md cursor-pointer"
             aria-label="Scroll to top"
           >
             Back to Top
@@ -43,7 +49,7 @@ const App = () => {
 
           <Link
             to="/create-post"
-            className="font-inter font-medium bg-[#6469ff] text-white px-4 py-2 rounded-md hover:bg-[#7b7eff] transition-colors"
+            className="font-inter font-medium bg-[#10131f] text-white px-4 py-2 rounded-md cursor-pointer"
           >
             Create
           </Link>
