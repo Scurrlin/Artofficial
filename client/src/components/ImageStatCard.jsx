@@ -2,12 +2,12 @@ import React from 'react';
 
 const ImageStatCard = ({ count }) => {
   return (
-    <div className="relative w-full min-w-[380px] max-w-md overflow-hidden rounded-2xl border border-black/10 bg-white/80 px-6 py-5 shadow-[0_12px_40px_rgba(0,0,0,0.06)] backdrop-blur-md">
+    <div className="relative w-full max-w-[380px] md:min-w-[380px] md:max-w-[450px] overflow-hidden rounded-2xl border border-black/10 bg-white/80 px-6 py-5 shadow-[0_12px_40px_rgba(0,0,0,0.06)] backdrop-blur-md">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-black/15 to-transparent" />
 
       <div className="flex items-center gap-6">
         <div className="shrink-0 text-center">
-          <div className="text-4xl font-semibold tracking-tight text-slate-950 tabular-nums">
+          <div className="text-4xl font-semibold tracking-tight text-[#222328] tabular-nums">
             {count.toLocaleString()}
           </div>
           <p className="mt-1 text-[#666e75] text-[16px]">Images created</p>
