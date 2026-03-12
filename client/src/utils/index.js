@@ -14,3 +14,8 @@ export function getRandomPrompt(prompt) {
 export async function downloadImage(_id, photo) {
     FileSaver.saveAs(photo, `${_id}.jpg`);
 }
+
+export function optimizedImageUrl(url, width = 512) {
+    if (!url || !url.includes('res.cloudinary.com')) return url;
+    return url.replace('/upload/', `/upload/f_auto,q_auto,w_${width},c_fill/`);
+}

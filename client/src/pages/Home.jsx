@@ -53,7 +53,8 @@ const Home = () => {
         clearTimeout(searchTimeout);
       }
     };
-  }, [searchTimeout]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleSearchChange = (e) => {
     const query = e.target.value.toLowerCase();

@@ -4,7 +4,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import toast from 'react-hot-toast';
 
 import { download } from '../assets';
-import { downloadImage } from '../utils';
+import { downloadImage, optimizedImageUrl } from '../utils';
 
 const Card = ({ _id, name, prompt, photo }) => {
   const copyPrompt = () => {
@@ -13,12 +13,14 @@ const Card = ({ _id, name, prompt, photo }) => {
   };
 
   return (
-    <div className="rounded-xl group relative shadow-lg hover:shadow-xl card">
+    <div className="rounded-xl group relative shadow-lg hover:shadow-xl card aspect-square overflow-hidden">
       <LazyLoadImage
-        className="w-full h-auto object-cover rounded-xl"
-        src={photo}
+        className="w-full h-full object-cover rounded-xl"
+        src={optimizedImageUrl(photo)}
         alt={prompt}
         effect="blur"
+        width="100%"
+        height="100%"
       />
       <div className="hidden group-hover:flex flex-col absolute bottom-0 left-0 right-0 bg-[#10131f] m-2 p-4 rounded-md">
         <p className="text-white text-[13px] overflow-y-auto prompt">{prompt.length > 70 ? `${prompt.slice(0, 70)}...` : prompt}</p>
