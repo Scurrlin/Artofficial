@@ -14,19 +14,23 @@ const App = () => {
       <Toaster
         position="top-center"
         toastOptions={{
-          style: {
-            background: '#1a1a2e',
-            color: '#fff',
-          },
           success: {
+            style: {
+              background: '#22c55e',
+              color: '#fff',
+            },
             iconTheme: {
-              primary: '#22c55e',
+              primary: '#000',
               secondary: '#fff',
             },
           },
           error: {
+            style: {
+              background: '#ef4444',
+              color: '#fff',
+            },
             iconTheme: {
-              primary: '#ef4444',
+              primary: '#000',
               secondary: '#fff',
             },
           },
