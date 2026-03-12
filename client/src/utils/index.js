@@ -19,3 +19,8 @@ export function optimizedImageUrl(url, width = 1024) {
     if (!url || !url.includes('res.cloudinary.com')) return url;
     return url.replace('/upload/', `/upload/f_auto,q_auto:good,w_${width},c_fill/`);
 }
+
+export function placeholderImageUrl(url) {
+    if (!url || !url.includes('res.cloudinary.com')) return url;
+    return url.replace('/upload/', '/upload/f_auto,q_auto:low,w_50,e_blur:200,c_fill/');
+}
