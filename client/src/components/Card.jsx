@@ -52,7 +52,7 @@ const Card = ({ _id, name, prompt, photo }) => {
       </div>
 
       <div className="bg-[#10131f] p-3">
-        <p className="text-white text-[13px] overflow-y-auto prompt max-h-[60px]">{prompt}</p>
+        <p className="text-white text-[13px] line-clamp-3">{prompt}</p>
       </div>
     </div>
   );
