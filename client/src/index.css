@@ -6,6 +6,11 @@
     font-family: 'Inter', sans-serif;
 }
 
+body {
+    background: linear-gradient(to bottom right, #6dadeb, #b98ae0, #f09898, #e8a878 90%);
+    min-height: 100vh;
+}
+
 @media screen and (min-width: 480px) {
     .card:nth-child(7n + 1) {
         grid-column: auto/span 2;

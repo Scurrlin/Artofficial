@@ -15,7 +15,7 @@ const FormField = ({
     <div className="flex items-center gap-2 mb-2">
       <label
         htmlFor={name}
-        className="block text-base font-medium text-gray-900"
+        className="block text-base font-medium text-[#10131f]"
       >
         {labelName}
       </label>
@@ -38,7 +38,7 @@ const FormField = ({
         onChange={handleChange}
         required
         rows={2}
-        className="bg-white/80 border border-black/10 text-gray-900 text-base rounded-lg focus:ring-[#10131f] focus:border-[#10131f] outline-none block w-full p-3 resize-none overflow-y-auto prompt-textarea"
+        className="bg-white/70 border border-white/30 text-[#10131f] text-base rounded-lg focus:ring-[#10131f] focus:border-[#10131f] outline-none block w-full p-3 resize-none overflow-y-auto prompt-textarea"
       />
     ) : (
       <input
@@ -49,7 +49,7 @@ const FormField = ({
         value={value}
         onChange={handleChange}
         required
-        className="bg-white/80 border border-black/10 text-gray-900 text-base rounded-lg focus:ring-[#10131f] focus:border-[#10131f] outline-none block w-full p-3"
+        className="bg-white/70 border border-white/30 text-[#10131f] text-base rounded-lg focus:ring-[#10131f] focus:border-[#10131f] outline-none block w-full p-3"
       />
     )}
   </div>

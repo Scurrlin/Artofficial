@@ -92,8 +92,8 @@ const CreatePost = () => {
   return (
     <section className="max-w-7xl mx-auto">
       <div>
-        <h1 className="font-extrabold text-[#222328] text-[32px]">Create Image</h1>
-        <p className="mt-2 text-[#666e75] text-[16px]">Can't think of a prompt? Click the "Surprise me" button for one of 50 curated options!</p>
+        <h1 className="font-extrabold text-[#10131f] text-[32px]">Create Image</h1>
+        <p className="mt-2 text-[#10131f] text-[16px]">Can't think of a prompt? Click the "Surprise me" button for one of 50 curated options!</p>
       </div>
 
       <form className="mt-10" onSubmit={handleSubmit}>
@@ -130,7 +130,7 @@ const CreatePost = () => {
               <button
                 type="submit"
                 disabled={!form.photo}
-                className="text-white bg-[#10131f] font-medium rounded-md text-base px-5 py-2.5 text-center cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+                className="text-white bg-[#10131f] font-medium rounded-md text-base px-5 py-2.5 text-center cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? 'Sharing...' : 'Add to Feed'}
               </button>
@@ -138,25 +138,21 @@ const CreatePost = () => {
           </div>
 
           <div className="lg:w-1/2 flex justify-center">
-            <div className="relative aspect-square w-full max-w-md rounded-xl bg-white/80 border border-black/10 flex justify-center items-center overflow-hidden">
+            <div className="relative aspect-square w-full max-w-md rounded-xl border border-white/30 flex justify-center items-center overflow-hidden bg-[#10131f]">
               {form.photo ? (
                 <img
                   src={form.photo}
                   alt={form.prompt}
                   className="w-full h-full object-cover"
                 />
+              ) : generatingImg ? (
+                <Loader trackColor="text-white" spinColor="fill-gray-500" />
               ) : (
                 <img
                   src={preview}
                   alt="preview"
-                  className="w-9/12 h-9/12 object-contain opacity-40"
+                  className="w-9/12 h-9/12 object-contain invert"
                 />
-              )}
-
-              {generatingImg && (
-                <div className="absolute inset-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)]">
-                  <Loader />
-                </div>
               )}
             </div>
           </div>

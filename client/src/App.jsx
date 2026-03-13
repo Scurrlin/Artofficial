@@ -62,36 +62,38 @@ const App = () => {
           },
         }}
       />
-      <header className="sticky top-0 z-50 shadow-md w-full flex justify-between items-center bg-white sm:px-8 px-4 py-4 border-b border-b-[#e6ebf4]">
+      <div className="min-h-screen">
+        <header className="sticky top-0 z-50 shadow-md w-full flex justify-between items-center bg-white/70 backdrop-blur-md sm:px-8 px-4 py-4 border-b border-white/30">
 
-        <Link to="/" aria-label="Go to home">
-          <img src={logo} alt="logo" className="w-28 object-contain cursor-pointer" />
-        </Link>
-
-        <div className="flex space-x-4">
-          <button
-            onClick={scrollToTop}
-            className="font-inter font-medium bg-[#10131f] text-white px-4 py-2 rounded-md cursor-pointer"
-            aria-label="Scroll to top"
-          >
-            Back to Top
-          </button>
-
-          <Link
-            to="/create-post"
-            className="font-inter font-medium bg-[#10131f] text-white px-4 py-2 rounded-md cursor-pointer"
-          >
-            Create
+          <Link to="/" aria-label="Go to home">
+            <img src={logo} alt="logo" className="w-28 object-contain cursor-pointer" />
           </Link>
-        </div>
-      </header>
 
-      <main className="sm:p-8 px-4 py-8 w-full bg-[#f9fafe] min-h-[calc(100vh-73px)]">
-        <Routes>
-          <Route path="/" element={<Home stats={stats} />} />
-          <Route path="/create-post" element={<CreatePost />} />
-        </Routes>
-      </main>
+          <div className="flex space-x-4">
+            <button
+              onClick={scrollToTop}
+              className="font-inter font-medium bg-[#10131f] text-white px-4 py-2 rounded-md cursor-pointer"
+              aria-label="Scroll to top"
+            >
+              Back to Top
+            </button>
+
+            <Link
+              to="/create-post"
+              className="font-inter font-medium bg-[#10131f] text-white px-4 py-2 rounded-md cursor-pointer"
+            >
+              Create
+            </Link>
+          </div>
+        </header>
+
+        <main className="sm:p-8 px-4 py-8 w-full min-h-[calc(100vh-73px)]">
+          <Routes>
+            <Route path="/" element={<Home stats={stats} />} />
+            <Route path="/create-post" element={<CreatePost />} />
+          </Routes>
+        </main>
+      </div>
     </BrowserRouter>
   );
 };

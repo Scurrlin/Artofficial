@@ -14,7 +14,7 @@ const Card = ({ _id, name, prompt, photo }) => {
 
   return (
     <div className="rounded-xl flex flex-col shadow-lg hover:shadow-xl card overflow-hidden bg-[#10131f]">
-      <div className="group relative aspect-square overflow-hidden">
+      <div className="group relative aspect-square overflow-hidden bg-[#10131f]">
         <LazyLoadImage
           className="w-full h-full object-cover"
           src={optimizedImageUrl(photo)}
