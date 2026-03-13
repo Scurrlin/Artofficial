@@ -12,7 +12,7 @@ const RenderCards = ({ data, title }) => {
 };
 
 const Home = ({ stats }) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [allPosts, setAllPosts] = useState(null);
 
   const [showLoader, setShowLoader] = useState(false);
