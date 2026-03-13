@@ -53,7 +53,7 @@ router.route('/').post(async (req, res) => {
   } catch (error) {
     console.error(error);
     const errorMessage = error?.message || 'Something went wrong';
-    res.status(500).send(errorMessage);
+    res.status(500).json({ success: false, message: errorMessage });
   }
 });
 

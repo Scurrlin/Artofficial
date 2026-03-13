@@ -80,7 +80,7 @@ const Home = ({ stats }) => {
           return;
         }
 
-        const searchResult = allPosts.filter(
+        const searchResult = (allPosts || []).filter(
           (item) =>
             item.name.toLowerCase().includes(trimmedQuery) ||
             item.prompt.toLowerCase().includes(trimmedQuery)
@@ -114,12 +114,11 @@ const Home = ({ stats }) => {
         )}
       </div>
 
-      <div className="mt-10">
+      <div className="mt-10 max-w-[700px] mx-auto">
         <FormField
-          labelName="Search posts"
           type="text"
           name="text"
-          placeholder="Search by name or prompt here"
+          placeholder="🔍 Search posts by name or prompt here"
           value={searchText}
           handleChange={handleSearchChange}
         />

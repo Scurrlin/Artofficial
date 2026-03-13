@@ -12,23 +12,27 @@ const FormField = ({
   isTextarea,
 }) => (
   <div>
-    <div className="flex items-center gap-2 mb-2">
-      <label
-        htmlFor={name}
-        className="block text-base font-medium text-[#10131f]"
-      >
-        {labelName}
-      </label>
-      {isSurpriseMe && (
-        <button
-          type="button"
-          onClick={handleSurpriseMe}
-          className="font-semibold text-xs bg-[#10131f] py-1 px-2 rounded-[5px] text-white"
-        >
-          Surprise me
-        </button>
-      )}
-    </div>
+    {(labelName || isSurpriseMe) && (
+      <div className="flex items-center gap-2 mb-2">
+        {labelName && (
+          <label
+            htmlFor={name}
+            className="block text-base font-medium text-[#10131f]"
+          >
+            {labelName}
+          </label>
+        )}
+        {isSurpriseMe && (
+          <button
+            type="button"
+            onClick={handleSurpriseMe}
+            className="font-semibold text-xs bg-[#10131f] py-1 px-2 rounded-[5px] text-white"
+          >
+            Surprise me
+          </button>
+        )}
+      </div>
+    )}
     {isTextarea ? (
       <textarea
         id={name}

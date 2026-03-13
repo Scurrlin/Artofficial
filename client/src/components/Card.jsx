@@ -7,9 +7,13 @@ import { download } from '../assets';
 import { downloadImage, optimizedImageUrl, placeholderImageUrl } from '../utils';
 
 const Card = ({ _id, name, prompt, photo }) => {
-  const copyPrompt = () => {
-    navigator.clipboard.writeText(prompt);
-    toast.success('Prompt copied to clipboard!');
+  const copyPrompt = async () => {
+    try {
+      await navigator.clipboard.writeText(prompt);
+      toast.success('Prompt copied to clipboard!');
+    } catch {
+      toast.error('Failed to copy prompt');
+    }
   };
 
   return (
@@ -25,7 +29,7 @@ const Card = ({ _id, name, prompt, photo }) => {
           height="100%"
           threshold={1000}
         />
-        <div className="hidden group-hover:flex absolute top-0 left-0 right-0 bg-[#10131f] m-2 p-3 rounded-md justify-between items-center gap-2">
+        <div className="opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 flex transition-opacity absolute top-0 left-0 right-0 bg-[#10131f] m-2 p-3 rounded-md justify-between items-center gap-2">
           <p className="text-white text-[13px] truncate">{name}</p>
           <div className="flex items-center gap-2 flex-shrink-0">
             <button
@@ -39,11 +43,12 @@ const Card = ({ _id, name, prompt, photo }) => {
             <button
               type="button"
               onClick={() => downloadImage(_id, photo)}
-              className="outline-none bg-transparent border-none"
+              className="outline-none bg-transparent border-none cursor-pointer"
+              title="Download image"
             >
               <img
                 src={download}
-                alt="download"
+                alt="Download image"
                 className="w-6 h-6 object-contain invert"
               />
             </button>

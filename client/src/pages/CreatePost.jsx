@@ -97,7 +97,7 @@ const CreatePost = () => {
 
       <form className="mt-10" onSubmit={handleSubmit}>
         <div className="flex flex-col lg:flex-row gap-8">
-          <div className="flex flex-col gap-5 lg:w-1/2">
+          <div className="flex flex-col gap-5 lg:w-1/2 max-w-[600px]">
             <FormField
               labelName="Your Name"
               type="text"
@@ -122,7 +122,8 @@ const CreatePost = () => {
               <button
                 type="button"
                 onClick={generateImage}
-                className="text-white bg-[#10131f] font-medium rounded-md text-base px-5 py-2.5 text-center cursor-pointer"
+                disabled={generatingImg}
+                className="text-white bg-[#10131f] font-medium rounded-md text-base px-5 py-2.5 text-center cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {generatingImg ? 'Generating...' : 'Generate'}
               </button>

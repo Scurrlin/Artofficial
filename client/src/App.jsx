@@ -42,7 +42,7 @@ const App = () => {
         toastOptions={{
           success: {
             style: {
-              background: '#22c55e',
+              background: '#6dadeb',
               color: '#fff',
             },
             iconTheme: {
@@ -52,7 +52,7 @@ const App = () => {
           },
           error: {
             style: {
-              background: '#ef4444',
+              background: '#e06b6b',
               color: '#fff',
             },
             iconTheme: {
@@ -66,7 +66,7 @@ const App = () => {
         <header className="sticky top-0 z-50 shadow-md w-full flex justify-between items-center bg-white/70 backdrop-blur-md sm:px-8 px-4 py-4 border-b border-white/30">
 
           <Link to="/" aria-label="Go to home">
-            <img src={logo} alt="logo" className="w-28 object-contain cursor-pointer" />
+            <img src={logo} alt="Artofficial logo" className="w-28 object-contain cursor-pointer" />
           </Link>
 
           <div className="flex space-x-4">
