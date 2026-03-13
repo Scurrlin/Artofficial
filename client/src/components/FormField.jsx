@@ -38,7 +38,7 @@ const FormField = ({
         onChange={handleChange}
         required
         rows={2}
-        className="bg-white/70 border border-white/30 text-[#10131f] text-base rounded-lg focus:ring-[#10131f] focus:border-[#10131f] outline-none block w-full p-3 resize-none overflow-y-auto prompt-textarea"
+        className="bg-white/70 backdrop-blur-md border border-white/30 text-[#10131f] placeholder:text-gray-600 text-base rounded-lg focus:ring-[#10131f] focus:border-[#10131f] outline-none block w-full p-3 resize-none overflow-y-auto prompt-textarea"
       />
     ) : (
       <input
@@ -49,7 +49,7 @@ const FormField = ({
         value={value}
         onChange={handleChange}
         required
-        className="bg-white/70 border border-white/30 text-[#10131f] text-base rounded-lg focus:ring-[#10131f] focus:border-[#10131f] outline-none block w-full p-3"
+        className="bg-white/70 backdrop-blur-md border border-white/30 text-[#10131f] placeholder:text-gray-600 text-base rounded-lg focus:ring-[#10131f] focus:border-[#10131f] outline-none block w-full p-3"
       />
     )}
   </div>

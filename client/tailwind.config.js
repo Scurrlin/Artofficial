@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       screens: {
         xs: '480px',
+        short: { raw: '(max-height: 780px)' },
       },
       fontFamily: {
         inter: ['Inter var', 'sans-serif'],

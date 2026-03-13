@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { preview } from '../assets';
 import { getRandomPrompt } from '../utils';
 import { FormField, Loader } from '../components';
 
@@ -137,8 +136,8 @@ const CreatePost = () => {
             </div>
           </div>
 
-          <div className="lg:w-1/2 flex justify-center">
-            <div className="relative aspect-square w-full max-w-md rounded-xl border border-white/30 flex justify-center items-center overflow-hidden bg-[#10131f]">
+          <div className="lg:w-1/2 flex justify-center lg:-mt-5">
+            <div className={`relative aspect-square w-full max-w-md short:max-w-sm rounded-xl border border-white/30 flex justify-center items-center overflow-hidden ${form.photo || generatingImg ? 'bg-[#10131f]' : ''}`}>
               {form.photo ? (
                 <img
                   src={form.photo}
@@ -146,12 +145,22 @@ const CreatePost = () => {
                   className="w-full h-full object-cover"
                 />
               ) : generatingImg ? (
-                <Loader trackColor="text-white" spinColor="fill-gray-500" />
+                <Loader variant="light" />
               ) : (
-                <img
-                  src={preview}
-                  alt="preview"
-                  className="w-9/12 h-9/12 object-contain invert"
+                <div
+                  className="absolute inset-0 bg-[#10131f]"
+                  style={{
+                    maskImage: `url('/openAI.svg'), linear-gradient(#fff, #fff)`,
+                    maskSize: '75% 75%, 100% 100%',
+                    maskPosition: 'center, center',
+                    maskRepeat: 'no-repeat, no-repeat',
+                    maskComposite: 'exclude',
+                    WebkitMaskImage: `url('/openAI.svg'), linear-gradient(#fff, #fff)`,
+                    WebkitMaskSize: '75% 75%, 100% 100%',
+                    WebkitMaskPosition: 'center, center',
+                    WebkitMaskRepeat: 'no-repeat, no-repeat',
+                    WebkitMaskComposite: 'xor',
+                  }}
                 />
               )}
             </div>

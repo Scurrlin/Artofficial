@@ -7,7 +7,7 @@ const RenderCards = ({ data, title }) => {
   }
 
   return (
-    <h2 className="mt-5 font-bold text-[#10131f] text-xl uppercase">{title}</h2>
+    <h2 className="mt-5 font-bold text-[#10131f] text-xl uppercase whitespace-nowrap">{title}</h2>
   );
 };
 
@@ -15,9 +15,19 @@ const Home = ({ stats }) => {
   const [loading, setLoading] = useState(false);
   const [allPosts, setAllPosts] = useState(null);
 
+  const [showLoader, setShowLoader] = useState(false);
+
   const [searchText, setSearchText] = useState('');
   const [searchedResults, setSearchedResults] = useState(null);
   const [searchTimeout, setSearchTimeout] = useState(null);
+
+  useEffect(() => {
+    if (loading) {
+      const timer = setTimeout(() => setShowLoader(true), 3000);
+      return () => clearTimeout(timer);
+    }
+    setShowLoader(false);
+  }, [loading]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -117,14 +127,16 @@ const Home = ({ stats }) => {
 
       <div className="mt-10">
         {loading ? (
-          <div className="flex justify-center items-center">
-            <Loader trackColor="text-gray-500" spinColor="fill-[#10131f]" />
-          </div>
+          showLoader && (
+            <div className="flex justify-center items-center">
+              <Loader />
+            </div>
+          )
         ) : (
           <>
             {searchText && (
               <h2 className="font-medium text-[#10131f] text-xl mb-3">
-                Showing results for <span className="text-[#10131f]">{searchText}</span>:
+                Showing results for "{searchText}":
               </h2>
             )}
             <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
