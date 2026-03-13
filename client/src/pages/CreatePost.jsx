@@ -138,7 +138,7 @@ const CreatePost = () => {
           </div>
 
           <div className="w-full lg:w-1/2 flex justify-center lg:-mt-5">
-            <div className={`relative aspect-square w-full max-w-md short:max-w-sm rounded-xl border border-[#10131f]/30 flex justify-center items-center overflow-hidden ${form.photo || generatingImg ? 'bg-[#10131f]' : ''}`}>
+            <div className={`relative aspect-square w-[360px] xs:w-full max-w-md short:max-w-sm mx-auto rounded-xl border border-[#10131f]/30 flex justify-center items-center overflow-hidden ${form.photo || generatingImg ? 'bg-[#10131f]' : ''}`}>
               {form.photo ? (
                 <img
                   src={form.photo}

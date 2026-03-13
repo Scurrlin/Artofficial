@@ -27,7 +27,7 @@ const Card = ({ _id, name, prompt, photo }) => {
           effect="blur"
           width="100%"
           height="100%"
-          threshold={1000}
+          threshold={300}
         />
         <div className="opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 flex transition-opacity absolute top-0 left-0 right-0 bg-[#10131f] m-2 p-3 rounded-md justify-between items-center gap-2">
           <p className="text-white text-[13px] truncate">{name}</p>
