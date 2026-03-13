@@ -13,6 +13,33 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+router.route('/stats').get(async (req, res) => {
+  try {
+    const [stats] = await Post.aggregate([
+      {
+        $group: {
+          _id: null,
+          imageCount: { $sum: 1 },
+          uniqueUsers: { $addToSet: '$name' },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          imageCount: 1,
+          userCount: { $size: '$uniqueUsers' },
+        },
+      },
+    ]);
+    res.status(200).json({
+      success: true,
+      data: stats || { imageCount: 0, userCount: 0 },
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Fetching stats failed' });
+  }
+});
+
 router.route('/').get(async (req, res) => {
   try {
     const posts = await Post.find({});

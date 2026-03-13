@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { logo } from './assets';
@@ -13,6 +13,23 @@ const ScrollToTop = () => {
 };
 
 const App = () => {
+  const [stats, setStats] = useState(null);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/post/stats`);
+        if (response.ok) {
+          const result = await response.json();
+          setStats(result.data);
+        }
+      } catch (err) {
+        console.error('Error fetching stats:', err.message);
+      }
+    };
+    fetchStats();
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -71,7 +88,7 @@ const App = () => {
 
       <main className="sm:p-8 px-4 py-8 w-full bg-[#f9fafe] min-h-[calc(100vh-73px)]">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home stats={stats} />} />
           <Route path="/create-post" element={<CreatePost />} />
         </Routes>
       </main>

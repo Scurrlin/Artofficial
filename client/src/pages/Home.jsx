@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Loader, Card, FormField, ImageStatCard } from '../components';
+import { Loader, Card, FormField, StatCard } from '../components';
 
 const RenderCards = ({ data, title }) => {
   if (data?.length > 0) {
@@ -11,7 +11,7 @@ const RenderCards = ({ data, title }) => {
   );
 };
 
-const Home = () => {
+const Home = ({ stats }) => {
   const [loading, setLoading] = useState(false);
   const [allPosts, setAllPosts] = useState(null);
 
@@ -94,9 +94,12 @@ const Home = () => {
           </p>
         </div>
 
-        {allPosts && (
+        {stats && (
           <div className="flex justify-center md:justify-end">
-            <ImageStatCard count={allPosts.length} />
+            <StatCard
+              imageCount={stats.imageCount}
+              userCount={stats.userCount}
+            />
           </div>
         )}
       </div>
