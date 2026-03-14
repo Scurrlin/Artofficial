@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { getRandomPrompt } from '../utils';
 import { FormField, Loader } from '../components';
 
-const CreatePost = () => {
+const CreatePost = ({ onBusyChange }) => {
   const navigate = useNavigate();
   const [form, setForm] = useState({
     name: '',
@@ -14,6 +14,10 @@ const CreatePost = () => {
 
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    onBusyChange?.(generatingImg || loading);
+  }, [generatingImg, loading, onBusyChange]);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -117,6 +121,7 @@ const CreatePost = () => {
               isSurpriseMe
               handleSurpriseMe={handleSurpriseMe}
               isTextarea
+              disabled={generatingImg || loading}
             />
 
             <div className="flex gap-3">

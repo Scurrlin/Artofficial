@@ -10,6 +10,7 @@ const FormField = ({
   isSurpriseMe,
   handleSurpriseMe,
   isTextarea,
+  disabled,
 }) => (
   <div>
     {(labelName || isSurpriseMe) && (
@@ -26,7 +27,8 @@ const FormField = ({
           <button
             type="button"
             onClick={handleSurpriseMe}
-            className="font-semibold text-xs bg-[#10131f] py-1 px-2 rounded-[5px] text-white"
+            disabled={disabled}
+            className="font-semibold text-xs bg-[#10131f] py-1 px-2 rounded-[5px] text-white disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Surprise me
           </button>

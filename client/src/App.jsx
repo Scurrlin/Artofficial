@@ -14,6 +14,7 @@ const ScrollToTop = () => {
 
 const App = () => {
   const [stats, setStats] = useState(null);
+  const [busy, setBusy] = useState(false);
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -64,6 +65,9 @@ const App = () => {
       />
       <div className="min-h-screen">
         <header className="sticky top-0 z-50 shadow-md w-full flex justify-between items-center bg-white/70 backdrop-blur-md sm:px-8 px-4 py-4 border-b border-white/30">
+          {busy && (
+            <div className="absolute inset-0 z-10 cursor-not-allowed" />
+          )}
 
           <Link to="/" aria-label="Go to home">
             <img src={logo} alt="Artofficial logo" className="w-28 object-contain cursor-pointer" />
@@ -90,7 +94,7 @@ const App = () => {
         <main className="sm:p-8 px-4 py-8 w-full min-h-[calc(100vh-73px)]">
           <Routes>
             <Route path="/" element={<Home stats={stats} />} />
-            <Route path="/create-post" element={<CreatePost />} />
+            <Route path="/create-post" element={<CreatePost onBusyChange={setBusy} />} />
           </Routes>
         </main>
       </div>
