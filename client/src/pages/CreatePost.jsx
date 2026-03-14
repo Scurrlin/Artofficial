@@ -25,6 +25,7 @@ const CreatePost = () => {
   const generateImage = async () => {
     if (form.prompt) {
       try {
+        setForm((prev) => ({ ...prev, photo: '' }));
         setGeneratingImg(true);
         const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/image`, {
           method: 'POST',
@@ -42,7 +43,7 @@ const CreatePost = () => {
         }
 
         const data = await response.json();
-        setForm({ ...form, photo: `data:image/png;base64,${data.photo}` });
+        setForm((prev) => ({ ...prev, photo: `data:image/png;base64,${data.photo}` }));
         toast.success('Image generated successfully!');
       } catch (err) {
         console.error('Error generating image:', err);
@@ -122,14 +123,14 @@ const CreatePost = () => {
               <button
                 type="button"
                 onClick={generateImage}
-                disabled={generatingImg}
+                disabled={generatingImg || loading}
                 className="text-white bg-[#10131f] font-medium rounded-md text-base px-5 py-2.5 text-center cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {generatingImg ? 'Generating...' : 'Generate'}
               </button>
               <button
                 type="submit"
-                disabled={!form.photo}
+                disabled={!form.photo || loading || generatingImg}
                 className="text-white bg-[#10131f] font-medium rounded-md text-base px-5 py-2.5 text-center cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? 'Sharing...' : 'Add to Feed'}
