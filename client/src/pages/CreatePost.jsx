@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { getRandomPrompt } from '../utils';
@@ -14,6 +14,7 @@ const CreatePost = ({ onBusyChange }) => {
 
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
+  const abortControllerRef = useRef(null);
 
   useEffect(() => {
     onBusyChange?.(generatingImg || loading);
@@ -31,6 +32,10 @@ const CreatePost = ({ onBusyChange }) => {
       try {
         setForm((prev) => ({ ...prev, photo: '' }));
         setGeneratingImg(true);
+
+        const controller = new AbortController();
+        abortControllerRef.current = controller;
+
         const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/image`, {
           method: 'POST',
           headers: {
@@ -39,6 +44,7 @@ const CreatePost = ({ onBusyChange }) => {
           body: JSON.stringify({
             prompt: form.prompt,
           }),
+          signal: controller.signal,
         });
 
         if (!response.ok) {
@@ -50,14 +56,23 @@ const CreatePost = ({ onBusyChange }) => {
         setForm((prev) => ({ ...prev, photo: `data:image/png;base64,${data.photo}` }));
         toast.success('Image generated successfully!');
       } catch (err) {
+        if (err.name === 'AbortError') {
+          toast.success('Image generation cancelled');
+          return;
+        }
         console.error('Error generating image:', err);
         toast.error(err.message || 'Failed to generate image. Please try again.');
       } finally {
+        abortControllerRef.current = null;
         setGeneratingImg(false);
       }
     } else {
       toast.error('Please provide a prompt');
     }
+  };
+
+  const cancelGeneration = () => {
+    abortControllerRef.current?.abort();
   };
 
   const handleSubmit = async (e) => {
@@ -134,11 +149,12 @@ const CreatePost = ({ onBusyChange }) => {
                 {generatingImg ? 'Generating...' : 'Generate'}
               </button>
               <button
-                type="submit"
-                disabled={!form.photo || loading || generatingImg}
+                type={generatingImg ? 'button' : 'submit'}
+                onClick={generatingImg ? cancelGeneration : undefined}
+                disabled={!generatingImg && (!form.photo || loading)}
                 className="text-white bg-[#10131f] font-medium rounded-md text-base px-5 py-2.5 text-center cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? 'Sharing...' : 'Add to Feed'}
+                {loading ? 'Sharing...' : generatingImg ? 'Cancel' : 'Add to Feed'}
               </button>
             </div>
           </div>

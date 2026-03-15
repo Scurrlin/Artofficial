@@ -10,7 +10,7 @@ const Card = ({ _id, name, prompt, photo, priority }) => {
   const copyPrompt = async () => {
     try {
       await navigator.clipboard.writeText(prompt);
-      toast.success('Prompt copied to clipboard!');
+      toast.success('Prompt copied to clipboard');
     } catch {
       toast.error('Failed to copy prompt');
     }
