@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Loader, Card, FormField, StatCard } from '../components';
 
+const PRIORITY_COUNT = 5;
+
 const RenderCards = ({ data, title }) => {
   if (data?.length > 0) {
-    return data.map((post) => <Card key={post._id} {...post} />);
+    return data.map((post, index) => (
+      <Card key={post._id} {...post} priority={index < PRIORITY_COUNT} />
+    ));
   }
 
   return (
