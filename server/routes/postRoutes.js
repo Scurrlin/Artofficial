@@ -42,7 +42,7 @@ router.route('/stats').get(async (req, res) => {
 
 router.route('/').get(async (req, res) => {
   try {
-    const posts = await Post.find({});
+    const posts = await Post.find({}).sort({ _id: -1 });
     res.status(200).json({ success: true, data: posts });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Fetching posts failed, please try again' });
@@ -114,7 +114,15 @@ router.route('/').post(async (req, res) => {
       });
     }
 
-    const photoUrl = await cloudinary.uploader.upload(photo);
+    const photoUrl = await cloudinary.uploader.upload(photo, {
+      eager: [
+        { width: 400, crop: 'fill', quality: 'auto:good', fetch_format: 'auto' },
+        { width: 640, crop: 'fill', quality: 'auto:good', fetch_format: 'auto' },
+        { width: 828, crop: 'fill', quality: 'auto:good', fetch_format: 'auto' },
+        { width: 1080, crop: 'fill', quality: 'auto:good', fetch_format: 'auto' },
+      ],
+      eager_async: true,
+    });
 
     const newPost = await Post.create({
       name: trimmedName,

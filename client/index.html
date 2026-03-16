@@ -13,9 +13,28 @@
     <title>Art/official</title>
 
     <script>
+      var __srcsetWidths = [400, 640, 828, 1080];
+      var __cardSizes = '(max-width: 479px) 92vw, (max-width: 639px) 45vw, (max-width: 1023px) 30vw, 22vw';
+
       window.__PREFETCH_POSTS__ = fetch('%VITE_BACKEND_URL%/api/v1/post', {
         headers: { 'Content-Type': 'application/json' }
       }).then(function(r) { return r.ok ? r.json() : null; }).catch(function() { return null; });
+
+      window.__PREFETCH_POSTS__.then(function(data) {
+        if (!data || !data.data || !data.data.length) return;
+        var photo = data.data[0].photo;
+        if (!photo || photo.indexOf('res.cloudinary.com') === -1) return;
+        var srcset = __srcsetWidths.map(function(w) {
+          return photo.replace('/upload/', '/upload/f_auto,q_auto:good,w_' + w + ',c_fill/') + ' ' + w + 'w';
+        }).join(', ');
+        var link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.setAttribute('imagesrcset', srcset);
+        link.setAttribute('imagesizes', __cardSizes);
+        link.setAttribute('fetchpriority', 'high');
+        document.head.appendChild(link);
+      });
 
       window.__PREFETCH_STATS__ = fetch('%VITE_BACKEND_URL%/api/v1/post/stats')
         .then(function(r) { return r.ok ? r.json() : null; }).catch(function() { return null; });

@@ -59,8 +59,7 @@ const Home = ({ stats }) => {
           result = await response.json();
         }
 
-        const sortedPosts = result.data.sort((a, b) => b._id.localeCompare(a._id));
-        setAllPosts(sortedPosts);
+        setAllPosts(result.data);
       } catch (err) {
         console.error('Error fetching posts:', err.message);
       } finally {
