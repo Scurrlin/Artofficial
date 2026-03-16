@@ -6,8 +6,9 @@ import lightAnimation from '../assets/lightLoader.json';
 const animations = { dark: darkAnimation, light: lightAnimation };
 
 const Loader = ({ size = 400, variant = 'dark' }) => (
-  <div role="status" style={{ width: size, height: size }}>
+  <div role="status" aria-live="polite" style={{ width: size, height: size }}>
     <Lottie animationData={animations[variant]} loop />
+    <span className="sr-only">Loading...</span>
   </div>
 );
 

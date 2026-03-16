@@ -122,6 +122,8 @@ const Home = ({ stats }) => {
         <FormField
           type="text"
           name="text"
+          labelName="Search posts"
+          srOnly
           placeholder="🔍 Search posts by name or prompt here"
           value={searchText}
           handleChange={handleSearchChange}

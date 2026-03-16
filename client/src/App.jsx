@@ -64,6 +64,12 @@ const App = () => {
         }}
       />
       <div className="min-h-screen">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-2 focus:left-2 focus:bg-[#10131f] focus:text-white focus:px-4 focus:py-2 focus:rounded-md"
+        >
+          Skip to content
+        </a>
         <header className="sticky top-0 z-50 shadow-md w-full flex justify-between items-center bg-white/70 backdrop-blur-md sm:px-8 px-4 py-4 border-b border-white/30">
           {busy && (
             <div className="absolute inset-0 z-10 cursor-not-allowed" />
@@ -91,7 +97,7 @@ const App = () => {
           </div>
         </header>
 
-        <main className="sm:p-8 px-4 py-8 w-full min-h-[calc(100vh-73px)]">
+        <main id="main-content" className="sm:p-8 px-4 py-8 w-full min-h-[calc(100vh-73px)]">
           <Routes>
             <Route path="/" element={<Home stats={stats} />} />
             <Route path="/create-post" element={<CreatePost onBusyChange={setBusy} />} />

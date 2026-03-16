@@ -11,11 +11,17 @@ const FormField = ({
   handleSurpriseMe,
   isTextarea,
   disabled,
+  srOnly,
 }) => (
   <div>
-    {(labelName || isSurpriseMe) && (
+    {labelName && srOnly && (
+      <label htmlFor={name} className="sr-only">
+        {labelName}
+      </label>
+    )}
+    {((labelName && !srOnly) || isSurpriseMe) && (
       <div className="flex items-center gap-2 mb-2">
-        {labelName && (
+        {labelName && !srOnly && (
           <label
             htmlFor={name}
             className="block text-base font-medium text-[#10131f]"
