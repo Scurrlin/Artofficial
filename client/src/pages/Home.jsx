@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Loader, Card, FormField, StatCard } from '../components';
+import React, { Suspense, useState, useEffect } from 'react';
+import { Card, FormField, StatCard } from '../components';
+
+const Loader = React.lazy(() => import('../components/Loader'));
 
 const PRIORITY_COUNT = 5;
 
@@ -141,9 +143,11 @@ const Home = ({ stats }) => {
       <div className="mt-10">
         {loading ? (
           showLoader && (
-            <div className="flex justify-center items-center">
-              <Loader />
-            </div>
+            <Suspense fallback={null}>
+              <div className="flex justify-center items-center">
+                <Loader />
+              </div>
+            </Suspense>
           )
         ) : (
           <>

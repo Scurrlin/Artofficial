@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { logo } from './assets';
-import { Home, CreatePost } from './pages';
+import { Home } from './pages';
+
+const CreatePost = React.lazy(() => import('./pages/CreatePost'));
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -110,7 +112,11 @@ const App = () => {
         <main id="main-content" className="sm:p-8 px-4 py-8 w-full min-h-[calc(100vh-73px)]">
           <Routes>
             <Route path="/" element={<Home stats={stats} />} />
-            <Route path="/create-post" element={<CreatePost onBusyChange={setBusy} />} />
+            <Route path="/create-post" element={
+              <Suspense fallback={null}>
+                <CreatePost onBusyChange={setBusy} />
+              </Suspense>
+            } />
           </Routes>
         </main>
       </div>
