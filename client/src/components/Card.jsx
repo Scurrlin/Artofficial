@@ -4,7 +4,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import toast from 'react-hot-toast';
 
 import { download } from '../assets';
-import { downloadImage, optimizedImageUrl, placeholderImageUrl } from '../utils';
+import { downloadImage, optimizedImageUrl, placeholderImageUrl, responsiveSrcSet, CARD_SIZES } from '../utils';
 
 const Card = ({ _id, name, prompt, photo, priority }) => {
   const copyPrompt = async () => {
@@ -23,6 +23,8 @@ const Card = ({ _id, name, prompt, photo, priority }) => {
           <img
             className="w-full h-full object-cover"
             src={optimizedImageUrl(photo)}
+            srcSet={responsiveSrcSet(photo)}
+            sizes={CARD_SIZES}
             alt={prompt}
             width="100%"
             height="100%"
@@ -33,6 +35,8 @@ const Card = ({ _id, name, prompt, photo, priority }) => {
           <LazyLoadImage
             className="w-full h-full object-cover"
             src={optimizedImageUrl(photo)}
+            srcSet={responsiveSrcSet(photo)}
+            sizes={CARD_SIZES}
             placeholderSrc={placeholderImageUrl(photo)}
             alt={prompt}
             effect="blur"

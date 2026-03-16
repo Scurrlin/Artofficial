@@ -15,7 +15,6 @@
   AddOutputFilterByType DEFLATE text/html text/css text/javascript
   AddOutputFilterByType DEFLATE application/javascript application/json
   AddOutputFilterByType DEFLATE image/svg+xml
-  AddOutputFilterByType DEFLATE font/woff2
 </IfModule>
 
 # --- Browser Caching ---

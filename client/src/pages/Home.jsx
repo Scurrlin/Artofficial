@@ -38,18 +38,27 @@ const Home = ({ stats }) => {
       setLoading(true);
 
       try {
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/post`, {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' },
-        });
+        const prefetched = window.__PREFETCH_POSTS__;
+        let result;
 
-        if (!response.ok) {
-          throw new Error(`Error ${response.status}: ${response.statusText}`);
+        if (prefetched) {
+          window.__PREFETCH_POSTS__ = null;
+          result = await prefetched;
         }
 
-        const result = await response.json();
+        if (!result) {
+          const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/post`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+          });
 
-        // Sort posts by _id in descending order
+          if (!response.ok) {
+            throw new Error(`Error ${response.status}: ${response.statusText}`);
+          }
+
+          result = await response.json();
+        }
+
         const sortedPosts = result.data.sort((a, b) => b._id.localeCompare(a._id));
         setAllPosts(sortedPosts);
       } catch (err) {

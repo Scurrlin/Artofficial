@@ -19,11 +19,21 @@ const App = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/post/stats`);
-        if (response.ok) {
-          const result = await response.json();
-          setStats(result.data);
+        const prefetched = window.__PREFETCH_STATS__;
+        let result;
+
+        if (prefetched) {
+          window.__PREFETCH_STATS__ = null;
+          result = await prefetched;
         }
+
+        if (!result) {
+          const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/post/stats`);
+          if (!response.ok) return;
+          result = await response.json();
+        }
+
+        setStats(result.data);
       } catch (err) {
         console.error('Error fetching stats:', err.message);
       }
