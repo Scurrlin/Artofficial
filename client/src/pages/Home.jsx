@@ -3,13 +3,9 @@ import { Card, FormField, StatCard } from '../components';
 
 const Loader = React.lazy(() => import('../components/Loader'));
 
-const PRIORITY_COUNT = 1;
-
 const RenderCards = ({ data, title }) => {
   if (data?.length > 0) {
-    return data.map((post, index) => (
-      <Card key={post._id} {...post} priority={index < PRIORITY_COUNT} />
-    ));
+    return data.map((post) => <Card key={post._id} {...post} />);
   }
 
   return (
