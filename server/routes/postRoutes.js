@@ -7,6 +7,10 @@ dotenv.config();
 
 const router = express.Router();
 
+let postsCache = { data: null, timestamp: 0 };
+let statsCache = { data: null, timestamp: 0 };
+const CACHE_TTL = 60_000;
+
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -15,6 +19,10 @@ cloudinary.config({
 
 router.route('/stats').get(async (req, res) => {
   try {
+    const now = Date.now();
+    if (statsCache.data && (now - statsCache.timestamp) < CACHE_TTL) {
+      return res.status(200).json(statsCache.data);
+    }
     const [stats] = await Post.aggregate([
       {
         $group: {
@@ -31,10 +39,12 @@ router.route('/stats').get(async (req, res) => {
         },
       },
     ]);
-    res.status(200).json({
+    const response = {
       success: true,
       data: stats || { imageCount: 0, userCount: 0 },
-    });
+    };
+    statsCache = { data: response, timestamp: now };
+    res.status(200).json(response);
   } catch (err) {
     res.status(500).json({ success: false, message: 'Fetching stats failed' });
   }
@@ -42,8 +52,14 @@ router.route('/stats').get(async (req, res) => {
 
 router.route('/').get(async (req, res) => {
   try {
-    const posts = await Post.find({}).sort({ _id: -1 });
-    res.status(200).json({ success: true, data: posts });
+    const now = Date.now();
+    if (postsCache.data && (now - postsCache.timestamp) < CACHE_TTL) {
+      return res.status(200).json(postsCache.data);
+    }
+    const posts = await Post.find({}).sort({ _id: -1 }).lean();
+    const response = { success: true, data: posts };
+    postsCache = { data: response, timestamp: now };
+    res.status(200).json(response);
   } catch (err) {
     res.status(500).json({ success: false, message: 'Fetching posts failed, please try again' });
   }
@@ -116,10 +132,10 @@ router.route('/').post(async (req, res) => {
 
     const photoUrl = await cloudinary.uploader.upload(photo, {
       eager: [
-        { width: 400, crop: 'fill', quality: 'auto:good', fetch_format: 'auto' },
-        { width: 640, crop: 'fill', quality: 'auto:good', fetch_format: 'auto' },
-        { width: 828, crop: 'fill', quality: 'auto:good', fetch_format: 'auto' },
-        { width: 1080, crop: 'fill', quality: 'auto:good', fetch_format: 'auto' },
+        { width: 400, crop: 'fill', quality: 'auto:eco', fetch_format: 'auto' },
+        { width: 640, crop: 'fill', quality: 'auto:eco', fetch_format: 'auto' },
+        { width: 828, crop: 'fill', quality: 'auto:eco', fetch_format: 'auto' },
+        { width: 1080, crop: 'fill', quality: 'auto:eco', fetch_format: 'auto' },
       ],
       eager_async: true,
     });
@@ -129,6 +145,9 @@ router.route('/').post(async (req, res) => {
       prompt: trimmedPrompt,
       photo: photoUrl.secure_url,
     });
+
+    postsCache = { data: null, timestamp: 0 };
+    statsCache = { data: null, timestamp: 0 };
 
     res.status(200).json({ success: true, data: newPost });
   } catch (err) {
