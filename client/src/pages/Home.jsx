@@ -3,7 +3,7 @@ import { Card, FormField, StatCard } from '../components';
 
 const Loader = React.lazy(() => import('../components/Loader'));
 
-const PRIORITY_COUNT = 5;
+const PRIORITY_COUNT = 1;
 
 const RenderCards = ({ data, title }) => {
   if (data?.length > 0) {
