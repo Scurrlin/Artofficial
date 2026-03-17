@@ -25,7 +25,7 @@
         var photo = data.data[0].photo;
         if (!photo || photo.indexOf('res.cloudinary.com') === -1) return;
         var srcset = __srcsetWidths.map(function(w) {
-          return photo.replace('/upload/', '/upload/f_auto,q_auto:good,w_' + w + ',c_fill/') + ' ' + w + 'w';
+          return photo.replace('/upload/', '/upload/f_auto,q_auto:best,w_' + w + ',c_fill/') + ' ' + w + 'w';
         }).join(', ');
         var link = document.createElement('link');
         link.rel = 'preload';
