@@ -132,10 +132,10 @@ router.route('/').post(async (req, res) => {
 
     const photoUrl = await cloudinary.uploader.upload(photo, {
       eager: [
-        { width: 400, crop: 'fill', quality: 'auto:eco', fetch_format: 'auto' },
-        { width: 640, crop: 'fill', quality: 'auto:eco', fetch_format: 'auto' },
-        { width: 828, crop: 'fill', quality: 'auto:eco', fetch_format: 'auto' },
-        { width: 1080, crop: 'fill', quality: 'auto:eco', fetch_format: 'auto' },
+        { width: 400, crop: 'fill', quality: 'auto:good', fetch_format: 'auto' },
+        { width: 640, crop: 'fill', quality: 'auto:good', fetch_format: 'auto' },
+        { width: 828, crop: 'fill', quality: 'auto:good', fetch_format: 'auto' },
+        { width: 1080, crop: 'fill', quality: 'auto:good', fetch_format: 'auto' },
       ],
       eager_async: true,
     });

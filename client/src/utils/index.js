@@ -12,7 +12,7 @@ export async function downloadImage(_id, photo) {
 
 export function optimizedImageUrl(url, width = 1024) {
     if (!url || !url.includes('res.cloudinary.com')) return url;
-    return url.replace('/upload/', `/upload/f_auto,q_auto:eco,w_${width},c_fill/`);
+    return url.replace('/upload/', `/upload/f_auto,q_auto:good,w_${width},c_fill/`);
 }
 
 export function placeholderImageUrl(url) {
@@ -25,7 +25,7 @@ const SRCSET_WIDTHS = [400, 640, 828, 1080];
 export function responsiveSrcSet(url) {
     if (!url || !url.includes('res.cloudinary.com')) return '';
     return SRCSET_WIDTHS
-        .map(w => `${url.replace('/upload/', `/upload/f_auto,q_auto:eco,w_${w},c_fill/`)} ${w}w`)
+        .map(w => `${url.replace('/upload/', `/upload/f_auto,q_auto:good,w_${w},c_fill/`)} ${w}w`)
         .join(', ');
 }
 
