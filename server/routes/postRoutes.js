@@ -136,6 +136,7 @@ router.route('/').post(async (req, res) => {
         { width: 640, crop: 'fill', quality: 'auto:best', fetch_format: 'auto' },
         { width: 828, crop: 'fill', quality: 'auto:best', fetch_format: 'auto' },
         { width: 1080, crop: 'fill', quality: 'auto:best', fetch_format: 'auto' },
+        { width: 1440, crop: 'fill', quality: 'auto:best', fetch_format: 'auto' },
       ],
       eager_async: true,
     });
