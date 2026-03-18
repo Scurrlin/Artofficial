@@ -8,6 +8,10 @@ const router = express.Router();
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
+// Global prompt prefix (System Prompt)
+const PROMPT_PREFIX =
+  'Render the image with cinematic lighting, balanced color grading, clean composition, coherent forms, and high detail:';
+
 router.route('/').get((req, res) => {
   res.status(200).json({ message: 'Hello from GPT Image 1.5!' });
 });
@@ -16,7 +20,6 @@ router.route('/').post(async (req, res) => {
   try {
     const { prompt } = req.body;
 
-    // Validate prompt
     if (!prompt || typeof prompt !== 'string') {
       return res.status(400).json({
         success: false,
@@ -40,16 +43,20 @@ router.route('/').post(async (req, res) => {
       });
     }
 
+    const finalPrompt = `${PROMPT_PREFIX} ${trimmedPrompt}`;
+
     const aiResponse = await openai.images.generate({
       model: 'gpt-image-1.5',
-      prompt: trimmedPrompt,
+      prompt: finalPrompt,
       n: 1,
       size: '1024x1024',
       quality: 'high',
     });
 
     const image = aiResponse.data[0].b64_json;
+
     res.status(200).json({ photo: image });
+
   } catch (error) {
     console.error(error);
     const errorMessage = error?.message || 'Something went wrong';
