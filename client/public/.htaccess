@@ -1,6 +1,10 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # --- Canonical www redirect ---
+  RewriteCond %{HTTP_HOST} ^artofficial\.fun$ [NC]
+  RewriteRule ^(.*)$ https://www.artofficial.fun/$1 [R=301,L]
   
   # Don't rewrite files or directories
   RewriteCond %{REQUEST_FILENAME} !-f
