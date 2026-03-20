@@ -18,6 +18,7 @@ const CreatePost = ({ onBusyChange }) => {
 
   useEffect(() => {
     onBusyChange?.(generatingImg || loading);
+    return () => onBusyChange?.(false);
   }, [generatingImg, loading, onBusyChange]);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -48,8 +49,14 @@ const CreatePost = ({ onBusyChange }) => {
         });
 
         if (!response.ok) {
-          const errorData = await response.text();
-          throw new Error(errorData || `Error ${response.status}: ${response.statusText}`);
+          let errorMessage;
+          try {
+            const errorData = await response.json();
+            errorMessage = errorData.message;
+          } catch {
+            errorMessage = await response.text();
+          }
+          throw new Error(errorMessage || `Error ${response.status}: ${response.statusText}`);
         }
 
         const data = await response.json();

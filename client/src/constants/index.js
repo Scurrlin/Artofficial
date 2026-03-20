@@ -35,7 +35,7 @@ export const surpriseMePrompts = [
     'A modern skyscraper reflecting the sunset in a city skyline',
     'A field of glowing orbs in a dark forest',
     'A surreal landscape with floating islands and waterfalls',
-    'A vibrant, side-scrolling landscape reminiscent of Super Mario, with whimsical mushroom-like structures and a colorful, obstacle-filled course',
+    'A vibrant, side-scrolling landscape inspired by Super Mario, with whimsical mushroom-like structures and a colorful, obstacle-filled course',
     'A lighthouse on a cliff overlooking the sea during a storm',
     'A geometric pattern of triangles and circles in pastel shades',
     'A fractal pattern in vivid neon colors',

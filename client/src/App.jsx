@@ -65,6 +65,8 @@ const App = () => {
             style: {
               background: '#e06b6b',
               color: '#fff',
+              maxWidth: '90vw',
+              wordBreak: 'break-word',
             },
             iconTheme: {
               primary: '#000',
