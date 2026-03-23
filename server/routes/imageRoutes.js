@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import OpenAI from 'openai';
+import DailyLimit from '../mongodb/models/dailyLimit.js';
 
 dotenv.config();
 
@@ -40,6 +41,21 @@ router.route('/').post(async (req, res) => {
       return res.status(400).json({
         success: false,
         message: 'Prompt must be less than 1000 characters',
+      });
+    }
+
+    const today = new Date().toISOString().split('T')[0];
+    const result = await DailyLimit.findOneAndUpdate(
+      { date: today },
+      { $inc: { count: 1 } },
+      { upsert: true, new: true },
+    );
+
+    if (result.count > 50) {
+      await DailyLimit.updateOne({ date: today }, { $inc: { count: -1 } });
+      return res.status(429).json({
+        success: false,
+        message: 'Daily image limit reached (50/day). Please try again tomorrow!',
       });
     }
 
