@@ -11,8 +11,3 @@ A full MERN stack [AI image generator](https://www.artofficial.fun/) powered by 
 * Express
 * Node.js
 * Hostinger
-
-## Credits
-* Gradient inspiration ⬇
-
-![gradient_inspo](OpenAI-gradient.jpeg)
