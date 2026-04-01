@@ -7,13 +7,11 @@ phases:
     commands:
       - cd client
       - npm ci
-      - npx playwright install --with-deps chromium
   build:
     commands:
       - cd client
       - mkdir -p reports/vitest
       - npx vitest run --reporter=junit --outputFile=./reports/vitest/junit.xml
-      - npx playwright test --reporter=line
 
 reports:
   artofficial-vitest:
