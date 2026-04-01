@@ -3,20 +3,21 @@ import { test, expect } from '@playwright/test';
 test('user can generate an image with a mocked response', async ({ page }) => {
   const mockBase64 = 'mockBase64ImageData';
 
-  await page.route('**/api/v1/image', async (route) => {
-    await route.fulfill({
-      status: 200,
-      contentType: 'application/json',
-      body: JSON.stringify({ photo: mockBase64 }),
-    });
-  });
-
-  // Catch-all for other backend requests so they don't hang
+  // Catch-all for other backend requests so they don't hang (registered first = lowest priority)
   await page.route('**/api/v1/**', async (route) => {
     await route.fulfill({
       status: 200,
       contentType: 'application/json',
       body: JSON.stringify({ data: [] }),
+    });
+  });
+
+  // Specific image route (registered last = highest priority)
+  await page.route('**/api/v1/image', async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ photo: mockBase64 }),
     });
   });
 
