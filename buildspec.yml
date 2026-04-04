@@ -15,5 +15,5 @@ phases:
 reports:
   artofficial-vitest:
     files:
-      - reports/vitest/junit.xml
+      - client/reports/vitest/junit.xml
     file-format: JUNITXML
