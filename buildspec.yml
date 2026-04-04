@@ -9,12 +9,11 @@ phases:
       - npm ci
   build:
     commands:
-      - cd client
       - mkdir -p reports/vitest
       - npx vitest run --reporter=junit --outputFile=./reports/vitest/junit.xml
 
 reports:
   artofficial-vitest:
     files:
-      - client/reports/vitest/junit.xml
+      - reports/vitest/junit.xml
     file-format: JUNITXML
