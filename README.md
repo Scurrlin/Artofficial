@@ -11,10 +11,11 @@ A full MERN stack [AI image generator](https://www.artofficial.fun/) powered by 
 * Express
 * Node.js
 * Hostinger
+* AWS CodeBuild
 
 ## Testing
 
-The client has a test suite built with **Vitest**, **Testing Library**, and **Playwright**.
+The client directory includes a multi-layer test suite built with **Vitest**, **Testing Library**, and **Playwright**. Here's how to run it:
 
 ### Setup
 
