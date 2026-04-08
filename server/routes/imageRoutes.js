@@ -12,6 +12,7 @@ router.route('/').get((req, res) => {
 router.route('/').post(async (req, res) => {
   try {
     const { prompt, model = DEFAULT_MODEL } = req.body;
+    console.log(`[imageRoutes] Received generation request – model=${model}`);
 
     if (!prompt || typeof prompt !== 'string') {
       return res.status(400).json({

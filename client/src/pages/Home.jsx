@@ -97,12 +97,12 @@ const Home = ({ stats, selectedModel }) => {
         }
 
         const searchResult = (allPosts || []).filter((item) => {
-          const modelEntry = IMAGE_MODELS.find((m) => m.id === item.model);
+          const modelEntry = IMAGE_MODELS.find((m) => m.id === item.modelId);
           const modelLabel = modelEntry?.label?.toLowerCase() || '';
           return (
             item.name.toLowerCase().includes(trimmedQuery) ||
             item.prompt.toLowerCase().includes(trimmedQuery) ||
-            (item.model || '').toLowerCase().includes(trimmedQuery) ||
+            (item.modelId || '').toLowerCase().includes(trimmedQuery) ||
             modelLabel.includes(trimmedQuery)
           );
         });
