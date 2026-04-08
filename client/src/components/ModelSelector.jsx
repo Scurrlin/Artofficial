@@ -1,8 +1,10 @@
 import React from 'react';
 import { IMAGE_MODELS } from '../constants';
 
+const GENERATABLE_MODELS = IMAGE_MODELS.filter((m) => m.generatable !== false);
+
 const ModelSelector = ({ selectedModel, onChange, disabled }) => {
-  const activeModel = IMAGE_MODELS.find((m) => m.id === selectedModel);
+  const activeModel = GENERATABLE_MODELS.find((m) => m.id === selectedModel) || GENERATABLE_MODELS[0];
 
   return (
     <div className="flex gap-3 items-stretch">
@@ -32,7 +34,7 @@ const ModelSelector = ({ selectedModel, onChange, disabled }) => {
       )}
 
       <div className="flex flex-col justify-between self-stretch">
-        {IMAGE_MODELS.map((model) => {
+        {GENERATABLE_MODELS.map((model) => {
           const isSelected = model.id === selectedModel;
           return (
             <button

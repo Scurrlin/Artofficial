@@ -1,8 +1,14 @@
 export const IMAGE_MODELS = [
   {
+    id: 'dall-e-3',
+    label: 'DALL-E 3',
+    generatable: false,
+    iconLogo: '/brand-logos/openAI.svg',
+  },
+  {
     id: 'gpt-image-1.5',
     label: 'GPT Image 1.5',
-    bestFor: 'Balanced results across styles and use cases',
+    bestFor: 'Balanced outputs for a variety of use cases',
     strengths: ['Consistent quality', 'Good prompt understanding', 'Versatile across styles'],
     promptTip: 'Clear and descriptive prompts give the best results',
     textLogo: '/brand-logos/OpenAI-text.svg',
@@ -12,7 +18,7 @@ export const IMAGE_MODELS = [
     id: 'nano-banana-2',
     label: 'Nano Banana 2',
     bestFor: 'Fast, expressive images with bold style',
-    strengths: ['Very fast', 'Strong, vivid colors', 'More creative than precise'],
+    strengths: ['High speed', 'Strong, vivid colors', 'More creative than precise'],
     promptTip: 'Keep prompts short and just let the model cook',
     textLogo: '/brand-logos/Google.svg',
     iconLogo: '/brand-logos/whiteG.svg',
@@ -20,9 +26,9 @@ export const IMAGE_MODELS = [
   {
     id: 'flux-2',
     label: 'Flux.2 Pro',
-    bestFor: 'Clean, high-quality images with strong detail',
-    strengths: ['High detail', 'More realistic results', 'Follows prompts closely'],
-    promptTip: 'This model rewards detail so be specific about the image you want',
+    bestFor: 'Clean, high-quality images with a professional touch',
+    strengths: ['High granularity', 'Realistic results', 'Follows prompts closely'],
+    promptTip: 'This model rewards precision so be specific about the image you want',
     textLogo: '/brand-logos/BFL.svg',
     iconLogo: '/brand-logos/black-forest-labs.svg',
   },

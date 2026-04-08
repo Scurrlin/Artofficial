@@ -6,7 +6,8 @@ import * as blackForestLabs from './providers/blackForestLabs.js';
 const providers = { openai, google, blackForestLabs };
 
 export function isValidModel(modelId) {
-  return modelId in MODEL_REGISTRY;
+  const config = MODEL_REGISTRY[modelId];
+  return !!config && config.generatable !== false;
 }
 
 export async function generateImage(prompt, modelId = DEFAULT_MODEL) {
@@ -23,6 +24,8 @@ export async function generateImage(prompt, modelId = DEFAULT_MODEL) {
   if (!provider) {
     throw new Error(`No provider configured for: ${config.provider}`);
   }
+
+  console.log(`[imageService] model=${modelId} → provider=${config.provider}`);
 
   return provider.generate(finalPrompt);
 }

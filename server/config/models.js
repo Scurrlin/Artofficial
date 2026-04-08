@@ -1,4 +1,9 @@
 export const MODEL_REGISTRY = {
+  'dall-e-3': {
+    provider: null,
+    promptPrefix: '',
+    generatable: false,
+  },
   'gpt-image-1.5': {
     provider: 'openai',
     promptPrefix:
