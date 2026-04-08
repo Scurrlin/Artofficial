@@ -142,7 +142,7 @@ const Home = ({ stats, selectedModel }) => {
           name="text"
           labelName="Search posts"
           srOnly
-          placeholder="🔍 Search posts by name or prompt here"
+          placeholder="🔍 Search posts by name, prompt, or model"
           value={searchText}
           handleChange={handleSearchChange}
         />
