@@ -1,4 +1,4 @@
-import { MODEL_REGISTRY, DEFAULT_MODEL } from '../config/models.js';
+import { MODEL_REGISTRY } from '../config/models.js';
 import * as openai from './providers/openai.js';
 import * as google from './providers/google.js';
 import * as blackForestLabs from './providers/blackForestLabs.js';
@@ -10,7 +10,7 @@ export function isValidModel(modelId) {
   return !!config && config.generatable !== false;
 }
 
-export async function generateImage(prompt, modelId = DEFAULT_MODEL) {
+export async function generateImage(prompt, modelId) {
   const config = MODEL_REGISTRY[modelId];
   if (!config) {
     throw new Error(`Unknown model: ${modelId}`);
@@ -24,8 +24,6 @@ export async function generateImage(prompt, modelId = DEFAULT_MODEL) {
   if (!provider) {
     throw new Error(`No provider configured for: ${config.provider}`);
   }
-
-  console.log(`[imageService] model=${modelId} → provider=${config.provider}`);
 
   return provider.generate(finalPrompt);
 }

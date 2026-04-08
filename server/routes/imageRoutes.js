@@ -1,7 +1,6 @@
 import express from 'express';
 import DailyLimit from '../mongodb/models/dailyLimit.js';
 import { generateImage, isValidModel } from '../services/imageService.js';
-import { DEFAULT_MODEL } from '../config/models.js';
 
 const router = express.Router();
 
@@ -11,8 +10,14 @@ router.route('/').get((req, res) => {
 
 router.route('/').post(async (req, res) => {
   try {
-    const { prompt, model = DEFAULT_MODEL } = req.body;
-    console.log(`[imageRoutes] Received generation request – model=${model}`);
+    const { prompt, model } = req.body;
+
+    if (!model) {
+      return res.status(400).json({
+        success: false,
+        message: 'Model is required',
+      });
+    }
 
     if (!prompt || typeof prompt !== 'string') {
       return res.status(400).json({

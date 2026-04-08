@@ -145,7 +145,7 @@ router.route('/').post(async (req, res) => {
       name: trimmedName,
       prompt: trimmedPrompt,
       photo: photoUrl.secure_url,
-      modelId: model || 'gpt-image-1.5',
+      modelId: model,
     });
 
     postsCache = { data: null, timestamp: 0 };
