@@ -32,6 +32,8 @@ if (missingEnvVars.length > 0) {
 
 const app = express();
 
+app.set('trust proxy', 1);
+
 // Configure CORS with specific origins
 const allowedOrigins = [
   'https://www.artofficial.fun',
