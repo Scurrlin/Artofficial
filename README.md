@@ -1,10 +1,12 @@
 # Art/official
-A full MERN stack [AI image generator](https://www.artofficial.fun/) powered by OpenAI's GPT Image 1.5.
+A full MERN stack [AI image generator](https://www.artofficial.fun/) powered by cutting edge models from OpenAI, Google, and Black Forest Labs.
 
 ![banner_image](/client/public/Artofficial_thumbnail-min.png)
 
 ## Technologies Used
-* OpenAI's GPT Image 1.5
+* GPT Image 1.5 (OpenAI)
+* Nano Banana 2 (Google)
+* Flux 2 (Black Forest Labs)
 * Cloudinary
 * React.js
 * MongoDB

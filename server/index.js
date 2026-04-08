@@ -14,6 +14,8 @@ const requiredEnvVars = [
   'MONGODB_URL',
   'PORT',
   'OPENAI_API_KEY',
+  'GOOGLE_API_KEY',
+  'REPLICATE_API_TOKEN',
   'CLOUDINARY_CLOUD_NAME',
   'CLOUDINARY_API_KEY',
   'CLOUDINARY_API_SECRET',
@@ -67,7 +69,7 @@ app.use('/api/v1/image', imageLimiter, imageRoutes);
 
 app.get('/', async (req, res) => {
   res.status(200).json({
-    message: 'Hello from GPT Image 1.5!',
+    message: 'Hello from Artofficial API!',
   });
 });
 

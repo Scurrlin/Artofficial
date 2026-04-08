@@ -1,0 +1,65 @@
+import React from 'react';
+import { IMAGE_MODELS } from '../constants';
+
+const ModelSelector = ({ selectedModel, onChange, disabled }) => {
+  const activeModel = IMAGE_MODELS.find((m) => m.id === selectedModel);
+
+  return (
+    <div className="flex gap-3 items-stretch">
+      {activeModel && (
+        <div className="rounded-xl bg-[#10131f] p-5 text-white flex-1 min-w-0">
+          <div className="flex items-center gap-3 mb-3">
+            <img src={activeModel.iconLogo} alt="" className="w-8 h-8" />
+            <h3 className="text-lg font-bold">{activeModel.label}</h3>
+          </div>
+          <p className="text-sm text-white/80">
+            <span className="font-semibold text-white">Best for:</span> {activeModel.bestFor}
+          </p>
+          <div className="mt-2">
+            <p className="text-sm font-semibold">{activeModel.strengths[0]}</p>
+            <ul className="mt-1 space-y-0.5">
+              {activeModel.strengths.slice(1).map((s) => (
+                <li key={s} className="flex items-center gap-2 text-sm text-white/80">
+                  <span className="text-[#6dadeb]">&#10003;</span> {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <p className="mt-3 text-sm text-white/80">
+            <span className="font-semibold text-white">Tip:</span> {activeModel.promptTip}
+          </p>
+        </div>
+      )}
+
+      <div className="flex flex-col justify-between self-stretch">
+        {IMAGE_MODELS.map((model) => {
+          const isSelected = model.id === selectedModel;
+          return (
+            <button
+              key={model.id}
+              type="button"
+              disabled={disabled}
+              onClick={() => onChange(model.id)}
+              className={`w-14 h-14 flex items-center justify-center rounded-md transition-all border cursor-pointer
+                disabled:opacity-50 disabled:cursor-not-allowed
+                ${isSelected
+                  ? 'bg-[#10131f] border-[#10131f]'
+                  : 'bg-white/70 backdrop-blur-md border-[#10131f]/30 hover:border-[#10131f]/60'
+                }`}
+              title={model.label}
+            >
+              <img
+                src={model.iconLogo}
+                alt={model.label}
+                className="w-7 h-7"
+                style={isSelected ? undefined : { filter: 'brightness(0)' }}
+              />
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default ModelSelector;

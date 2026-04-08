@@ -2,15 +2,18 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { getRandomPrompt } from '../utils';
-import { FormField, Loader } from '../components';
+import { FormField, Loader, ModelSelector } from '../components';
+import { IMAGE_MODELS } from '../constants';
 
-const CreatePost = ({ onBusyChange }) => {
+const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
   const navigate = useNavigate();
   const [form, setForm] = useState({
     name: '',
     prompt: '',
     photo: '',
   });
+
+  const currentModel = IMAGE_MODELS.find((m) => m.id === selectedModel) || IMAGE_MODELS[0];
 
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -44,6 +47,7 @@ const CreatePost = ({ onBusyChange }) => {
           },
           body: JSON.stringify({
             prompt: form.prompt,
+            model: selectedModel,
           }),
           signal: controller.signal,
         });
@@ -93,7 +97,7 @@ const CreatePost = ({ onBusyChange }) => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ ...form }),
+          body: JSON.stringify({ ...form, model: selectedModel }),
         });
 
         if (!response.ok) {
@@ -119,12 +123,17 @@ const CreatePost = ({ onBusyChange }) => {
     <section className="max-w-7xl mx-auto">
       <div>
         <h1 className="font-extrabold text-[#10131f] text-[32px]">Create Image</h1>
-        <p className="mt-2 text-[#10131f] text-[16px]">Can't think of a prompt? Click the "Surprise me" button for one of 50 curated options!</p>
+        <p className="mt-2 mb-6 text-[#10131f] text-[16px]">Can't think of a prompt? Click the "Surprise me" button for one of 50 curated options!</p>
       </div>
 
-      <form className="mt-10" onSubmit={handleSubmit}>
-        <div className="flex flex-col lg:flex-row gap-8">
+      <form onSubmit={handleSubmit}>
+        <div className="flex flex-col lg:flex-row lg:items-start gap-8">
           <div className="flex flex-col gap-5 lg:w-1/2 max-w-[600px]">
+            <ModelSelector
+              selectedModel={selectedModel}
+              onChange={onModelChange}
+              disabled={generatingImg || loading}
+            />
             <FormField
               labelName="Your Name"
               type="text"
@@ -166,7 +175,7 @@ const CreatePost = ({ onBusyChange }) => {
             </div>
           </div>
 
-          <div className="w-full lg:w-1/2 flex justify-center lg:-mt-5">
+          <div className="w-full lg:w-1/2 flex justify-center">
             <div className={`relative aspect-square w-full max-w-md short:max-w-sm rounded-xl border border-[#10131f]/30 flex justify-center items-center overflow-hidden ${form.photo || generatingImg ? 'bg-[#10131f]' : ''}`}>
               {form.photo ? (
                 <img
@@ -181,12 +190,12 @@ const CreatePost = ({ onBusyChange }) => {
                   className="absolute inset-0 bg-[#10131f]"
                   style={{
                     transform: 'translateZ(0)',
-                    maskImage: `url('/openAI.svg'), linear-gradient(#fff, #fff)`,
+                    maskImage: `url('${currentModel.iconLogo}'), linear-gradient(#fff, #fff)`,
                     maskSize: '75% 75%, 100% 100%',
                     maskPosition: 'center, center',
                     maskRepeat: 'no-repeat, no-repeat',
                     maskComposite: 'exclude',
-                    WebkitMaskImage: `url('/openAI.svg'), linear-gradient(#fff, #fff)`,
+                    WebkitMaskImage: `url('${currentModel.iconLogo}'), linear-gradient(#fff, #fff)`,
                     WebkitMaskSize: '75% 75%, 100% 100%',
                     WebkitMaskPosition: 'center, center',
                     WebkitMaskRepeat: 'no-repeat, no-repeat',

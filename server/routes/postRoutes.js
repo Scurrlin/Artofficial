@@ -67,7 +67,7 @@ router.route('/').get(async (req, res) => {
 
 router.route('/').post(async (req, res) => {
   try {
-    const { name, prompt, photo } = req.body;
+    const { name, prompt, photo, model } = req.body;
 
     // Validate name
     if (!name || typeof name !== 'string') {
@@ -145,6 +145,7 @@ router.route('/').post(async (req, res) => {
       name: trimmedName,
       prompt: trimmedPrompt,
       photo: photoUrl.secure_url,
+      ...(model && { model }),
     });
 
     postsCache = { data: null, timestamp: 0 };

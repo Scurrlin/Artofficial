@@ -1,7 +1,5 @@
-import download from './download.png';
-import logo from './logo.svg';
+const download = '/download.png';
 
 export {
   download,
-  logo,
 };

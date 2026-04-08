@@ -57,7 +57,7 @@ describe('CreatePost', () => {
     await user.type(screen.getByPlaceholderText(/enter your prompt/i), 'A neon phoenix');
     await user.click(screen.getByRole('button', { name: /generate/i }));
 
-    const img = await screen.findByRole('img');
+    const img = await screen.findByAltText('A neon phoenix');
     expect(img).toHaveAttribute('src', `data:image/png;base64,${mockBase64}`);
   });
 

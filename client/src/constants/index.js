@@ -1,3 +1,35 @@
+export const IMAGE_MODELS = [
+  {
+    id: 'gpt-image-1.5',
+    label: 'GPT Image 1.5',
+    bestFor: 'Balanced results across styles and use cases',
+    strengths: ['Consistent quality', 'Good prompt understanding', 'Versatile across styles'],
+    promptTip: 'Clear and descriptive prompts give the best results.',
+    textLogo: '/brand-logos/OpenAI-text.svg',
+    iconLogo: '/brand-logos/openAI.svg',
+  },
+  {
+    id: 'nano-banana-2',
+    label: 'Nano Banana 2',
+    bestFor: 'Fast, expressive images with bold style',
+    strengths: ['Very fast', 'Strong, vivid colors', 'More creative than precise'],
+    promptTip: 'Keep prompts short and just let the model cook.',
+    textLogo: '/brand-logos/Google.svg',
+    iconLogo: '/brand-logos/whiteG.svg',
+  },
+  {
+    id: 'flux-2',
+    label: 'FLUX.2',
+    bestFor: 'Clean, high-quality images with strong detail',
+    strengths: ['High detail', 'More realistic results', 'Follows prompts closely'],
+    promptTip: 'This model rewards detail so be specific about the image you want.',
+    textLogo: '/brand-logos/BFL.svg',
+    iconLogo: '/brand-logos/black-forest-labs.svg',
+  },
+];
+
+export const DEFAULT_MODEL_ID = 'gpt-image-1.5';
+
 export const surpriseMePrompts = [
     'An armchair in the shape of an avocado',
     'A serene lake surrounded by mountains at sunrise',

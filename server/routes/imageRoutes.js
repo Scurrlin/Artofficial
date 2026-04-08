@@ -1,25 +1,17 @@
 import express from 'express';
-import dotenv from 'dotenv';
-import OpenAI from 'openai';
 import DailyLimit from '../mongodb/models/dailyLimit.js';
-
-dotenv.config();
+import { generateImage, isValidModel } from '../services/imageService.js';
+import { DEFAULT_MODEL } from '../config/models.js';
 
 const router = express.Router();
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
-// Global prompt prefix (System Prompt)
-const PROMPT_PREFIX =
-  'Render the image with cinematic lighting, balanced color grading, clean composition, coherent forms, and high detail:';
-
 router.route('/').get((req, res) => {
-  res.status(200).json({ message: 'Hello from GPT Image 1.5!' });
+  res.status(200).json({ message: 'Hello from Artofficial Image API!' });
 });
 
 router.route('/').post(async (req, res) => {
   try {
-    const { prompt } = req.body;
+    const { prompt, model = DEFAULT_MODEL } = req.body;
 
     if (!prompt || typeof prompt !== 'string') {
       return res.status(400).json({
@@ -44,34 +36,34 @@ router.route('/').post(async (req, res) => {
       });
     }
 
+    if (!isValidModel(model)) {
+      return res.status(400).json({
+        success: false,
+        message: `Unsupported model: ${model}`,
+      });
+    }
+
     const today = new Date().toISOString().split('T')[0];
     const result = await DailyLimit.findOneAndUpdate(
       { date: today },
-      { $inc: { count: 1 } },
+      { $inc: { total: 1, [`models.${model}`]: 1 } },
       { upsert: true, new: true },
     );
 
-    if (result.count > 50) {
-      await DailyLimit.updateOne({ date: today }, { $inc: { count: -1 } });
+    if (result.total > 50) {
+      await DailyLimit.updateOne(
+        { date: today },
+        { $inc: { total: -1, [`models.${model}`]: -1 } },
+      );
       return res.status(429).json({
         success: false,
         message: 'Daily image limit reached (50/day). Please try again tomorrow!',
       });
     }
 
-    const finalPrompt = `${PROMPT_PREFIX} ${trimmedPrompt}`;
+    const { base64 } = await generateImage(trimmedPrompt, model);
 
-    const aiResponse = await openai.images.generate({
-      model: 'gpt-image-1.5',
-      prompt: finalPrompt,
-      n: 1,
-      size: '1024x1024',
-      quality: 'high',
-    });
-
-    const image = aiResponse.data[0].b64_json;
-
-    res.status(200).json({ photo: image });
+    res.status(200).json({ photo: base64 });
 
   } catch (error) {
     console.error(error);

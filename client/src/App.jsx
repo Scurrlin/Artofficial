@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import { logo } from './assets';
+import { IMAGE_MODELS, DEFAULT_MODEL_ID } from './constants';
 import { Home, CreatePost } from './pages';
 
 const ScrollToTop = () => {
@@ -15,6 +15,9 @@ const ScrollToTop = () => {
 const App = () => {
   const [stats, setStats] = useState(null);
   const [busy, setBusy] = useState(false);
+  const [selectedModel, setSelectedModel] = useState(DEFAULT_MODEL_ID);
+
+  const currentModel = IMAGE_MODELS.find((m) => m.id === selectedModel) || IMAGE_MODELS[0];
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -88,7 +91,11 @@ const App = () => {
           )}
 
           <Link to="/" aria-label="Go to home">
-            <img src={logo} alt="Artofficial logo" className="w-28 object-contain cursor-pointer" />
+            <img
+              src={currentModel.textLogo}
+              alt={`${currentModel.label} logo`}
+              className="w-28 object-contain cursor-pointer"
+            />
           </Link>
 
           <div className="flex space-x-4">
@@ -111,8 +118,8 @@ const App = () => {
 
         <main id="main-content" className="sm:p-8 px-4 py-8 w-full min-h-[calc(100vh-73px)]">
           <Routes>
-            <Route path="/" element={<Home stats={stats} />} />
-            <Route path="/create-post" element={<CreatePost onBusyChange={setBusy} />} />
+            <Route path="/" element={<Home stats={stats} selectedModel={selectedModel} />} />
+            <Route path="/create-post" element={<CreatePost onBusyChange={setBusy} selectedModel={selectedModel} onModelChange={setSelectedModel} />} />
           </Routes>
         </main>
       </div>
