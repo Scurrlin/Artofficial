@@ -52,7 +52,7 @@ const PROSE = 'prose prose-lg prose-invert max-w-none prose-headings:text-white 
 
 const GptImageGuide = () => (
   <article className={PROSE}>
-    <h1>gpt-image-1.5 Prompting Guide</h1>
+    <h1 className="gradient-knockout">Gpt-Image-1.5 Prompting Guide</h1>
 
     {/* ──────────────── 1. Introduction ──────────────── */}
     <h2>1. Introduction</h2>

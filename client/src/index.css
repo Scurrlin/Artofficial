@@ -89,3 +89,14 @@ textarea:-webkit-autofill {
   height: auto;
   border-radius: inherit;
 }
+
+.gradient-knockout {
+  background: linear-gradient(to bottom right, #6dadeb, #b98ae0, #f09898, #e8a878 90%);
+  background-attachment: fixed;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0.15em 0;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}

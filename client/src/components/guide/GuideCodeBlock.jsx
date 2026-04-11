@@ -47,7 +47,7 @@ const GuideCodeBlock = ({ language = 'text', children, label }) => {
   };
 
   return (
-    <div className="not-prose my-4 rounded-xl overflow-hidden border border-white/10 relative group">
+    <div className="not-prose my-4 rounded-xl overflow-hidden border border-white/20 relative group">
       {label && (
         <div className="bg-white/5 border-b border-white/10 px-4 py-1.5 text-xs text-white/40 font-mono">
           {label}

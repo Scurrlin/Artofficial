@@ -123,14 +123,14 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
   return (
     <>
       <section className="max-w-7xl mx-auto">
-        <div>
+        <div className="max-w-[600px] mx-auto lg:mx-0 lg:max-w-none">
           <h1 className="font-extrabold text-[#10131f] text-[32px]">Create Image</h1>
-          <p className="mt-2 mb-6 text-[#10131f] text-[16px]">Can't think of a prompt? Click the "Surprise me" button for one of 50 curated options!</p>
+          <p className="mt-2 mb-6 text-[#10131f] text-[16px] ">Click the "Surprise me" button for one of 50 curated prompts!</p>
         </div>
 
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col lg:flex-row lg:items-start gap-8">
-            <div className="flex flex-col gap-5 lg:w-1/2 max-w-[600px]">
+            <div className="flex flex-col gap-5 w-full max-w-[600px] mx-auto lg:w-1/2 lg:max-w-[600px] lg:mx-0">
               <ModelSelector
                 selectedModel={selectedModel}
                 onChange={onModelChange}
@@ -213,9 +213,26 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
 
       {guides[selectedModel] && (
         <div className="-mx-4 sm:-mx-8 -mb-8 mt-12">
-          <div className="h-24 sm:h-32" style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.04) 15%, rgba(0,0,0,0.12) 30%, rgba(0,0,0,0.28) 45%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.75) 78%, black 100%)' }} />
+          <svg
+            viewBox="0 0 1440 400"
+            preserveAspectRatio="none"
+            className="w-full block h-[150px] sm:h-[220px] lg:h-[300px]"
+            style={{ marginBottom: '-1px' }}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <filter id="waveBlur" x="-20%" y="-30%" width="140%" height="160%">
+                <feGaussianBlur stdDeviation="40" />
+              </filter>
+            </defs>
+            <path
+              d="M-200,200 C-50,215 200,260 320,260 C440,260 560,110 750,90 C940,70 1020,185 1120,185 C1220,185 1360,145 1640,130 L1640,600 L-200,600 Z"
+              fill="black"
+              filter="url(#waveBlur)"
+            />
+          </svg>
           <div className="bg-black">
-            <div className="max-w-4xl mx-auto px-4 sm:px-8 py-12">
+            <div className="max-w-4xl mx-auto px-4 sm:px-8 pt-2 sm:pt-3 pb-12">
               <PromptGuide selectedModel={selectedModel} />
             </div>
           </div>

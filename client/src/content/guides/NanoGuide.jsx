@@ -33,7 +33,7 @@ const Placeholder = ({ children, aspect = 'video' }) => (
 
 const NanoGuide = () => (
   <article className={PROSE}>
-    <h1>The Ultimate Nano Banana Prompting Guide</h1>
+    <h1 className="gradient-knockout">The Ultimate Nano Banana Prompting Guide</h1>
     <p>
       <em>
         Built on the Gemini&nbsp;3 family of models, Nano Banana models apply deep reasoning
