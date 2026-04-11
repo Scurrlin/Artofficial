@@ -17,16 +17,13 @@ const ModelSelector = ({ selectedModel, onChange, disabled }) => {
           <p className="text-sm text-white/80">
             <span className="font-semibold text-white">Best for:</span> {activeModel.bestFor}
           </p>
-          <div className="mt-2">
-            <p className="text-sm font-semibold">{activeModel.strengths[0]}</p>
-            <ul className="mt-1 space-y-0.5">
-              {activeModel.strengths.slice(1).map((s) => (
-                <li key={s} className="flex items-center gap-2 text-sm text-white/80">
-                  <span className="text-[#6dadeb]">&#10003;</span> {s}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul className="mt-2 space-y-0.5">
+            {activeModel.strengths.map((s) => (
+              <li key={s} className="flex items-center gap-2 text-sm text-white/80">
+                <span className="text-[#6dadeb]">&#10003;</span> {s}
+              </li>
+            ))}
+          </ul>
           <p className="mt-3 text-sm text-white/80">
             <span className="font-semibold text-white">Tip:</span> {activeModel.promptTip}
           </p>

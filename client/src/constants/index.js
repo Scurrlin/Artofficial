@@ -17,8 +17,8 @@ export const IMAGE_MODELS = [
   {
     id: 'nano-banana-2',
     label: 'Nano Banana 2',
-    bestFor: 'Fast, expressive images with bold style',
-    strengths: ['High speed', 'Strong, vivid colors', 'More creative than precise'],
+    bestFor: 'Fast, expressive images with bold accents',
+    strengths: ['Rapid generation', 'Strong, vivid colors', 'More creative than precise'],
     promptTip: 'Keep prompts short and just let the model cook',
     textLogo: '/brand-logos/Google.svg',
     iconLogo: '/brand-logos/whiteG.svg',

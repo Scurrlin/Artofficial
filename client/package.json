@@ -13,13 +13,17 @@
     "test:ci": "vitest run --reporter=junit --outputFile=./reports/vitest/junit.xml && playwright test"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.19",
     "file-saver": "^2.0.5",
     "lottie-react": "^2.4.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hot-toast": "^2.6.0",
     "react-lazy-load-image-component": "^1.6.3",
-    "react-router-dom": "^6.30.2"
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^6.30.2",
+    "react-syntax-highlighter": "^16.1.1",
+    "rehype-raw": "^7.0.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.59.0",

@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { getRandomPrompt } from '../utils';
-import { FormField, Loader, ModelSelector } from '../components';
+import { FormField, Loader, ModelSelector, PromptGuide } from '../components';
 import { IMAGE_MODELS } from '../constants';
+import guides from '../content/guides';
 
 const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
   const navigate = useNavigate();
@@ -120,94 +121,107 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
   };
 
   return (
-    <section className="max-w-7xl mx-auto">
-      <div>
-        <h1 className="font-extrabold text-[#10131f] text-[32px]">Create Image</h1>
-        <p className="mt-2 mb-6 text-[#10131f] text-[16px]">Can't think of a prompt? Click the "Surprise me" button for one of 50 curated options!</p>
-      </div>
+    <>
+      <section className="max-w-7xl mx-auto">
+        <div>
+          <h1 className="font-extrabold text-[#10131f] text-[32px]">Create Image</h1>
+          <p className="mt-2 mb-6 text-[#10131f] text-[16px]">Can't think of a prompt? Click the "Surprise me" button for one of 50 curated options!</p>
+        </div>
 
-      <form onSubmit={handleSubmit}>
-        <div className="flex flex-col lg:flex-row lg:items-start gap-8">
-          <div className="flex flex-col gap-5 lg:w-1/2 max-w-[600px]">
-            <ModelSelector
-              selectedModel={selectedModel}
-              onChange={onModelChange}
-              disabled={generatingImg || loading}
-            />
-            <FormField
-              labelName="Your Name"
-              type="text"
-              name="name"
-              placeholder="John Doe"
-              value={form.name}
-              handleChange={handleChange}
-            />
-
-            <FormField
-              labelName="Prompt"
-              name="prompt"
-              placeholder="Enter your prompt here"
-              value={form.prompt}
-              handleChange={handleChange}
-              isSurpriseMe
-              handleSurpriseMe={handleSurpriseMe}
-              isTextarea
-              disabled={generatingImg || loading}
-            />
-
-            <div className="flex gap-3">
-              <button
-                type="button"
-                onClick={generateImage}
+        <form onSubmit={handleSubmit}>
+          <div className="flex flex-col lg:flex-row lg:items-start gap-8">
+            <div className="flex flex-col gap-5 lg:w-1/2 max-w-[600px]">
+              <ModelSelector
+                selectedModel={selectedModel}
+                onChange={onModelChange}
                 disabled={generatingImg || loading}
-                className="text-white bg-[#10131f] font-medium rounded-md text-base px-5 py-2.5 text-center cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {generatingImg ? 'Generating...' : 'Generate'}
-              </button>
-              <button
-                type={generatingImg ? 'button' : 'submit'}
-                onClick={generatingImg ? cancelGeneration : undefined}
-                disabled={!generatingImg && (!form.photo || loading)}
-                className="text-white bg-[#10131f] font-medium rounded-md text-base px-5 py-2.5 text-center cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {loading ? 'Sharing...' : generatingImg ? 'Cancel' : 'Add to Feed'}
-              </button>
+              />
+              <FormField
+                labelName="Your Name"
+                type="text"
+                name="name"
+                placeholder="John Doe"
+                value={form.name}
+                handleChange={handleChange}
+              />
+
+              <FormField
+                labelName="Prompt"
+                name="prompt"
+                placeholder="Enter your prompt here"
+                value={form.prompt}
+                handleChange={handleChange}
+                isSurpriseMe
+                handleSurpriseMe={handleSurpriseMe}
+                isTextarea
+                disabled={generatingImg || loading}
+              />
+
+              <div className="flex gap-3">
+                <button
+                  type="button"
+                  onClick={generateImage}
+                  disabled={generatingImg || loading}
+                  className="text-white bg-[#10131f] font-medium rounded-md text-base px-5 py-2.5 text-center cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {generatingImg ? 'Generating...' : 'Generate'}
+                </button>
+                <button
+                  type={generatingImg ? 'button' : 'submit'}
+                  onClick={generatingImg ? cancelGeneration : undefined}
+                  disabled={!generatingImg && (!form.photo || loading)}
+                  className="text-white bg-[#10131f] font-medium rounded-md text-base px-5 py-2.5 text-center cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {loading ? 'Sharing...' : generatingImg ? 'Cancel' : 'Add to Feed'}
+                </button>
+              </div>
+            </div>
+
+            <div className="w-full lg:w-1/2 flex justify-center">
+              <div className={`relative aspect-square w-full max-w-md short:max-w-sm rounded-xl border border-[#10131f]/30 flex justify-center items-center overflow-hidden ${form.photo || generatingImg ? 'bg-[#10131f]' : ''}`}>
+                {form.photo ? (
+                  <img
+                    src={form.photo}
+                    alt={form.prompt}
+                    className="w-full h-full object-cover"
+                  />
+                ) : generatingImg ? (
+                  <Loader variant="light" />
+                ) : (
+                  <div
+                    className="absolute inset-0 bg-[#10131f]"
+                    style={{
+                      transform: 'translateZ(0)',
+                      maskImage: `url('${currentModel.iconLogo}'), linear-gradient(#fff, #fff)`,
+                      maskSize: '75% 75%, 100% 100%',
+                      maskPosition: 'center, center',
+                      maskRepeat: 'no-repeat, no-repeat',
+                      maskComposite: 'exclude',
+                      WebkitMaskImage: `url('${currentModel.iconLogo}'), linear-gradient(#fff, #fff)`,
+                      WebkitMaskSize: '75% 75%, 100% 100%',
+                      WebkitMaskPosition: 'center, center',
+                      WebkitMaskRepeat: 'no-repeat, no-repeat',
+                      WebkitMaskComposite: 'xor',
+                    }}
+                  />
+                )}
+              </div>
             </div>
           </div>
+        </form>
+      </section>
 
-          <div className="w-full lg:w-1/2 flex justify-center">
-            <div className={`relative aspect-square w-full max-w-md short:max-w-sm rounded-xl border border-[#10131f]/30 flex justify-center items-center overflow-hidden ${form.photo || generatingImg ? 'bg-[#10131f]' : ''}`}>
-              {form.photo ? (
-                <img
-                  src={form.photo}
-                  alt={form.prompt}
-                  className="w-full h-full object-cover"
-                />
-              ) : generatingImg ? (
-                <Loader variant="light" />
-              ) : (
-                <div
-                  className="absolute inset-0 bg-[#10131f]"
-                  style={{
-                    transform: 'translateZ(0)',
-                    maskImage: `url('${currentModel.iconLogo}'), linear-gradient(#fff, #fff)`,
-                    maskSize: '75% 75%, 100% 100%',
-                    maskPosition: 'center, center',
-                    maskRepeat: 'no-repeat, no-repeat',
-                    maskComposite: 'exclude',
-                    WebkitMaskImage: `url('${currentModel.iconLogo}'), linear-gradient(#fff, #fff)`,
-                    WebkitMaskSize: '75% 75%, 100% 100%',
-                    WebkitMaskPosition: 'center, center',
-                    WebkitMaskRepeat: 'no-repeat, no-repeat',
-                    WebkitMaskComposite: 'xor',
-                  }}
-                />
-              )}
+      {guides[selectedModel] && (
+        <div className="-mx-4 sm:-mx-8 -mb-8 mt-12">
+          <div className="h-24 sm:h-32" style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.04) 15%, rgba(0,0,0,0.12) 30%, rgba(0,0,0,0.28) 45%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.75) 78%, black 100%)' }} />
+          <div className="bg-black">
+            <div className="max-w-4xl mx-auto px-4 sm:px-8 py-12">
+              <PromptGuide selectedModel={selectedModel} />
             </div>
           </div>
         </div>
-      </form>
-    </section>
+      )}
+    </>
   );
 };
 
