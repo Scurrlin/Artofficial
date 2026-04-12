@@ -118,6 +118,7 @@ textarea:-webkit-autofill {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   padding: 0.15em 0;
+  margin-top: 5rem;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }

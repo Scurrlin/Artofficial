@@ -10,12 +10,44 @@ const GUIDE_SIZES = [
   '60vw',
 ].join(', ');
 
-const GuideImage = ({ src, alt, className, style, maxHeight }) => {
+const GuideImage = ({ src, alt, className, style, maxHeight, aspectRatio }) => {
   const eager = useContext(GuideEagerContext);
-  const wrapperStyle = { display: 'block', minHeight: 200, ...style };
-  const imgStyle = maxHeight
-    ? { maxHeight, objectFit: 'cover', width: '100%' }
-    : undefined;
+
+  if (aspectRatio) {
+    return (
+      <div
+        className={`bg-white/5 overflow-hidden ${className || ''}`}
+        style={{ aspectRatio, ...style }}
+      >
+        <LazyLoadImage
+          src={optimizedImageUrl(src)}
+          srcSet={responsiveSrcSet(src) || undefined}
+          sizes={GUIDE_SIZES}
+          placeholderSrc={placeholderImageUrl(src)}
+          alt={alt}
+          effect="blur"
+          visibleByDefault={eager}
+          wrapperClassName="w-full h-full"
+          wrapperProps={{ style: { display: 'block', height: '100%' } }}
+          style={{
+            display: 'block',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            ...(maxHeight ? { maxHeight } : {}),
+          }}
+          width="100%"
+          threshold={1500}
+        />
+      </div>
+    );
+  }
+
+  const wrapperStyle = { display: 'block', ...style };
+  const imgStyle = {
+    display: 'block',
+    ...(maxHeight ? { maxHeight, objectFit: 'cover', width: '100%' } : {}),
+  };
 
   return (
     <LazyLoadImage
@@ -26,11 +58,11 @@ const GuideImage = ({ src, alt, className, style, maxHeight }) => {
       alt={alt}
       effect="blur"
       visibleByDefault={eager}
-      wrapperClassName={className}
+      wrapperClassName={`md:min-h-[200px] ${className || ''}`}
       wrapperProps={{ style: wrapperStyle }}
       style={imgStyle}
       width="100%"
-      threshold={1000}
+      threshold={1500}
     />
   );
 };

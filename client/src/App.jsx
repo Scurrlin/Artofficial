@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { IMAGE_MODELS, DEFAULT_MODEL_ID } from './constants';
-import { Home, CreatePost } from './pages';
+import Home from './pages/Home';
+import CreatePost from './pages/CreatePost';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();

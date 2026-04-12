@@ -1,25 +1,24 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
-import guides from '../content/guides';
+import React, { Suspense } from 'react';
 
-const PROSE_CLASSES = 'prose prose-lg prose-invert max-w-none prose-headings:text-white prose-p:text-white/80 prose-strong:text-white prose-code:bg-white/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-white/90 prose-code:before:content-none prose-code:after:content-none prose-pre:bg-white/10 prose-pre:text-white/90 prose-a:text-[#6dadeb] prose-blockquote:border-[#6dadeb] prose-blockquote:text-white/70 prose-hr:border-white/20 prose-li:text-white/80';
+const GUIDES = {
+  'gpt-image-1.5': React.lazy(() => import('../content/guides/GptImageGuide')),
+  'nano-banana-2': React.lazy(() => import('../content/guides/NanoGuide')),
+  'flux-2': React.lazy(() => import('../content/guides/FluxGuide')),
+};
 
-const PromptGuide = ({ selectedModel }) => {
-  const guide = guides[selectedModel];
+export const GUIDED_MODELS = new Set(Object.keys(GUIDES));
 
-  if (!guide) return null;
-
-  if (typeof guide !== 'string') {
-    const GuideComponent = guide;
-    return <GuideComponent />;
-  }
+const PromptGuide = React.memo(({ selectedModel }) => {
+  const GuideComponent = GUIDES[selectedModel];
+  if (!GuideComponent) return null;
 
   return (
-    <article className={PROSE_CLASSES}>
-      <ReactMarkdown rehypePlugins={[rehypeRaw]}>{guide}</ReactMarkdown>
-    </article>
+    <Suspense fallback={null}>
+      <GuideComponent />
+    </Suspense>
   );
-};
+});
+
+PromptGuide.displayName = 'PromptGuide';
 
 export default PromptGuide;

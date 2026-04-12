@@ -41,9 +41,14 @@ const NanoGuide = () => (
     </p>
 
     <GuideCallout variant="info">
-      <strong>What you&rsquo;ll learn:</strong> Model overview &bull; Full tech specs breakdown &bull; Best
-      practices for effective prompting &bull; Five prompting frameworks &bull; How Nano Banana works
-      with Veo and Lyria.
+      <strong>What you&rsquo;ll learn:</strong>
+      <ul className="mt-1.5 ml-1 space-y-1 list-disc pl-4">
+        <li>Model overview</li>
+        <li>Full tech specs breakdown</li>
+        <li>Best practices for effective prompting</li>
+        <li>Five prompting frameworks</li>
+        <li>How Nano Banana works with Veo and Lyria</li>
+      </ul>
     </GuideCallout>
 
     {/* ──────────────── Model Overview ──────────────── */}
@@ -194,7 +199,7 @@ const NanoGuide = () => (
           <strong>Style:</strong> editorial, medium-format analog film
         </GuidePrompt>
 
-        <GuideImage className="w-full" src={nanoModel} alt="Fashion model in tailored brown dress on cherry red backdrop — editorial style" />
+        <GuideImage className="w-full" src={nanoModel} alt="Fashion model in tailored brown dress on cherry red backdrop — editorial style" aspectRatio="1 / 1" />
       </GuideTab>
 
       <GuideTab title="Multimodal">
@@ -221,7 +226,7 @@ const NanoGuide = () => (
         </GuideCallout>
 
         <GuideFrame caption="Napkin sketch + fabric sample → 3D armchair render" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={chairSketch} alt="Napkin sketch and fabric sample combined into a 3D armchair render in a minimalist living room" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={chairSketch} alt="Napkin sketch and fabric sample combined into a 3D armchair render in a minimalist living room" aspectRatio="1999 / 1653" />
         </GuideFrame>
       </GuideTab>
     </GuideTabs>
@@ -253,7 +258,7 @@ const NanoGuide = () => (
         <GuidePrompt description="Remove the man from the photo." />
 
         <GuideFrame caption="Before & after: man removed from photo" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={manAndWoman} alt="Before and after comparison — man removed from photo" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={manAndWoman} alt="Before and after comparison — man removed from photo" aspectRatio="1577 / 1800" />
         </GuideFrame>
       </GuideTab>
 
@@ -273,10 +278,10 @@ const NanoGuide = () => (
         </ul>
 
         <GuideFrame caption="Composition: adding elements" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={couch} alt="Composition example — adding elements to a scene" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={couch} alt="Composition example — adding elements to a scene" aspectRatio="1300 / 461" />
         </GuideFrame>
         <GuideFrame caption="Style transfer: photo to painting" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalPhoto} alt="Style transfer example — photo converted to painting style" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalPhoto} alt="Style transfer example — photo converted to painting style" aspectRatio="1999 / 1124" />
         </GuideFrame>
       </GuideTab>
     </GuideTabs>
@@ -300,7 +305,7 @@ const NanoGuide = () => (
       <strong>Visual:</strong> city-in-a-cup on smartphone UI
     </GuidePrompt>
 
-    <GuideImage className="w-full" src={californiaWeather} alt="City-in-a-cup smartphone UI — weather-reactive visualization" />
+    <GuideImage className="w-full" src={californiaWeather} alt="City-in-a-cup smartphone UI — weather-reactive visualization" aspectRatio="1 / 1" />
 
     <GuideCallout variant="info">
       Nano Banana&nbsp;2 is powered by real-time information and images from web search. This
@@ -341,7 +346,7 @@ const NanoGuide = () => (
         <GuidePrompt description='A high-end, glossy commercial beauty shot of a sleek, minimalist nude-colored face moisturizer jar resting on a warm studio background. The lighting is soft and radiant. Next to the product, render three lines of text with the following exact styling: For the top line, the word "GLOW" in a flowing, elegant Brush Script font. For the middle line, the text "10% OFF" in a heavy, blocky Impact font. For the bottom line, the text "Your First Order" in a thin, minimalist Century Gothic font. Then translate the text into Korean and Arabic.' />
 
         <GuideFrame caption="Multilingual text rendering: English, Korean & Arabic" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={korean} alt="Moisturizer mockup rendered in English, Korean, and Arabic" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={korean} alt="Moisturizer mockup rendered in English, Korean, and Arabic" aspectRatio="1200 / 379" />
         </GuideFrame>
       </GuideTab>
 
@@ -349,7 +354,7 @@ const NanoGuide = () => (
         <GuidePrompt description='A typographic poster with a solid black background, bold letters spell "New York", filling the center of the frame. The text acts as a cut-out window. A photograph of New York skyline is visible ONLY inside the letterforms.' />
 
         <GuideFrame caption="Typographic poster: New York skyline through letterforms">
-          <GuideImage className="w-full border border-white/15 rounded-lg" src={newYork} alt="New York typographic poster — skyline through letterforms" />
+          <GuideImage className="w-full border border-white/15 rounded-lg" src={newYork} alt="New York typographic poster — skyline through letterforms" aspectRatio="1 / 1" />
         </GuideFrame>
       </GuideTab>
     </GuideTabs>
@@ -375,7 +380,7 @@ const NanoGuide = () => (
           </li>
         </ul>
         <GuideFrame caption="Lighting techniques: softbox setup & chiaroscuro / golden hour" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalDrink} alt="Lighting examples — three-point softbox setup and chiaroscuro golden hour" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalDrink} alt="Lighting examples — three-point softbox setup and chiaroscuro golden hour" aspectRatio="55 / 16" />
         </GuideFrame>
       </GuideAccordion>
 
@@ -395,7 +400,7 @@ const NanoGuide = () => (
           </li>
         </ul>
         <GuideFrame caption="Camera emulation: GoPro, Fujifilm & disposable camera styles" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalMan} alt="Camera emulation comparison — GoPro, Fujifilm color science, and disposable camera styles" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalMan} alt="Camera emulation comparison — GoPro, Fujifilm color science, and disposable camera styles" aspectRatio="550 / 169" />
         </GuideFrame>
       </GuideAccordion>
 
@@ -412,7 +417,7 @@ const NanoGuide = () => (
           </li>
         </ul>
         <GuideFrame caption="Color grading: 1980s film & cinematic muted teal" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalHeadphones} alt="Color grading comparison — 1980s film grain and modern cinematic muted teal" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalHeadphones} alt="Color grading comparison — 1980s film grain and modern cinematic muted teal" aspectRatio="25 / 8" />
         </GuideFrame>
       </GuideAccordion>
 
@@ -425,7 +430,7 @@ const NanoGuide = () => (
           like a &ldquo;minimalist ceramic coffee mug.&rdquo;
         </p>
         <GuideFrame caption="Materiality & texture: tweed jacket & elven plate armor" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={whiteBanana} alt="Materiality examples — navy blue tweed jacket and ornate elven plate armor" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={whiteBanana} alt="Materiality examples — navy blue tweed jacket and ornate elven plate armor" aspectRatio="1800 / 887" />
         </GuideFrame>
       </GuideAccordion>
     </GuideAccordionGroup>
