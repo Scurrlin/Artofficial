@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GuideEagerContext } from './GuideEagerContext';
 
 const GuideAccordionGroup = ({ children }) => (
@@ -15,6 +15,11 @@ const HIDDEN_PANEL = {
 
 const GuideAccordion = ({ title, children }) => {
   const [open, setOpen] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    if (open) setLoaded(true);
+  }, [open]);
 
   return (
     <div className="border border-white/10 rounded-lg overflow-hidden">
@@ -39,7 +44,7 @@ const GuideAccordion = ({ title, children }) => {
           style={open ? undefined : HIDDEN_PANEL}
           aria-hidden={!open}
         >
-          {children}
+          {loaded ? children : null}
         </div>
       </GuideEagerContext.Provider>
     </div>
