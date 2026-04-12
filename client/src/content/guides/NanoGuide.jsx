@@ -220,7 +220,7 @@ const NanoGuide = () => (
           Nano Banana generated the source images for these examples as well.
         </GuideCallout>
 
-        <GuideFrame caption="Napkin sketch + fabric sample → 3D armchair render">
+        <GuideFrame caption="Napkin sketch + fabric sample → 3D armchair render" bg="white">
           <GuideImage className="w-full border-[10px] border-white rounded-lg" src={chairSketch} alt="Napkin sketch and fabric sample combined into a 3D armchair render in a minimalist living room" />
         </GuideFrame>
       </GuideTab>
@@ -252,7 +252,7 @@ const NanoGuide = () => (
 
         <GuidePrompt description="Remove the man from the photo." />
 
-        <GuideFrame caption="Before & after: man removed from photo">
+        <GuideFrame caption="Before & after: man removed from photo" bg="white">
           <GuideImage className="w-full border-[10px] border-white rounded-lg" src={manAndWoman} alt="Before and after comparison — man removed from photo" />
         </GuideFrame>
       </GuideTab>
@@ -272,10 +272,10 @@ const NanoGuide = () => (
           </li>
         </ul>
 
-        <GuideFrame caption="Composition: adding elements">
+        <GuideFrame caption="Composition: adding elements" bg="white">
           <GuideImage className="w-full border-[10px] border-white rounded-lg" src={couch} alt="Composition example — adding elements to a scene" />
         </GuideFrame>
-        <GuideFrame caption="Style transfer: photo to painting">
+        <GuideFrame caption="Style transfer: photo to painting" bg="white">
           <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalPhoto} alt="Style transfer example — photo converted to painting style" />
         </GuideFrame>
       </GuideTab>
@@ -340,7 +340,7 @@ const NanoGuide = () => (
       <GuideTab title="Product Mockup">
         <GuidePrompt description='A high-end, glossy commercial beauty shot of a sleek, minimalist nude-colored face moisturizer jar resting on a warm studio background. The lighting is soft and radiant. Next to the product, render three lines of text with the following exact styling: For the top line, the word "GLOW" in a flowing, elegant Brush Script font. For the middle line, the text "10% OFF" in a heavy, blocky Impact font. For the bottom line, the text "Your First Order" in a thin, minimalist Century Gothic font. Then translate the text into Korean and Arabic.' />
 
-        <GuideFrame caption="Multilingual text rendering: English, Korean & Arabic">
+        <GuideFrame caption="Multilingual text rendering: English, Korean & Arabic" bg="white">
           <GuideImage className="w-full border-[10px] border-white rounded-lg" src={korean} alt="Moisturizer mockup rendered in English, Korean, and Arabic" />
         </GuideFrame>
       </GuideTab>
@@ -374,7 +374,7 @@ const NanoGuide = () => (
             high contrast&rdquo; or &ldquo;Golden hour backlighting creating long shadows.&rdquo;
           </li>
         </ul>
-        <GuideFrame caption="Lighting techniques: softbox setup & chiaroscuro / golden hour">
+        <GuideFrame caption="Lighting techniques: softbox setup & chiaroscuro / golden hour" bg="white">
           <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalDrink} alt="Lighting examples — three-point softbox setup and chiaroscuro golden hour" />
         </GuideFrame>
       </GuideAccordion>
@@ -394,7 +394,7 @@ const NanoGuide = () => (
             a &ldquo;wide-angle lens.&rdquo; For intricate details, specify a &ldquo;macro lens.&rdquo;
           </li>
         </ul>
-        <GuideFrame caption="Camera emulation: GoPro, Fujifilm & disposable camera styles">
+        <GuideFrame caption="Camera emulation: GoPro, Fujifilm & disposable camera styles" bg="white">
           <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalMan} alt="Camera emulation comparison — GoPro, Fujifilm color science, and disposable camera styles" />
         </GuideFrame>
       </GuideAccordion>
@@ -411,7 +411,7 @@ const NanoGuide = () => (
             teal tones.&rdquo;
           </li>
         </ul>
-        <GuideFrame caption="Color grading: 1980s film & cinematic muted teal">
+        <GuideFrame caption="Color grading: 1980s film & cinematic muted teal" bg="white">
           <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalHeadphones} alt="Color grading comparison — 1980s film grain and modern cinematic muted teal" />
         </GuideFrame>
       </GuideAccordion>
@@ -424,7 +424,7 @@ const NanoGuide = () => (
           leaf patterns.&rdquo; If you are designing a mockup, specify the surface,
           like a &ldquo;minimalist ceramic coffee mug.&rdquo;
         </p>
-        <GuideFrame caption="Materiality & texture: tweed jacket & elven plate armor">
+        <GuideFrame caption="Materiality & texture: tweed jacket & elven plate armor" bg="white">
           <GuideImage className="w-full border-[10px] border-white rounded-lg" src={whiteBanana} alt="Materiality examples — navy blue tweed jacket and ornate elven plate armor" />
         </GuideFrame>
       </GuideAccordion>

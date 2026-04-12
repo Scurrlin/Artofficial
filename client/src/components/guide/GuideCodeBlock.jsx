@@ -11,12 +11,19 @@ const customStyle = {
     borderRadius: 0,
     fontSize: '0.875rem',
     lineHeight: '1.7',
+    whiteSpace: 'pre-wrap',
+    wordBreak: 'break-word',
+    overflowWrap: 'break-word',
+    overflowX: 'hidden',
   },
   'code[class*="language-"]': {
     ...vscDarkPlus['code[class*="language-"]'],
     background: 'none',
     fontSize: '0.875rem',
     lineHeight: '1.7',
+    whiteSpace: 'pre-wrap',
+    wordBreak: 'break-word',
+    overflowWrap: 'break-word',
   },
 };
 

@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
+import { GuideEagerContext } from './GuideEagerContext';
 
 const GuideAccordionGroup = ({ children }) => (
   <div className="not-prose my-6 space-y-2">{children}</div>
 );
+
+const HIDDEN_PANEL = {
+  height: 0,
+  overflow: 'hidden',
+  visibility: 'hidden',
+  position: 'absolute',
+  pointerEvents: 'none',
+};
 
 const GuideAccordion = ({ title, children }) => {
   const [open, setOpen] = useState(false);
@@ -24,11 +33,15 @@ const GuideAccordion = ({ title, children }) => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
       </button>
-      {open && (
-        <div className="px-4 pb-4 text-white/70 text-sm leading-relaxed border-t border-white/10">
+      <GuideEagerContext.Provider value={true}>
+        <div
+          className={open ? 'px-4 pb-4 text-white/70 text-sm leading-relaxed border-t border-white/10' : ''}
+          style={open ? undefined : HIDDEN_PANEL}
+          aria-hidden={!open}
+        >
           {children}
         </div>
-      )}
+      </GuideEagerContext.Provider>
     </div>
   );
 };

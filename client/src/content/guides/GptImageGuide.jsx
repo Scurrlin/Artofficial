@@ -182,7 +182,7 @@ result = client.images.generate(
 
 save_image(result, "photorealism.png")`}</GuideCodeBlock>
 
-    <GuideFrame caption="Photorealistic candid photograph generated with quality='high'">
+    <GuideFrame caption="Photorealistic candid photograph generated with quality='high'" maxWidth={420}>
       <GuideImage className="w-full" src={photorealism} alt="Photorealistic elderly sailor on fishing boat" />
     </GuideFrame>
 
@@ -202,7 +202,7 @@ result = client.images.generate(
 
 save_image(result, "world_knowledge.png")`}</GuideCodeBlock>
 
-    <GuideFrame caption="The model infers Woodstock from the date and location alone">
+    <GuideFrame caption="The model infers Woodstock from the date and location alone" maxWidth={420}>
       <GuideImage className="w-full" src={worldKnowledge} alt="Realistic Woodstock crowd scene in Bethel, NY 1969" />
     </GuideFrame>
 
@@ -767,7 +767,7 @@ result = client.images.generate(
 
 save_image(result, "childrens_book_illustration_1.png")`}</GuideCodeBlock>
 
-    <GuideFrame caption="Step 1: Character anchor — establishing the main character">
+    <GuideFrame caption="Step 1: Character anchor — establishing the main character" maxWidth={420}>
       <GuideImage className="w-full" src={childrensBook1} alt="Children's book character anchor illustration" />
     </GuideFrame>
 

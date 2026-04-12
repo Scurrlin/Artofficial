@@ -1,4 +1,14 @@
 import React, { useState } from 'react';
+import { GuideEagerContext } from './GuideEagerContext';
+
+const HIDDEN_TAB = {
+  position: 'absolute',
+  width: '100%',
+  visibility: 'hidden',
+  height: 0,
+  overflow: 'hidden',
+  pointerEvents: 'none',
+};
 
 const GuideTabs = ({ children }) => {
   const tabs = React.Children.toArray(children).filter(
@@ -8,7 +18,7 @@ const GuideTabs = ({ children }) => {
 
   return (
     <div className="not-prose my-6">
-      <div className="flex gap-1 border-b border-white/10 mb-4 overflow-x-auto">
+      <div className="flex gap-1 border-b border-white/10 mb-4 overflow-x-auto guide-scroll">
         {tabs.map((tab, i) => (
           <button
             key={tab.props.title}
@@ -24,7 +34,19 @@ const GuideTabs = ({ children }) => {
           </button>
         ))}
       </div>
-      {tabs[active]}
+      <GuideEagerContext.Provider value={true}>
+        <div className="relative">
+          {tabs.map((tab, i) => (
+            <div
+              key={tab.props.title}
+              style={i === active ? undefined : HIDDEN_TAB}
+              aria-hidden={i !== active}
+            >
+              {tab}
+            </div>
+          ))}
+        </div>
+      </GuideEagerContext.Provider>
     </div>
   );
 };
