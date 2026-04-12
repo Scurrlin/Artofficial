@@ -8,28 +8,25 @@ import {
   GuideAccordionGroup,
   GuideAccordion,
   GuideCallout,
+  GuideImage,
 } from '../../components/guide';
 
-import nanoModel from '../images/nano_images/nano-model.png';
-import chairSketch from '../images/nano_images/chair-sketch.jpg';
-import manAndWoman from '../images/nano_images/man-and-woman.jpg';
-import couch from '../images/nano_images/couch.jpg';
-import californiaWeather from '../images/nano_images/california-weather.png';
-import korean from '../images/nano_images/korean.jpg';
-import newYork from '../images/nano_images/new-york.png';
-import originalDrink from '../images/nano_images/original-drink.jpg';
-import originalMan from '../images/nano_images/original-man.jpg';
-import originalPhoto from '../images/nano_images/original-photo.jpg';
-import whiteBanana from '../images/nano_images/white-banana.jpg';
-import originalHeadphones from '../images/nano_images/original-headphones.jpg';
+const CDN = 'https://res.cloudinary.com/dc8nheiuw/image/upload/guides/nano';
+
+const nanoModel = `${CDN}/nano-model.png`;
+const chairSketch = `${CDN}/chair-sketch.jpg`;
+const manAndWoman = `${CDN}/man-and-woman.jpg`;
+const couch = `${CDN}/couch.jpg`;
+const californiaWeather = `${CDN}/california-weather.png`;
+const korean = `${CDN}/korean.jpg`;
+const newYork = `${CDN}/new-york.png`;
+const originalDrink = `${CDN}/original-drink.jpg`;
+const originalMan = `${CDN}/original-man.jpg`;
+const originalPhoto = `${CDN}/original-photo.jpg`;
+const whiteBanana = `${CDN}/white-banana.jpg`;
+const originalHeadphones = `${CDN}/original-headphones.jpg`;
 
 const PROSE = 'prose prose-lg prose-invert max-w-none prose-headings:text-white prose-p:text-white/80 prose-strong:text-white prose-code:bg-white/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-white/90 prose-code:before:content-none prose-code:after:content-none prose-pre:bg-white/10 prose-pre:text-white/90 prose-a:text-[#6dadeb] prose-blockquote:border-[#6dadeb] prose-blockquote:text-white/70 prose-hr:border-white/20 prose-li:text-white/80 prose-th:text-white/90 prose-td:text-white/70 prose-thead:border-white/20 prose-tr:border-white/10';
-
-const Placeholder = ({ children, aspect = 'video' }) => (
-  <div className={`w-full ${aspect === 'square' ? 'aspect-square' : 'aspect-video'} bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-white/30 text-sm text-center px-4`}>
-    {children}
-  </div>
-);
 
 const NanoGuide = () => (
   <article className={PROSE}>
@@ -197,7 +194,7 @@ const NanoGuide = () => (
           <strong>Style:</strong> editorial, medium-format analog film
         </GuidePrompt>
 
-        <img className="w-full" src={nanoModel} alt="Fashion model in tailored brown dress on cherry red backdrop — editorial style" />
+        <GuideImage className="w-full" src={nanoModel} alt="Fashion model in tailored brown dress on cherry red backdrop — editorial style" />
       </GuideTab>
 
       <GuideTab title="Multimodal">
@@ -224,7 +221,7 @@ const NanoGuide = () => (
         </GuideCallout>
 
         <GuideFrame caption="Napkin sketch + fabric sample → 3D armchair render">
-          <img className="w-full border-[10px] border-white rounded-lg" src={chairSketch} alt="Napkin sketch and fabric sample combined into a 3D armchair render in a minimalist living room" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={chairSketch} alt="Napkin sketch and fabric sample combined into a 3D armchair render in a minimalist living room" />
         </GuideFrame>
       </GuideTab>
     </GuideTabs>
@@ -256,7 +253,7 @@ const NanoGuide = () => (
         <GuidePrompt description="Remove the man from the photo." />
 
         <GuideFrame caption="Before & after: man removed from photo">
-          <img className="w-full border-[10px] border-white rounded-lg" src={manAndWoman} alt="Before and after comparison — man removed from photo" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={manAndWoman} alt="Before and after comparison — man removed from photo" />
         </GuideFrame>
       </GuideTab>
 
@@ -276,10 +273,10 @@ const NanoGuide = () => (
         </ul>
 
         <GuideFrame caption="Composition: adding elements">
-          <img className="w-full border-[10px] border-white rounded-lg" src={couch} alt="Composition example — adding elements to a scene" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={couch} alt="Composition example — adding elements to a scene" />
         </GuideFrame>
         <GuideFrame caption="Style transfer: photo to painting">
-          <img className="w-full border-[10px] border-white rounded-lg" src={originalPhoto} alt="Style transfer example — photo converted to painting style" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalPhoto} alt="Style transfer example — photo converted to painting style" />
         </GuideFrame>
       </GuideTab>
     </GuideTabs>
@@ -303,7 +300,7 @@ const NanoGuide = () => (
       <strong>Visual:</strong> city-in-a-cup on smartphone UI
     </GuidePrompt>
 
-    <img className="w-full" src={californiaWeather} alt="City-in-a-cup smartphone UI — weather-reactive visualization" />
+    <GuideImage className="w-full" src={californiaWeather} alt="City-in-a-cup smartphone UI — weather-reactive visualization" />
 
     <GuideCallout variant="info">
       Nano Banana&nbsp;2 is powered by real-time information and images from web search. This
@@ -344,7 +341,7 @@ const NanoGuide = () => (
         <GuidePrompt description='A high-end, glossy commercial beauty shot of a sleek, minimalist nude-colored face moisturizer jar resting on a warm studio background. The lighting is soft and radiant. Next to the product, render three lines of text with the following exact styling: For the top line, the word "GLOW" in a flowing, elegant Brush Script font. For the middle line, the text "10% OFF" in a heavy, blocky Impact font. For the bottom line, the text "Your First Order" in a thin, minimalist Century Gothic font. Then translate the text into Korean and Arabic.' />
 
         <GuideFrame caption="Multilingual text rendering: English, Korean & Arabic">
-          <img className="w-full border-[10px] border-white rounded-lg" src={korean} alt="Moisturizer mockup rendered in English, Korean, and Arabic" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={korean} alt="Moisturizer mockup rendered in English, Korean, and Arabic" />
         </GuideFrame>
       </GuideTab>
 
@@ -352,7 +349,7 @@ const NanoGuide = () => (
         <GuidePrompt description='A typographic poster with a solid black background, bold letters spell "New York", filling the center of the frame. The text acts as a cut-out window. A photograph of New York skyline is visible ONLY inside the letterforms.' />
 
         <GuideFrame caption="Typographic poster: New York skyline through letterforms">
-          <img className="w-full border border-white/15 rounded-lg" src={newYork} alt="New York typographic poster — skyline through letterforms" />
+          <GuideImage className="w-full border border-white/15 rounded-lg" src={newYork} alt="New York typographic poster — skyline through letterforms" />
         </GuideFrame>
       </GuideTab>
     </GuideTabs>
@@ -378,7 +375,7 @@ const NanoGuide = () => (
           </li>
         </ul>
         <GuideFrame caption="Lighting techniques: softbox setup & chiaroscuro / golden hour">
-          <img className="w-full border-[10px] border-white rounded-lg" src={originalDrink} alt="Lighting examples — three-point softbox setup and chiaroscuro golden hour" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalDrink} alt="Lighting examples — three-point softbox setup and chiaroscuro golden hour" />
         </GuideFrame>
       </GuideAccordion>
 
@@ -398,7 +395,7 @@ const NanoGuide = () => (
           </li>
         </ul>
         <GuideFrame caption="Camera emulation: GoPro, Fujifilm & disposable camera styles">
-          <img className="w-full border-[10px] border-white rounded-lg" src={originalMan} alt="Camera emulation comparison — GoPro, Fujifilm color science, and disposable camera styles" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalMan} alt="Camera emulation comparison — GoPro, Fujifilm color science, and disposable camera styles" />
         </GuideFrame>
       </GuideAccordion>
 
@@ -415,7 +412,7 @@ const NanoGuide = () => (
           </li>
         </ul>
         <GuideFrame caption="Color grading: 1980s film & cinematic muted teal">
-          <img className="w-full border-[10px] border-white rounded-lg" src={originalHeadphones} alt="Color grading comparison — 1980s film grain and modern cinematic muted teal" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalHeadphones} alt="Color grading comparison — 1980s film grain and modern cinematic muted teal" />
         </GuideFrame>
       </GuideAccordion>
 
@@ -428,7 +425,7 @@ const NanoGuide = () => (
           like a &ldquo;minimalist ceramic coffee mug.&rdquo;
         </p>
         <GuideFrame caption="Materiality & texture: tweed jacket & elven plate armor">
-          <img className="w-full border-[10px] border-white rounded-lg" src={whiteBanana} alt="Materiality examples — navy blue tweed jacket and ornate elven plate armor" />
+          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={whiteBanana} alt="Materiality examples — navy blue tweed jacket and ornate elven plate armor" />
         </GuideFrame>
       </GuideAccordion>
     </GuideAccordionGroup>

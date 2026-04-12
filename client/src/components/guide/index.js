@@ -6,3 +6,4 @@ export { GuideAccordionGroup, GuideAccordion } from './GuideAccordion';
 export { default as GuideCallout } from './GuideCallout';
 export { default as ColorSwatch } from './ColorSwatch';
 export { default as GuideCodeBlock } from './GuideCodeBlock';
+export { default as GuideImage } from './GuideImage';

@@ -9,44 +9,48 @@ import {
   GuideAccordion,
   GuideCallout,
   GuideCodeBlock,
+  GuideImage,
 } from '../../components/guide';
 
-import infographicCoffee from '../images/output_images/infographic_coffee_machine.png';
-import infographicCoffeeSp from '../images/output_images/infographic_coffee_machine_sp.png';
-import photorealism from '../images/output_images/photorealism.png';
-import worldKnowledge from '../images/output_images/world_knowledge.png';
-import logo1 from '../images/output_images/logo_generation_1.png';
-import logo2 from '../images/output_images/logo_generation_2.png';
-import logo3 from '../images/output_images/logo_generation_3.png';
-import logo4 from '../images/output_images/logo_generation_4.png';
-import comicReel from '../images/output_images/comic-reel.png';
-import uiFarmersMarket from '../images/output_images/ui_farmers_market.png';
-import pixelsInput from '../images/input_images/pixels.png';
-import motorcycle from '../images/output_images/motorcycle.png';
-import womanInMuseum from '../images/input_images/woman_in_museum.png';
-import tankTop from '../images/input_images/tank_top.png';
-import jacket from '../images/input_images/jacket.png';
-import boots from '../images/input_images/boots.png';
-import outfit from '../images/output_images/outfit.png';
-import drawingsInput from '../images/input_images/drawings.png';
-import realisticValley from '../images/output_images/realistic_valley.png';
-import shampooInput from '../images/input_images/shampoo.png';
-import extractProduct from '../images/output_images/extract_product.png';
-import billboard from '../images/output_images/billboard.png';
-import billboardWinter from '../images/output_images/billboard_winter.png';
-import manWithFlower from '../images/output_images/man_with_flower.png';
-import manWithFlowerNoStripes from '../images/output_images/man_with_flower_no_stripes.png';
-import manWithBlueHat from '../images/output_images/man_with_blue_hat.png';
-import scene from '../images/output_images/scene.png';
-import testWoman from '../images/output_images/test_woman.png';
-import testWoman2 from '../images/output_images/test_woman_2.png';
-import testWomanWithDog from '../images/output_images/test_woman_with_dog.png';
-import kitchenInput from '../images/input_images/kitchen.jpeg';
-import kitchenChairs from '../images/output_images/kitchen-chairs.png';
-import holidayCard from '../images/output_images/christmas_holiday_card_teddy.png';
-import collectibleAirplane from '../images/output_images/christmas_collectible_toy_airplane.png';
-import childrensBook1 from '../images/output_images/childrens_book_illustration_1.png';
-import childrensBook2 from '../images/output_images/childrens_book_illustration_2.png';
+const CDN = 'https://res.cloudinary.com/dc8nheiuw/image/upload/guides/gpt-image';
+const INPUT = `${CDN}/input`;
+
+const infographicCoffee = `${CDN}/infographic_coffee_machine.png`;
+const infographicCoffeeSp = `${CDN}/infographic_coffee_machine_sp.png`;
+const photorealism = `${CDN}/photorealism.png`;
+const worldKnowledge = `${CDN}/world_knowledge.png`;
+const logo1 = `${CDN}/logo_generation_1.png`;
+const logo2 = `${CDN}/logo_generation_2.png`;
+const logo3 = `${CDN}/logo_generation_3.png`;
+const logo4 = `${CDN}/logo_generation_4.png`;
+const comicReel = `${CDN}/comic-reel.png`;
+const uiFarmersMarket = `${CDN}/ui_farmers_market.png`;
+const pixelsInput = `${INPUT}/pixels.png`;
+const motorcycle = `${CDN}/motorcycle.png`;
+const womanInMuseum = `${INPUT}/woman_in_museum.png`;
+const tankTop = `${INPUT}/tank_top.png`;
+const jacket = `${INPUT}/jacket.png`;
+const boots = `${INPUT}/boots.png`;
+const outfit = `${CDN}/outfit.png`;
+const drawingsInput = `${INPUT}/drawings.png`;
+const realisticValley = `${CDN}/realistic_valley.png`;
+const shampooInput = `${INPUT}/shampoo.png`;
+const extractProduct = `${CDN}/extract_product.png`;
+const billboard = `${CDN}/billboard.png`;
+const billboardWinter = `${CDN}/billboard_winter.png`;
+const manWithFlower = `${CDN}/man_with_flower.png`;
+const manWithFlowerNoStripes = `${CDN}/man_with_flower_no_stripes.png`;
+const manWithBlueHat = `${CDN}/man_with_blue_hat.png`;
+const scene = `${CDN}/scene.png`;
+const testWoman = `${CDN}/test_woman.png`;
+const testWoman2 = `${CDN}/test_woman_2.png`;
+const testWomanWithDog = `${CDN}/test_woman_with_dog.png`;
+const kitchenInput = `${INPUT}/kitchen.jpg`;
+const kitchenChairs = `${CDN}/kitchen-chairs.png`;
+const holidayCard = `${CDN}/christmas_holiday_card_teddy.png`;
+const collectibleAirplane = `${CDN}/christmas_collectible_toy_airplane.png`;
+const childrensBook1 = `${CDN}/childrens_book_illustration_1.png`;
+const childrensBook2 = `${CDN}/childrens_book_illustration_2.png`;
 
 const PROSE = 'prose prose-lg prose-invert max-w-none prose-headings:text-white prose-p:text-white/80 prose-strong:text-white prose-code:bg-white/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-white/90 prose-code:before:content-none prose-code:after:content-none prose-pre:bg-white/10 prose-pre:text-white/90 prose-a:text-[#6dadeb] prose-blockquote:border-[#6dadeb] prose-blockquote:text-white/70 prose-hr:border-white/20 prose-li:text-white/80 prose-th:text-white/90 prose-td:text-white/70 prose-thead:border-white/20 prose-tr:border-white/10';
 
@@ -128,7 +132,7 @@ result = client.images.generate(
 save_image(result, "infographic_coffee_machine.png")`}</GuideCodeBlock>
 
     <GuideFrame caption="Generated infographic of an automatic coffee machine">
-      <img className="w-full" src={infographicCoffee} alt="Infographic of automatic coffee machine flow" />
+      <GuideImage className="w-full" src={infographicCoffee} alt="Infographic of automatic coffee machine flow" />
     </GuideFrame>
 
     {/* 4.2 Translation */}
@@ -151,10 +155,10 @@ save_image(result, "infographic_coffee_machine_sp.png")`}</GuideCodeBlock>
 
     <GuideColumns cols={2}>
       <GuideFrame caption="Original (English)">
-        <img className="w-full" src={infographicCoffee} alt="Coffee machine infographic in English" />
+        <GuideImage className="w-full" src={infographicCoffee} alt="Coffee machine infographic in English" />
       </GuideFrame>
       <GuideFrame caption="Translated (Spanish)">
-        <img className="w-full" src={infographicCoffeeSp} alt="Coffee machine infographic translated to Spanish" />
+        <GuideImage className="w-full" src={infographicCoffeeSp} alt="Coffee machine infographic translated to Spanish" />
       </GuideFrame>
     </GuideColumns>
 
@@ -179,7 +183,7 @@ result = client.images.generate(
 save_image(result, "photorealism.png")`}</GuideCodeBlock>
 
     <GuideFrame caption="Photorealistic candid photograph generated with quality='high'">
-      <img className="w-full" src={photorealism} alt="Photorealistic elderly sailor on fishing boat" />
+      <GuideImage className="w-full" src={photorealism} alt="Photorealistic elderly sailor on fishing boat" />
     </GuideFrame>
 
     {/* 4.4 World Knowledge */}
@@ -199,7 +203,7 @@ result = client.images.generate(
 save_image(result, "world_knowledge.png")`}</GuideCodeBlock>
 
     <GuideFrame caption="The model infers Woodstock from the date and location alone">
-      <img className="w-full" src={worldKnowledge} alt="Realistic Woodstock crowd scene in Bethel, NY 1969" />
+      <GuideImage className="w-full" src={worldKnowledge} alt="Realistic Woodstock crowd scene in Bethel, NY 1969" />
     </GuideFrame>
 
     {/* 4.5 Logo Generation */}
@@ -229,18 +233,18 @@ for i, item in enumerate(result.data, start=1):
 
     <GuideColumns cols={2}>
       <GuideFrame caption="Variation 1">
-        <img className="w-full" src={logo1} alt="Field & Flour logo variation 1" />
+        <GuideImage className="w-full" src={logo1} alt="Field & Flour logo variation 1" />
       </GuideFrame>
       <GuideFrame caption="Variation 2">
-        <img className="w-full" src={logo2} alt="Field & Flour logo variation 2" />
+        <GuideImage className="w-full" src={logo2} alt="Field & Flour logo variation 2" />
       </GuideFrame>
     </GuideColumns>
     <GuideColumns cols={2}>
       <GuideFrame caption="Variation 3">
-        <img className="w-full" src={logo3} alt="Field & Flour logo variation 3" />
+        <GuideImage className="w-full" src={logo3} alt="Field & Flour logo variation 3" />
       </GuideFrame>
       <GuideFrame caption="Variation 4">
-        <img className="w-full" src={logo4} alt="Field & Flour logo variation 4" />
+        <GuideImage className="w-full" src={logo4} alt="Field & Flour logo variation 4" />
       </GuideFrame>
     </GuideColumns>
 
@@ -264,7 +268,7 @@ result = client.images.generate(
 save_image(result, "comic_reel.png")`}</GuideCodeBlock>
 
     <GuideFrame caption="4-panel comic strip generated from a single prompt" maxWidth={480}>
-      <img className="w-full" src={comicReel} alt="Comic strip of a pet's day while the owner is away" />
+      <GuideImage className="w-full" src={comicReel} alt="Comic strip of a pet's day while the owner is away" />
     </GuideFrame>
 
     {/* 4.7 UI Mockups */}
@@ -287,7 +291,7 @@ result = client.images.generate(
 save_image(result, "ui_farmers_market.png")`}</GuideCodeBlock>
 
     <GuideFrame caption="Mobile app UI mockup in an iPhone frame" maxWidth={420}>
-      <img className="w-full" src={uiFarmersMarket} alt="Farmers market mobile app UI mockup" />
+      <GuideImage className="w-full" src={uiFarmersMarket} alt="Farmers market mobile app UI mockup" />
     </GuideFrame>
 
     {/* ──────────────── 5. Edit Use Cases ──────────────── */}
@@ -313,10 +317,10 @@ save_image(result, "motorcycle.png")`}</GuideCodeBlock>
 
     <GuideColumns cols={2}>
       <GuideFrame caption="Input: style reference">
-        <img className="w-full" src={pixelsInput} alt="Pixel art style reference" />
+        <GuideImage className="w-full" src={pixelsInput} alt="Pixel art style reference" />
       </GuideFrame>
       <GuideFrame caption="Output: style transferred">
-        <img className="w-full" src={motorcycle} alt="Man riding motorcycle in pixel art style" />
+        <GuideImage className="w-full" src={motorcycle} alt="Man riding motorcycle in pixel art style" />
       </GuideFrame>
     </GuideColumns>
 
@@ -344,21 +348,21 @@ save_image(result, "outfit.png")`}</GuideCodeBlock>
 
     <GuideColumns cols={2}>
       <GuideFrame caption="Original photo">
-        <img className="w-full" src={womanInMuseum} alt="Woman in museum" />
+        <GuideImage className="w-full" src={womanInMuseum} alt="Woman in museum" />
       </GuideFrame>
       <GuideFrame caption="Virtual try-on result">
-        <img className="w-full" src={outfit} alt="Woman with new outfit applied" />
+        <GuideImage className="w-full" src={outfit} alt="Woman with new outfit applied" />
       </GuideFrame>
     </GuideColumns>
     <GuideColumns cols={3}>
       <GuideFrame caption="Tank top">
-        <img className="w-full" src={tankTop} alt="Tank top reference" />
+        <GuideImage className="w-full" src={tankTop} alt="Tank top reference" />
       </GuideFrame>
       <GuideFrame caption="Jacket">
-        <img className="w-full" src={jacket} alt="Jacket reference" />
+        <GuideImage className="w-full" src={jacket} alt="Jacket reference" />
       </GuideFrame>
       <GuideFrame caption="Boots">
-        <img className="w-full" src={boots} alt="Boots reference" />
+        <GuideImage className="w-full" src={boots} alt="Boots reference" />
       </GuideFrame>
     </GuideColumns>
 
@@ -385,10 +389,10 @@ save_image(result, "realistic_valley.png")`}</GuideCodeBlock>
 
     <GuideColumns cols={2}>
       <GuideFrame caption="Input: rough drawing">
-        <img className="w-full" src={drawingsInput} alt="Hand-drawn sketch" />
+        <GuideImage className="w-full" src={drawingsInput} alt="Hand-drawn sketch" />
       </GuideFrame>
       <GuideFrame caption="Output: photorealistic render">
-        <img className="w-full" src={realisticValley} alt="Photorealistic render from drawing" />
+        <GuideImage className="w-full" src={realisticValley} alt="Photorealistic render from drawing" />
       </GuideFrame>
     </GuideColumns>
 
@@ -416,10 +420,10 @@ save_image(result, "extract_product.png")`}</GuideCodeBlock>
 
     <GuideColumns cols={2}>
       <GuideFrame caption="Input: product in scene">
-        <img className="w-full" src={shampooInput} alt="Shampoo bottle in original scene" />
+        <GuideImage className="w-full" src={shampooInput} alt="Shampoo bottle in original scene" />
       </GuideFrame>
       <GuideFrame caption="Output: extracted product">
-        <img className="w-full" src={extractProduct} alt="Shampoo bottle with transparent background" />
+        <GuideImage className="w-full" src={extractProduct} alt="Shampoo bottle with transparent background" />
       </GuideFrame>
     </GuideColumns>
 
@@ -447,7 +451,7 @@ result = client.images.edit(
 save_image(result, "billboard.png")`}</GuideCodeBlock>
 
     <GuideFrame caption="Billboard mockup with in-image text">
-      <img className="w-full" src={billboard} alt="Highway billboard mockup featuring shampoo product" />
+      <GuideImage className="w-full" src={billboard} alt="Highway billboard mockup featuring shampoo product" />
     </GuideFrame>
 
     {/* 5.6 Lighting and Weather */}
@@ -472,10 +476,10 @@ save_image(result, "billboard_winter.png")`}</GuideCodeBlock>
 
     <GuideColumns cols={2}>
       <GuideFrame caption="Original billboard">
-        <img className="w-full" src={billboard} alt="Billboard at sunset" />
+        <GuideImage className="w-full" src={billboard} alt="Billboard at sunset" />
       </GuideFrame>
       <GuideFrame caption="Winter evening with snowfall">
-        <img className="w-full" src={billboardWinter} alt="Billboard transformed to winter scene" />
+        <GuideImage className="w-full" src={billboardWinter} alt="Billboard transformed to winter scene" />
       </GuideFrame>
     </GuideColumns>
 
@@ -523,13 +527,13 @@ save_image(result, "man_with_blue_hat.png")`}</GuideCodeBlock>
 
     <GuideColumns cols={3}>
       <GuideFrame caption="Original Input">
-        <img className="w-full" src={manWithFlower} alt="Original photo of man with red hat and red stripes" />
+        <GuideImage className="w-full" src={manWithFlower} alt="Original photo of man with red hat and red stripes" />
       </GuideFrame>
       <GuideFrame caption="Remove Red Stripes">
-        <img className="w-full" src={manWithFlowerNoStripes} alt="Red stripes removed from sleeves" />
+        <GuideImage className="w-full" src={manWithFlowerNoStripes} alt="Red stripes removed from sleeves" />
       </GuideFrame>
       <GuideFrame caption="Change Hat Color">
-        <img className="w-full" src={manWithBlueHat} alt="Hat changed from red to blue" />
+        <GuideImage className="w-full" src={manWithBlueHat} alt="Hat changed from red to blue" />
       </GuideFrame>
     </GuideColumns>
 
@@ -557,10 +561,10 @@ save_image(result, "scene.png")`}</GuideCodeBlock>
 
     <GuideColumns cols={2}>
       <GuideFrame caption="Input: reference person">
-        <img className="w-full" src={womanInMuseum} alt="Woman in museum, used as identity reference" />
+        <GuideImage className="w-full" src={womanInMuseum} alt="Woman in museum, used as identity reference" />
       </GuideFrame>
       <GuideFrame caption="Output: composited into scene">
-        <img className="w-full" src={scene} alt="Woman composited into bear attack campsite scene" />
+        <GuideImage className="w-full" src={scene} alt="Woman composited into bear attack campsite scene" />
       </GuideFrame>
     </GuideColumns>
 
@@ -587,13 +591,13 @@ save_image(result, "test_woman_with_dog.png")`}</GuideCodeBlock>
 
     <GuideColumns cols={3}>
       <GuideFrame caption="Image 1: scene">
-        <img className="w-full" src={testWoman} alt="Woman in scene" />
+        <GuideImage className="w-full" src={testWoman} alt="Woman in scene" />
       </GuideFrame>
       <GuideFrame caption="Image 2: dog reference">
-        <img className="w-full" src={testWoman2} alt="Dog reference image" />
+        <GuideImage className="w-full" src={testWoman2} alt="Dog reference image" />
       </GuideFrame>
       <GuideFrame caption="Output: composited">
-        <img className="w-full" src={testWomanWithDog} alt="Woman with dog composited into scene" />
+        <GuideImage className="w-full" src={testWomanWithDog} alt="Woman with dog composited into scene" />
       </GuideFrame>
     </GuideColumns>
 
@@ -623,10 +627,10 @@ save_image(result, "kitchen-chairs.png")`}</GuideCodeBlock>
 
     <GuideColumns cols={2}>
       <GuideFrame caption="Original kitchen">
-        <img className="w-full" src={kitchenInput} alt="Kitchen with white chairs" />
+        <GuideImage className="w-full" src={kitchenInput} alt="Kitchen with white chairs" />
       </GuideFrame>
       <GuideFrame caption="Chairs swapped to wood">
-        <img className="w-full" src={kitchenChairs} alt="Kitchen with wooden chairs" />
+        <GuideImage className="w-full" src={kitchenChairs} alt="Kitchen with wooden chairs" />
       </GuideFrame>
     </GuideColumns>
 
@@ -674,7 +678,7 @@ result = client.images.generate(
 save_image(result, "christmas_holiday_card_teddy.png")`}</GuideCodeBlock>
 
     <GuideFrame caption="Generated holiday card with in-image text" maxWidth={520}>
-      <img className="w-full" src={holidayCard} alt="Christmas holiday card with teddy bear" />
+      <GuideImage className="w-full" src={holidayCard} alt="Christmas holiday card with teddy bear" />
     </GuideFrame>
 
     {/* 6.3 Collectible Figure */}
@@ -722,7 +726,7 @@ result = client.images.generate(
 save_image(result, "christmas_collectible_toy_airplane.png")`}</GuideCodeBlock>
 
     <GuideFrame caption="Collectible toy in blister packaging" maxWidth={520}>
-      <img className="w-full" src={collectibleAirplane} alt="Vintage toy airplane collectible in packaging" />
+      <GuideImage className="w-full" src={collectibleAirplane} alt="Vintage toy airplane collectible in packaging" />
     </GuideFrame>
 
     {/* 6.4 Children's Book */}
@@ -764,7 +768,7 @@ result = client.images.generate(
 save_image(result, "childrens_book_illustration_1.png")`}</GuideCodeBlock>
 
     <GuideFrame caption="Step 1: Character anchor — establishing the main character">
-      <img className="w-full" src={childrensBook1} alt="Children's book character anchor illustration" />
+      <GuideImage className="w-full" src={childrensBook1} alt="Children's book character anchor illustration" />
     </GuideFrame>
 
     <p><strong>Step 2: Story continuation</strong> &mdash; reuse character, advance the narrative</p>
@@ -806,10 +810,10 @@ save_image(result, "childrens_book_illustration_2.png")`}</GuideCodeBlock>
 
     <GuideColumns cols={2}>
       <GuideFrame caption="Step 1: Character anchor">
-        <img className="w-full" src={childrensBook1} alt="Character anchor illustration" />
+        <GuideImage className="w-full" src={childrensBook1} alt="Character anchor illustration" />
       </GuideFrame>
       <GuideFrame caption="Step 2: Story continuation">
-        <img className="w-full" src={childrensBook2} alt="Character in winter storm rescue scene" />
+        <GuideImage className="w-full" src={childrensBook2} alt="Character in winter storm rescue scene" />
       </GuideFrame>
     </GuideColumns>
 

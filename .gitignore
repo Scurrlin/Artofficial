@@ -1,3 +1,43 @@
 node_modules
 .env
 .DS_Store
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build output
+client/dist
+client/dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Test output
+client/playwright-report
+client/test-results
+client/reports
+
+# One-time scripts and upload artifacts
+download_flux_images.sh
+server/upload_guide_images.mjs
+server/guide_image_urls.json
+
+# Guide images hosted on Cloudinary
+client/src/content/images/output_images/
+client/src/content/images/input_images/
+client/src/content/images/flux_images/
+client/src/content/images/nano_images/
