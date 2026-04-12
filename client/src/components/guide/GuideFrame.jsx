@@ -4,8 +4,9 @@ const BG_MAP = {
   white: 'bg-white',
 };
 
-const GuideFrame = ({ children, caption, maxWidth, maxHeight, bg }) => {
-  const bgClass = BG_MAP[bg] || 'bg-white/5';
+const GuideFrame = ({ children, caption, maxWidth, maxHeight, bg, borderless }) => {
+  const bgClass = BG_MAP[bg] || (borderless ? '' : 'bg-white/5');
+  const borderClass = borderless ? '' : 'border border-white/15';
 
   const style = {};
   if (maxWidth) { style.maxWidth = maxWidth; style.margin = '0 auto'; }
@@ -14,7 +15,7 @@ const GuideFrame = ({ children, caption, maxWidth, maxHeight, bg }) => {
   return (
     <figure className="not-prose my-4">
       <div
-        className={`border border-white/15 rounded-xl overflow-hidden ${bgClass}`}
+        className={`${borderClass} rounded-xl overflow-hidden ${bgClass}`}
         style={Object.keys(style).length ? style : undefined}
       >
         {children}

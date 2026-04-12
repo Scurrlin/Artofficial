@@ -13,7 +13,7 @@ const PromptGuide = React.memo(({ selectedModel }) => {
   if (!GuideComponent) return null;
 
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<div className="min-h-screen" />}>
       <GuideComponent />
     </Suspense>
   );

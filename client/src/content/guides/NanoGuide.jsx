@@ -199,7 +199,9 @@ const NanoGuide = () => (
           <strong>Style:</strong> editorial, medium-format analog film
         </GuidePrompt>
 
-        <GuideImage className="w-full" src={nanoModel} alt="Fashion model in tailored brown dress on cherry red backdrop — editorial style" aspectRatio="1 / 1" />
+        <GuideFrame borderless>
+          <GuideImage className="w-full" src={nanoModel} alt="Fashion model in tailored brown dress on cherry red backdrop — editorial style" aspectRatio="1 / 1" />
+        </GuideFrame>
       </GuideTab>
 
       <GuideTab title="Multimodal">
@@ -305,7 +307,9 @@ const NanoGuide = () => (
       <strong>Visual:</strong> city-in-a-cup on smartphone UI
     </GuidePrompt>
 
-    <GuideImage className="w-full" src={californiaWeather} alt="City-in-a-cup smartphone UI — weather-reactive visualization" aspectRatio="1 / 1" />
+    <GuideFrame borderless>
+      <GuideImage className="w-full" src={californiaWeather} alt="City-in-a-cup smartphone UI — weather-reactive visualization" aspectRatio="1 / 1" />
+    </GuideFrame>
 
     <GuideCallout variant="info">
       Nano Banana&nbsp;2 is powered by real-time information and images from web search. This
@@ -353,8 +357,8 @@ const NanoGuide = () => (
       <GuideTab title="Typographic Poster">
         <GuidePrompt description='A typographic poster with a solid black background, bold letters spell "New York", filling the center of the frame. The text acts as a cut-out window. A photograph of New York skyline is visible ONLY inside the letterforms.' />
 
-        <GuideFrame caption="Typographic poster: New York skyline through letterforms">
-          <GuideImage className="w-full border border-white/15 rounded-lg" src={newYork} alt="New York typographic poster — skyline through letterforms" aspectRatio="1 / 1" />
+        <GuideFrame caption="Typographic poster: New York skyline through letterforms" borderless>
+          <GuideImage className="w-full" src={newYork} alt="New York typographic poster — skyline through letterforms" aspectRatio="1 / 1" />
         </GuideFrame>
       </GuideTab>
     </GuideTabs>

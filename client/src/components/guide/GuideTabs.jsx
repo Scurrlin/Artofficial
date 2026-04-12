@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { GuideEagerContext } from './GuideEagerContext';
 
 const HIDDEN_TAB = {
@@ -15,16 +15,6 @@ const GuideTabs = ({ children }) => {
     (child) => child.type === GuideTab,
   );
   const [active, setActive] = useState(0);
-  const [visited, setVisited] = useState(() => new Set([0]));
-
-  useEffect(() => {
-    setVisited((prev) => {
-      if (prev.has(active)) return prev;
-      const next = new Set(prev);
-      next.add(active);
-      return next;
-    });
-  }, [active]);
 
   return (
     <div className="not-prose my-6">
@@ -46,18 +36,15 @@ const GuideTabs = ({ children }) => {
       </div>
       <GuideEagerContext.Provider value={true}>
         <div className="relative">
-          {tabs.map((tab, i) => {
-            if (!visited.has(i)) return null;
-            return (
-              <div
-                key={tab.props.title}
-                style={i === active ? undefined : HIDDEN_TAB}
-                aria-hidden={i !== active}
-              >
-                {tab}
-              </div>
-            );
-          })}
+          {tabs.map((tab, i) => (
+            <div
+              key={tab.props.title}
+              style={i === active ? undefined : HIDDEN_TAB}
+              aria-hidden={i !== active}
+            >
+              {tab}
+            </div>
+          ))}
         </div>
       </GuideEagerContext.Provider>
     </div>

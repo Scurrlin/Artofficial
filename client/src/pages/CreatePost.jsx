@@ -227,7 +227,7 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
       </section>
 
       {GUIDED_MODELS.has(selectedModel) && (
-        <div className="-mx-4 sm:-mx-8 -mb-8 mt-12">
+        <div className="-mx-4 sm:-mx-8 -mb-8 mt-8">
           <svg
             viewBox={`0 0 ${dripTiles * 1920} 650`}
             preserveAspectRatio="none"

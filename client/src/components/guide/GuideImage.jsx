@@ -10,35 +10,34 @@ const GUIDE_SIZES = [
   '60vw',
 ].join(', ');
 
-const GuideImage = ({ src, alt, className, style, maxHeight, aspectRatio }) => {
+const GuideImage = ({ src, alt, className, style, maxHeight, aspectRatio, objectFit = 'cover' }) => {
   const eager = useContext(GuideEagerContext);
 
   if (aspectRatio) {
     return (
-      <div
-        className={`bg-white/5 overflow-hidden ${className || ''}`}
-        style={{ aspectRatio, ...style }}
-      >
-        <LazyLoadImage
-          src={optimizedImageUrl(src)}
-          srcSet={responsiveSrcSet(src) || undefined}
-          sizes={GUIDE_SIZES}
-          placeholderSrc={placeholderImageUrl(src)}
-          alt={alt}
-          effect="blur"
-          visibleByDefault={eager}
-          wrapperClassName="w-full h-full"
-          wrapperProps={{ style: { display: 'block', height: '100%' } }}
-          style={{
-            display: 'block',
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            ...(maxHeight ? { maxHeight } : {}),
-          }}
-          width="100%"
-          threshold={1500}
-        />
+      <div className={`bg-white/5 overflow-hidden ${className || ''}`} style={style}>
+        <div className="overflow-hidden" style={{ aspectRatio }}>
+          <LazyLoadImage
+            src={optimizedImageUrl(src)}
+            srcSet={responsiveSrcSet(src) || undefined}
+            sizes={GUIDE_SIZES}
+            placeholderSrc={placeholderImageUrl(src)}
+            alt={alt}
+            effect="blur"
+            visibleByDefault={eager}
+            wrapperClassName="w-full h-full"
+            wrapperProps={{ style: { display: 'block', height: '100%' } }}
+            style={{
+              display: 'block',
+              width: '100%',
+              height: '100%',
+              objectFit,
+              ...(maxHeight ? { maxHeight } : {}),
+            }}
+            width="100%"
+            threshold={1500}
+          />
+        </div>
       </div>
     );
   }

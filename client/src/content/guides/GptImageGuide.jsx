@@ -232,18 +232,18 @@ for i, item in enumerate(result.data, start=1):
         f.write(image_bytes)`}</GuideCodeBlock>
 
     <GuideColumns cols={2}>
-      <GuideFrame caption="Variation 1">
+      <GuideFrame caption="Variation 1" bg="white">
         <GuideImage className="w-full" src={logo1} alt="Field & Flour logo variation 1" aspectRatio="1 / 1" />
       </GuideFrame>
-      <GuideFrame caption="Variation 2">
+      <GuideFrame caption="Variation 2" bg="white">
         <GuideImage className="w-full" src={logo2} alt="Field & Flour logo variation 2" aspectRatio="1 / 1" />
       </GuideFrame>
     </GuideColumns>
     <GuideColumns cols={2}>
-      <GuideFrame caption="Variation 3">
+      <GuideFrame caption="Variation 3" bg="white">
         <GuideImage className="w-full" src={logo3} alt="Field & Flour logo variation 3" aspectRatio="1 / 1" />
       </GuideFrame>
-      <GuideFrame caption="Variation 4">
+      <GuideFrame caption="Variation 4" bg="white">
         <GuideImage className="w-full" src={logo4} alt="Field & Flour logo variation 4" aspectRatio="1 / 1" />
       </GuideFrame>
     </GuideColumns>
