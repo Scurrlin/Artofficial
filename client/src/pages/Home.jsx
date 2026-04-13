@@ -63,6 +63,7 @@ const Home = ({ stats, selectedModel }) => {
           result = await response.json();
         }
 
+        await new Promise((resolve) => setTimeout(resolve, 0));
         setAllPosts(result.data);
       } catch (err) {
         console.error('Error fetching posts:', err.message);

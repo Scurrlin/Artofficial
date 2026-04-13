@@ -38,8 +38,13 @@
         document.head.appendChild(link);
       });
 
-      window.__PREFETCH_STATS__ = fetch('%VITE_BACKEND_URL%/api/v1/post/stats')
-        .then(function(r) { return r.ok ? r.json() : null; }).catch(function() { return null; });
+      window.__PREFETCH_STATS__ = new Promise(function(resolve) {
+        setTimeout(function() {
+          fetch('%VITE_BACKEND_URL%/api/v1/post/stats')
+            .then(function(r) { return r.ok ? r.json() : null; })
+            .then(resolve).catch(function() { resolve(null); });
+        }, 0);
+      });
     </script>
 
     <!-- OpenGraph tags (Facebook, LinkedIn, iMessage, Android, etc.) -->

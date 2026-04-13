@@ -37,6 +37,7 @@ const App = () => {
           result = await response.json();
         }
 
+        await new Promise((resolve) => setTimeout(resolve, 0));
         setStats(result.data);
       } catch (err) {
         console.error('Error fetching stats:', err.message);
