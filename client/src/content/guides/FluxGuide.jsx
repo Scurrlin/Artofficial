@@ -17,7 +17,7 @@ const IMG = 'https://res.cloudinary.com/dc8nheiuw/image/upload/guides/flux';
 
 const FluxGuide = () => (
   <article className="prose prose-lg prose-invert max-w-none prose-headings:text-white prose-p:text-white/80 prose-strong:text-white prose-code:bg-white/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-white/90 prose-code:before:content-none prose-code:after:content-none prose-pre:bg-white/10 prose-pre:text-white/90 prose-a:text-[#6dadeb] prose-blockquote:border-[#6dadeb] prose-blockquote:text-white/70 prose-hr:border-white/20 prose-li:text-white/80 prose-th:text-white/90 prose-td:text-white/70 prose-thead:border-white/20 prose-tr:border-white/10">
-    <h1 className="gradient-knockout">Prompting Guide &mdash; FLUX.2 [pro] &amp; [max]</h1>
+    <h1 className="gradient-knockout">FLUX.2 Prompting Guide</h1>
     <p><em>Master FLUX.2 [pro] &amp; [max] prompting for photorealism, typography, precise colors, and advanced techniques</em></p>
 
     <GuideCallout variant="info">
@@ -39,18 +39,14 @@ const FluxGuide = () => (
         <GuideFrame>
           <GuideImage className="w-full" src={`${IMG}/black-cat-watermelon.png`} alt="Black cat behind watermelon slice" aspectRatio="59 / 33" />
         </GuideFrame>
-        <GuidePrompt description="Black cat hiding behind a watermelon slice, professional studio shot, bright red and turquoise background with summer mystery vibe">
-          <strong>Subject</strong>: Black cat | <strong>Action</strong>: hiding behind a watermelon slice | <strong>Style</strong>: professional studio shot | <strong>Context</strong>: bright red and turquoise background with summer mystery vibe
-        </GuidePrompt>
+        <GuidePrompt description="Black cat hiding behind a watermelon slice, professional studio shot, bright red and turquoise background with summer mystery vibe" />
       </GuideTab>
 
       <GuideTab title="Example 2">
         <GuideFrame>
           <GuideImage className="w-full" src={`${IMG}/dog-towel-bath.png`} alt="Dog wrapped in towel after bath" aspectRatio="59 / 33" />
         </GuideFrame>
-        <GuidePrompt description="Dog wrapped in white towel after bath, photographed with direct flash and high exposure, fur wet details sharply visible, editorial raw portrait, cinematic harsh flash lighting, intimate humorous documentary style">
-          <strong>Subject</strong>: Dog | <strong>Action</strong>: wrapped in white towel after bath | <strong>Style</strong>: editorial raw portrait, cinematic harsh flash lighting | <strong>Context</strong>: intimate humorous documentary style
-        </GuidePrompt>
+        <GuidePrompt description="Dog wrapped in white towel after bath, photographed with direct flash and high exposure, fur wet details sharply visible, editorial raw portrait, cinematic harsh flash lighting, intimate humorous documentary style" />
       </GuideTab>
 
       <GuideTab title="Example 3">
@@ -402,7 +398,7 @@ const FluxGuide = () => (
 
     <GuideColumns cols={2}>
       <GuideFrame caption="Panel 3: The Battle">
-        <GuideImage className="w-full" src={`${IMG}/comic-panel3-battle.jpg`} alt="Diffusion Man fighting corrupted code" aspectRatio="83 / 50" />
+        <GuideImage className="w-full" src={`${IMG}/comic-panel3-battle.jpg`} alt="Diffusion Man fighting corrupted code" aspectRatio="45 / 26" />
       </GuideFrame>
       <GuideFrame caption="Panel 4: Victory">
         <GuideImage className="w-full" src={`${IMG}/comic-panel4-victory.jpg`} alt="Diffusion Man victorious" aspectRatio="45 / 26" />

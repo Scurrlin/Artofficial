@@ -56,7 +56,7 @@ const PROSE = 'prose prose-lg prose-invert max-w-none prose-headings:text-white 
 
 const GptImageGuide = () => (
   <article className={PROSE}>
-    <h1 className="gradient-knockout">Gpt-Image-1.5 Prompting Guide</h1>
+    <h1 className="gradient-knockout">Gpt Image 1.5 Prompting Guide</h1>
 
     {/* ──────────────── 1. Introduction ──────────────── */}
     <h2>1. Introduction</h2>
@@ -231,22 +231,24 @@ for i, item in enumerate(result.data, start=1):
     with open(f"../../images/output_images/logo_generation_{i}.png", "wb") as f:
         f.write(image_bytes)`}</GuideCodeBlock>
 
-    <GuideColumns cols={2}>
-      <GuideFrame caption="Variation 1" bg="white">
-        <GuideImage className="w-full" src={logo1} alt="Field & Flour logo variation 1" aspectRatio="1 / 1" />
-      </GuideFrame>
-      <GuideFrame caption="Variation 2" bg="white">
-        <GuideImage className="w-full" src={logo2} alt="Field & Flour logo variation 2" aspectRatio="1 / 1" />
-      </GuideFrame>
-    </GuideColumns>
-    <GuideColumns cols={2}>
-      <GuideFrame caption="Variation 3" bg="white">
-        <GuideImage className="w-full" src={logo3} alt="Field & Flour logo variation 3" aspectRatio="1 / 1" />
-      </GuideFrame>
-      <GuideFrame caption="Variation 4" bg="white">
-        <GuideImage className="w-full" src={logo4} alt="Field & Flour logo variation 4" aspectRatio="1 / 1" />
-      </GuideFrame>
-    </GuideColumns>
+    <div className="max-w-2xl mx-auto">
+      <GuideColumns cols={2}>
+        <GuideFrame caption="Variation 1" bg="white">
+          <GuideImage className="w-full" src={logo1} alt="Field & Flour logo variation 1" aspectRatio="1 / 1" />
+        </GuideFrame>
+        <GuideFrame caption="Variation 2" bg="white">
+          <GuideImage className="w-full" src={logo2} alt="Field & Flour logo variation 2" aspectRatio="1 / 1" />
+        </GuideFrame>
+      </GuideColumns>
+      <GuideColumns cols={2}>
+        <GuideFrame caption="Variation 3" bg="white">
+          <GuideImage className="w-full" src={logo3} alt="Field & Flour logo variation 3" aspectRatio="1 / 1" />
+        </GuideFrame>
+        <GuideFrame caption="Variation 4" bg="white">
+          <GuideImage className="w-full" src={logo4} alt="Field & Flour logo variation 4" aspectRatio="1 / 1" />
+        </GuideFrame>
+      </GuideColumns>
+    </div>
 
     {/* 4.6 Comic Strip */}
     <h3>4.6 Story-to-Comic Strip</h3>
@@ -358,7 +360,7 @@ save_image(result, "outfit.png")`}</GuideCodeBlock>
       </GuideFrame>
     </GuideColumns>
     <GuideColumns cols={2}>
-      <GuideFrame caption="Original photo">
+      <GuideFrame caption="Original photo" bg="black">
         <GuideImage className="w-full" src={womanInMuseum} alt="Woman in museum" aspectRatio="2 / 3" />
       </GuideFrame>
       <GuideFrame caption="Virtual try-on result">
@@ -560,7 +562,7 @@ result = client.images.edit(
 save_image(result, "scene.png")`}</GuideCodeBlock>
 
     <GuideColumns cols={2}>
-      <GuideFrame caption="Input: reference person">
+      <GuideFrame caption="Input: reference person" bg="black">
         <GuideImage className="w-full" src={womanInMuseum} alt="Woman in museum, used as identity reference" aspectRatio="2 / 3" />
       </GuideFrame>
       <GuideFrame caption="Output: composited into scene">
@@ -627,7 +629,7 @@ save_image(result, "kitchen-chairs.png")`}</GuideCodeBlock>
 
     <GuideColumns cols={2}>
       <GuideFrame caption="Original kitchen">
-        <GuideImage className="w-full" src={kitchenInput} alt="Kitchen with white chairs" aspectRatio="4 / 3" />
+        <GuideImage className="w-full" src={kitchenInput} alt="Kitchen with white chairs" aspectRatio="3 / 2" />
       </GuideFrame>
       <GuideFrame caption="Chairs swapped to wood">
         <GuideImage className="w-full" src={kitchenChairs} alt="Kitchen with wooden chairs" aspectRatio="3 / 2" />

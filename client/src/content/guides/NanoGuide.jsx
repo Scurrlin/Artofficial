@@ -30,7 +30,7 @@ const PROSE = 'prose prose-lg prose-invert max-w-none prose-headings:text-white 
 
 const NanoGuide = () => (
   <article className={PROSE}>
-    <h1 className="gradient-knockout">The Ultimate Nano Banana Prompting Guide</h1>
+    <h1 className="gradient-knockout">Nano Banana Prompting Guide</h1>
     <p>
       <em>
         Built on the Gemini&nbsp;3 family of models, Nano Banana models apply deep reasoning
@@ -192,11 +192,13 @@ const NanoGuide = () => (
         </p>
 
         <GuidePrompt description="A striking fashion model wearing a tailored brown dress, sleek boots, and holding a structured handbag. Posing with a confident, statuesque stance, slightly turned. A seamless, deep cherry red studio backdrop. Medium-full shot, center-framed. Fashion magazine style editorial, shot on medium-format analog film, pronounced grain, high saturation, cinematic lighting effect.">
-          <strong>Subject:</strong> fashion model in tailored brown dress &bull;{' '}
-          <strong>Action:</strong> confident statuesque pose &bull;{' '}
-          <strong>Location:</strong> cherry red studio backdrop &bull;{' '}
-          <strong>Composition:</strong> medium-full, center-framed &bull;{' '}
-          <strong>Style:</strong> editorial, medium-format analog film
+          <ul className="list-disc pl-4 space-y-1">
+            <li><strong>Subject:</strong> fashion model in tailored brown dress</li>
+            <li><strong>Action:</strong> confident statuesque pose</li>
+            <li><strong>Location:</strong> cherry red studio backdrop</li>
+            <li><strong>Composition:</strong> medium-full, center-framed</li>
+            <li><strong>Style:</strong> editorial, medium-format analog film</li>
+          </ul>
         </GuidePrompt>
 
         <GuideFrame borderless>
@@ -218,17 +220,19 @@ const NanoGuide = () => (
         </p>
 
         <GuidePrompt description="Using the attached napkin sketch as the structure and the attached fabric sample as the texture, transform this into a high-fidelity 3D armchair render. Place it in a sun-drenched, minimalist living room.">
-          <strong>References:</strong> napkin sketch + fabric sample &bull;{' '}
-          <strong>Relationship:</strong> structure + texture &bull;{' '}
-          <strong>Scenario:</strong> 3D armchair in minimalist living room
+          <ul className="list-disc pl-4 space-y-1">
+            <li><strong>References:</strong> napkin sketch + fabric sample</li>
+            <li><strong>Relationship:</strong> structure + texture</li>
+            <li><strong>Scenario:</strong> 3D armchair in minimalist living room</li>
+          </ul>
         </GuidePrompt>
 
         <GuideCallout variant="note">
           Nano Banana generated the source images for these examples as well.
         </GuideCallout>
 
-        <GuideFrame caption="Napkin sketch + fabric sample → 3D armchair render" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={chairSketch} alt="Napkin sketch and fabric sample combined into a 3D armchair render in a minimalist living room" aspectRatio="1999 / 1653" />
+        <GuideFrame caption="Napkin sketch + fabric sample → 3D armchair render" bg="white" padded>
+          <GuideImage className="w-full rounded-lg" src={chairSketch} alt="Napkin sketch and fabric sample combined into a 3D armchair render in a minimalist living room" aspectRatio="1999 / 1653" />
         </GuideFrame>
       </GuideTab>
     </GuideTabs>
@@ -259,8 +263,8 @@ const NanoGuide = () => (
 
         <GuidePrompt description="Remove the man from the photo." />
 
-        <GuideFrame caption="Before & after: man removed from photo" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={manAndWoman} alt="Before and after comparison — man removed from photo" aspectRatio="1577 / 1800" />
+        <GuideFrame caption="Before & after: man removed from photo" bg="white" padded>
+          <GuideImage className="w-full rounded-lg" src={manAndWoman} alt="Before and after comparison — man removed from photo" aspectRatio="1577 / 1800" />
         </GuideFrame>
       </GuideTab>
 
@@ -279,11 +283,11 @@ const NanoGuide = () => (
           </li>
         </ul>
 
-        <GuideFrame caption="Composition: adding elements" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={couch} alt="Composition example — adding elements to a scene" aspectRatio="1300 / 461" />
+        <GuideFrame caption="Composition: adding elements" bg="white" padded>
+          <GuideImage className="w-full rounded-lg" src={couch} alt="Composition example — adding elements to a scene" aspectRatio="1300 / 461" />
         </GuideFrame>
-        <GuideFrame caption="Style transfer: photo to painting" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalPhoto} alt="Style transfer example — photo converted to painting style" aspectRatio="1999 / 1124" />
+        <GuideFrame caption="Style transfer: reimagine photos in different ways" bg="white" padded>
+          <GuideImage className="w-full rounded-lg" src={originalPhoto} alt="Style transfer example" aspectRatio="1999 / 1124" />
         </GuideFrame>
       </GuideTab>
     </GuideTabs>
@@ -302,9 +306,11 @@ const NanoGuide = () => (
     </p>
 
     <GuidePrompt description="Search for current weather and date in San Francisco. Analytically, use this data to modify the scene (e.g., if raining, make it look grey and rainy). Visualize this in a miniature city-in-a-cup concept embedded within a realistic, modern smartphone UI.">
-      <strong>Source:</strong> current SF weather &bull;{' '}
-      <strong>Analysis:</strong> modify scene to match conditions &bull;{' '}
-      <strong>Visual:</strong> city-in-a-cup on smartphone UI
+      <ul className="list-disc pl-4 space-y-1">
+        <li><strong>Source:</strong> current SF weather</li>
+        <li><strong>Analysis:</strong> modify scene to match conditions</li>
+        <li><strong>Visual:</strong> city-in-a-cup on smartphone UI</li>
+      </ul>
     </GuidePrompt>
 
     <GuideFrame borderless>
@@ -349,8 +355,8 @@ const NanoGuide = () => (
       <GuideTab title="Product Mockup">
         <GuidePrompt description='A high-end, glossy commercial beauty shot of a sleek, minimalist nude-colored face moisturizer jar resting on a warm studio background. The lighting is soft and radiant. Next to the product, render three lines of text with the following exact styling: For the top line, the word "GLOW" in a flowing, elegant Brush Script font. For the middle line, the text "10% OFF" in a heavy, blocky Impact font. For the bottom line, the text "Your First Order" in a thin, minimalist Century Gothic font. Then translate the text into Korean and Arabic.' />
 
-        <GuideFrame caption="Multilingual text rendering: English, Korean & Arabic" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={korean} alt="Moisturizer mockup rendered in English, Korean, and Arabic" aspectRatio="1200 / 379" />
+        <GuideFrame caption="Multilingual text rendering: English, Korean & Arabic" bg="white" padded>
+          <GuideImage className="w-full rounded-lg" src={korean} alt="Moisturizer mockup rendered in English, Korean, and Arabic" aspectRatio="1200 / 379" />
         </GuideFrame>
       </GuideTab>
 
@@ -373,7 +379,8 @@ const NanoGuide = () => (
     <GuideAccordionGroup>
       <GuideAccordion title="1. Design Your Lighting">
         <p>Tell the model exactly how the scene is illuminated.</p>
-        <ul>
+        <br />
+        <ul className="list-disc pl-4 space-y-1">
           <li>
             <strong>Studio setups:</strong> Ask for a &ldquo;three-point softbox setup&rdquo; to
             evenly light a product.
@@ -383,14 +390,15 @@ const NanoGuide = () => (
             high contrast&rdquo; or &ldquo;Golden hour backlighting creating long shadows.&rdquo;
           </li>
         </ul>
-        <GuideFrame caption="Lighting techniques: softbox setup & chiaroscuro / golden hour" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalDrink} alt="Lighting examples — three-point softbox setup and chiaroscuro golden hour" aspectRatio="55 / 16" />
+        <GuideFrame caption="Lighting techniques: softbox setup & chiaroscuro / golden hour" bg="white" padded>
+          <GuideImage className="w-full rounded-lg" src={originalDrink} alt="Lighting examples — three-point softbox setup and chiaroscuro golden hour" aspectRatio="55 / 16" />
         </GuideFrame>
       </GuideAccordion>
 
       <GuideAccordion title="2. Choose Your Camera, Lens &amp; Focus">
         <p>Use specific hardware and photographic terminology to control depth, distortion, and perspective.</p>
-        <ul>
+        <br />
+        <ul className="list-disc pl-4 space-y-1">
           <li>
             <strong>Hardware:</strong> Dictate the exact camera type to change the visual DNA of the
             image. Ask for the shot to be taken on a GoPro for an immersive, distorted action feel,
@@ -403,38 +411,46 @@ const NanoGuide = () => (
             a &ldquo;wide-angle lens.&rdquo; For intricate details, specify a &ldquo;macro lens.&rdquo;
           </li>
         </ul>
-        <GuideFrame caption="Camera emulation: GoPro, Fujifilm & disposable camera styles" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalMan} alt="Camera emulation comparison — GoPro, Fujifilm color science, and disposable camera styles" aspectRatio="550 / 169" />
+        <GuideFrame caption="Camera emulation: GoPro, Fujifilm & disposable camera styles" bg="white" padded>
+          <GuideImage className="w-full rounded-lg" src={originalMan} alt="Camera emulation comparison — GoPro, Fujifilm color science, and disposable camera styles" aspectRatio="550 / 169" />
         </GuideFrame>
       </GuideAccordion>
 
       <GuideAccordion title="3. Define Color Grading &amp; Film Stock">
         <p>The texture and color of the final image set the emotional tone.</p>
-        <ul>
+        <br />
+        <ul className="list-disc pl-4 space-y-1">
           <li>
             For a nostalgic or gritty vibe, tell the model to render the image &ldquo;as if
             on 1980s color film, slightly grainy.&rdquo;
           </li>
           <li>
-            For a modern, moody aesthetic, ask for &ldquo;Cinematic color grading with muted
-            teal tones.&rdquo;
+            For a modern, moody aesthetic, ask for &ldquo;Cinematic color grading
+            with muted teal tones.&rdquo;
           </li>
         </ul>
-        <GuideFrame caption="Color grading: 1980s film & cinematic muted teal" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={originalHeadphones} alt="Color grading comparison — 1980s film grain and modern cinematic muted teal" aspectRatio="25 / 8" />
+        <GuideFrame caption="Color grading: 1980s film & cinematic muted teal" bg="white" padded>
+          <GuideImage className="w-full rounded-lg" src={originalHeadphones} alt="Color grading comparison — 1980s film grain and modern cinematic muted teal" aspectRatio="25 / 8" />
         </GuideFrame>
       </GuideAccordion>
 
       <GuideAccordion title="4. Emphasize Materiality &amp; Texture">
-        <p>
-          When generating logos, products, or characters, define their physical makeup.
-          Don&rsquo;t just ask for a suit jacket; ask for &ldquo;navy blue tweed.&rdquo; Instead
-          of &ldquo;armor,&rdquo; describe &ldquo;ornate elven plate armor, etched with silver
-          leaf patterns.&rdquo; If you are designing a mockup, specify the surface,
-          like a &ldquo;minimalist ceramic coffee mug.&rdquo;
-        </p>
-        <GuideFrame caption="Materiality & texture: tweed jacket & elven plate armor" bg="white">
-          <GuideImage className="w-full border-[10px] border-white rounded-lg" src={whiteBanana} alt="Materiality examples — navy blue tweed jacket and ornate elven plate armor" aspectRatio="1800 / 887" />
+        <p>When generating logos, products, or characters, define their physical makeup.</p>
+        <br />
+        <ul className="list-disc pl-4 space-y-1">
+          <li>
+            Don&rsquo;t just ask for a suit jacket; ask for &ldquo;navy blue tweed.&rdquo;
+          </li>
+          <li>
+            Instead of &ldquo;armor,&rdquo; describe &ldquo;ornate elven plate armor, etched with silver
+            leaf patterns.&rdquo;
+          </li>
+          <li>
+            If you are designing a mockup, specify the surface, like a &ldquo;minimalist ceramic coffee mug.&rdquo;
+          </li>
+        </ul>
+        <GuideFrame caption="You&rsquo;ll go bananas for these cutting-edge texture options" bg="white" padded>
+          <GuideImage className="w-full rounded-lg" src={whiteBanana} alt="Materiality examples" aspectRatio="1800 / 887" />
         </GuideFrame>
       </GuideAccordion>
     </GuideAccordionGroup>
