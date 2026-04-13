@@ -8,7 +8,7 @@ const BG_MAP = {
 const GuideFrame = ({ children, caption, maxWidth, maxHeight, bg, borderless, padded }) => {
   const bgClass = BG_MAP[bg] || (borderless ? '' : 'bg-white/5');
   const borderClass = borderless ? '' : 'border border-white/15';
-  const paddingClass = padded ? 'p-2.5' : '';
+  const paddingClass = padded ? 'p-1.5 sm:p-2.5' : '';
 
   const style = {};
   if (maxWidth) { style.maxWidth = maxWidth; style.margin = '0 auto'; }

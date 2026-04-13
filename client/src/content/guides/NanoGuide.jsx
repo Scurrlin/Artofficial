@@ -232,7 +232,7 @@ const NanoGuide = () => (
         </GuideCallout>
 
         <GuideFrame caption="Napkin sketch + fabric sample → 3D armchair render" bg="white" padded>
-          <GuideImage className="w-full rounded-lg" src={chairSketch} alt="Napkin sketch and fabric sample combined into a 3D armchair render in a minimalist living room" aspectRatio="1999 / 1653" />
+          <GuideImage className="w-full rounded-lg" src={chairSketch} alt="Napkin sketch and fabric sample combined into a 3D armchair render in a minimalist living room" aspectRatio="1999 / 1653" objectFit="contain" />
         </GuideFrame>
       </GuideTab>
     </GuideTabs>
@@ -264,7 +264,7 @@ const NanoGuide = () => (
         <GuidePrompt description="Remove the man from the photo." />
 
         <GuideFrame caption="Before & after: man removed from photo" bg="white" padded>
-          <GuideImage className="w-full rounded-lg" src={manAndWoman} alt="Before and after comparison — man removed from photo" aspectRatio="1577 / 1800" />
+          <GuideImage className="w-full rounded-lg" src={manAndWoman} alt="Before and after comparison — man removed from photo" aspectRatio="1577 / 1800" objectFit="contain" />
         </GuideFrame>
       </GuideTab>
 
@@ -284,10 +284,10 @@ const NanoGuide = () => (
         </ul>
 
         <GuideFrame caption="Composition: adding elements" bg="white" padded>
-          <GuideImage className="w-full rounded-lg" src={couch} alt="Composition example — adding elements to a scene" aspectRatio="1300 / 461" />
+          <GuideImage className="w-full rounded-lg" src={couch} alt="Composition example — adding elements to a scene" aspectRatio="1300 / 461" objectFit="contain" />
         </GuideFrame>
         <GuideFrame caption="Style transfer: reimagine photos in different ways" bg="white" padded>
-          <GuideImage className="w-full rounded-lg" src={originalPhoto} alt="Style transfer example" aspectRatio="1999 / 1124" />
+          <GuideImage className="w-full rounded-lg" src={originalPhoto} alt="Style transfer example" aspectRatio="1999 / 1124" objectFit="contain" />
         </GuideFrame>
       </GuideTab>
     </GuideTabs>
@@ -356,7 +356,7 @@ const NanoGuide = () => (
         <GuidePrompt description='A high-end, glossy commercial beauty shot of a sleek, minimalist nude-colored face moisturizer jar resting on a warm studio background. The lighting is soft and radiant. Next to the product, render three lines of text with the following exact styling: For the top line, the word "GLOW" in a flowing, elegant Brush Script font. For the middle line, the text "10% OFF" in a heavy, blocky Impact font. For the bottom line, the text "Your First Order" in a thin, minimalist Century Gothic font. Then translate the text into Korean and Arabic.' />
 
         <GuideFrame caption="Multilingual text rendering: English, Korean & Arabic" bg="white" padded>
-          <GuideImage className="w-full rounded-lg" src={korean} alt="Moisturizer mockup rendered in English, Korean, and Arabic" aspectRatio="1200 / 379" />
+          <GuideImage className="w-full rounded-lg" src={korean} alt="Moisturizer mockup rendered in English, Korean, and Arabic" aspectRatio="1200 / 379" objectFit="contain" />
         </GuideFrame>
       </GuideTab>
 
@@ -391,7 +391,7 @@ const NanoGuide = () => (
           </li>
         </ul>
         <GuideFrame caption="Lighting techniques: softbox setup & chiaroscuro / golden hour" bg="white" padded>
-          <GuideImage className="w-full rounded-lg" src={originalDrink} alt="Lighting examples — three-point softbox setup and chiaroscuro golden hour" aspectRatio="55 / 16" />
+          <GuideImage className="w-full rounded-lg" src={originalDrink} alt="Lighting examples — three-point softbox setup and chiaroscuro golden hour" aspectRatio="55 / 16" objectFit="contain" />
         </GuideFrame>
       </GuideAccordion>
 
@@ -412,7 +412,7 @@ const NanoGuide = () => (
           </li>
         </ul>
         <GuideFrame caption="Camera emulation: GoPro, Fujifilm & disposable camera styles" bg="white" padded>
-          <GuideImage className="w-full rounded-lg" src={originalMan} alt="Camera emulation comparison — GoPro, Fujifilm color science, and disposable camera styles" aspectRatio="550 / 169" />
+          <GuideImage className="w-full rounded-lg" src={originalMan} alt="Camera emulation comparison — GoPro, Fujifilm color science, and disposable camera styles" aspectRatio="550 / 169" objectFit="contain" />
         </GuideFrame>
       </GuideAccordion>
 
@@ -430,7 +430,7 @@ const NanoGuide = () => (
           </li>
         </ul>
         <GuideFrame caption="Color grading: 1980s film & cinematic muted teal" bg="white" padded>
-          <GuideImage className="w-full rounded-lg" src={originalHeadphones} alt="Color grading comparison — 1980s film grain and modern cinematic muted teal" aspectRatio="25 / 8" />
+          <GuideImage className="w-full rounded-lg" src={originalHeadphones} alt="Color grading comparison — 1980s film grain and modern cinematic muted teal" aspectRatio="25 / 8" objectFit="contain" />
         </GuideFrame>
       </GuideAccordion>
 
@@ -450,7 +450,7 @@ const NanoGuide = () => (
           </li>
         </ul>
         <GuideFrame caption="You&rsquo;ll go bananas for these cutting-edge texture options" bg="white" padded>
-          <GuideImage className="w-full rounded-lg" src={whiteBanana} alt="Materiality examples" aspectRatio="1800 / 887" />
+          <GuideImage className="w-full rounded-lg" src={whiteBanana} alt="Materiality examples" aspectRatio="1800 / 887" objectFit="contain" />
         </GuideFrame>
       </GuideAccordion>
     </GuideAccordionGroup>
