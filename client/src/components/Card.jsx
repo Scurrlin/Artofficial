@@ -3,7 +3,6 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import toast from 'react-hot-toast';
 
-import { download } from '../assets';
 import { downloadImage, optimizedImageUrl, placeholderImageUrl, responsiveSrcSet, CARD_SIZES } from '../utils';
 
 const Card = ({ _id, name, prompt, photo, priority }) => {
@@ -62,11 +61,9 @@ const Card = ({ _id, name, prompt, photo, priority }) => {
               className="outline-none bg-transparent border-none cursor-pointer"
               title="Download image"
             >
-              <img
-                src={download}
-                alt="Download image"
-                className="w-6 h-6 object-contain invert"
-              />
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 32 32" fill="#ffffff" aria-hidden="true">
+                <path d="M26 24v4H6v-4H4v4a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2v-4zM15 3v17.17l-4.59-4.58L9 17l7 7 7-7-1.41-1.41L17 20.17V3z" />
+              </svg>
             </button>
           </div>
         </div>

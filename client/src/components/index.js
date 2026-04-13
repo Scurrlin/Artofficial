@@ -3,7 +3,6 @@ import FormField from "./FormField";
 import ModelSelector from "./ModelSelector";
 import PromptGuide from "./PromptGuide";
 import StatCard from "./StatCard";
-import Loader from "./Loader";
 
 export {
     Card,
@@ -11,5 +10,4 @@ export {
     ModelSelector,
     PromptGuide,
     StatCard,
-    Loader
 }

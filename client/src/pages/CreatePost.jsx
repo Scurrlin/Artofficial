@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { Suspense, useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { getRandomPrompt } from '../utils';
-import { FormField, Loader, ModelSelector, PromptGuide } from '../components';
+import { FormField, ModelSelector, PromptGuide } from '../components';
 import { GUIDED_MODELS } from '../components/PromptGuide';
 import { IMAGE_MODELS } from '../constants';
+
+const Loader = React.lazy(() => import('../components/Loader'));
 
 const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
   const navigate = useNavigate();
@@ -201,7 +203,9 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
                     className="w-full h-full object-cover"
                   />
                 ) : generatingImg ? (
-                  <Loader variant="light" />
+                  <Suspense fallback={null}>
+                    <Loader variant="light" />
+                  </Suspense>
                 ) : (
                   <div
                     className="absolute inset-0 bg-[#10131f]"
