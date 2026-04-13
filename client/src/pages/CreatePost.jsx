@@ -254,7 +254,7 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
             <rect width={dripTiles * 1920} height="650" fill="black" mask="url(#dripMask)" />
           </svg>
           <div className="bg-black">
-            <div className="max-w-4xl mx-auto px-3 sm:px-8 pt-2 sm:pt-3 pb-12">
+            <div className="max-w-4xl mx-auto px-4 sm:px-8 pt-2 sm:pt-3 pb-12">
               <PromptGuide selectedModel={selectedModel} />
             </div>
           </div>
