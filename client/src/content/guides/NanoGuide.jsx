@@ -181,10 +181,12 @@ const NanoGuide = () => (
     <GuideTabs>
       <GuideTab title="Text-to-Image">
         <h4>Text-to-Image Generation (Without References)</h4>
+        <br />
         <p>
           When starting with a blank canvas, you are the director. A simple list of keywords
           won&rsquo;t cut it; you need to describe the scene narratively.
         </p>
+        <br />
         <p>
           <strong>Formula:</strong>{' '}
           <code>[Subject]</code> + <code>[Action]</code> + <code>[Location/context]</code> +{' '}
@@ -208,11 +210,13 @@ const NanoGuide = () => (
 
       <GuideTab title="Multimodal">
         <h4>Multimodal Generation (With References)</h4>
+        <br />
         <p>
           Gemini allows you to combine multiple reference images to guide the final output.
           This is perfect for maintaining character consistency or merging a specific product
           into a new environment.
         </p>
+        <br />
         <p>
           <strong>Formula:</strong>{' '}
           <code>[Reference images]</code> + <code>[Relationship instruction]</code> +{' '}
@@ -248,9 +252,11 @@ const NanoGuide = () => (
     <GuideTabs>
       <GuideTab title="Conversational Editing">
         <h4>Conversational Editing (Without New References)</h4>
+        <br />
         <p>
           When you generate an image and want to tweak it conversationally:
         </p>
+        <br />
         <p>
           <strong>Semantic masking (inpainting):</strong> You can define
           a &ldquo;mask&rdquo; through text to edit a specific part of an image while leaving the
@@ -270,8 +276,10 @@ const NanoGuide = () => (
 
       <GuideTab title="Composition &amp; Style Transfer">
         <h4>Composition and Style Transfer (With New References)</h4>
+        <br />
         <p>Bring new images into the prompt to alter an existing one:</p>
-        <ul>
+        <br />
+        <ul className="list-disc pl-4 space-y-1">
           <li>
             <strong>Adding elements:</strong> Upload a base image and an object image, and tell
             the model to combine them.

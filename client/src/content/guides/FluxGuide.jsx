@@ -387,23 +387,23 @@ const FluxGuide = () => (
     <h3>The Diffusion Man Story</h3>
     <p>Generate each panel separately while keeping character descriptions consistent:</p>
 
-    <GuideColumns cols={2}>
+    <div className="not-prose my-4 gap-4 grid grid-cols-1 sm:grid-cols-2">
       <GuideFrame caption="Panel 1: The Crisis">
         <GuideImage className="w-full" src={`${IMG}/comic-panel1-crisis.jpg`} alt="Worried scientist in server room" aspectRatio="45 / 26" />
       </GuideFrame>
       <GuideFrame caption="Panel 2: The Transformation">
         <GuideImage className="w-full" src={`${IMG}/comic-panel2-transformation.jpg`} alt="Diffusion Man transformation" aspectRatio="45 / 26" />
       </GuideFrame>
-    </GuideColumns>
+    </div>
 
-    <GuideColumns cols={2}>
+    <div className="not-prose my-4 gap-4 grid grid-cols-1 sm:grid-cols-2">
       <GuideFrame caption="Panel 3: The Battle">
         <GuideImage className="w-full" src={`${IMG}/comic-panel3-battle.jpg`} alt="Diffusion Man fighting corrupted code" aspectRatio="45 / 26" />
       </GuideFrame>
       <GuideFrame caption="Panel 4: Victory">
         <GuideImage className="w-full" src={`${IMG}/comic-panel4-victory.jpg`} alt="Diffusion Man victorious" aspectRatio="45 / 26" />
       </GuideFrame>
-    </GuideColumns>
+    </div>
 
     <GuideAccordionGroup>
       <GuideAccordion title="Panel 1 Prompt: The Crisis">
