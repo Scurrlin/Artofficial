@@ -80,6 +80,7 @@ textarea:-webkit-autofill {
   height: 200px;
   overflow-y: auto;
   border-radius: 0.5rem;
+  clip-path: inset(0 round 0.5rem);
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }
