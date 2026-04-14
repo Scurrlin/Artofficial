@@ -76,6 +76,67 @@ textarea:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s;
 }
 
+.json-editor-wrapper {
+  height: 200px;
+  overflow-y: auto;
+  border-radius: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.json-editor-wrapper:hover {
+  scrollbar-color: #666e75 transparent;
+}
+
+.json-editor-wrapper::-webkit-scrollbar {
+  width: 5px;
+}
+
+.json-editor-wrapper::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+.json-editor-wrapper:hover::-webkit-scrollbar-thumb {
+  background-color: #666e75;
+}
+
+.json-editor-textarea {
+  outline: none !important;
+  caret-color: #d4d4d4;
+}
+
+.json-editor-wrapper textarea,
+.json-editor-wrapper pre,
+.json-editor-wrapper pre * {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 0.875rem !important;
+  line-height: 1.7 !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  font-variant: normal !important;
+  text-rendering: geometricPrecision !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  -webkit-text-size-adjust: 100% !important;
+  tab-size: 2 !important;
+}
+
+.json-editor-wrapper textarea,
+.json-editor-wrapper pre {
+  color: #d4d4d4;
+  padding-right: 3.25rem !important;
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+.json-editor-textarea::placeholder {
+  color: #d4d4d4;
+}
+
 .guide-scroll {
     scrollbar-width: thin;
     scrollbar-color: rgba(255,255,255,0.2) transparent;

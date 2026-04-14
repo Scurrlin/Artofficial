@@ -5,7 +5,11 @@ import toast from 'react-hot-toast';
 
 import { downloadImage, optimizedImageUrl, placeholderImageUrl, responsiveSrcSet, CARD_SIZES } from '../utils';
 
+const looksLikeJson = (s) => /^\s*[{[]/.test(s);
+
 const Card = ({ _id, name, prompt, photo, priority }) => {
+  const isJson = looksLikeJson(prompt);
+
   const copyPrompt = async () => {
     try {
       await navigator.clipboard.writeText(prompt);
@@ -70,7 +74,7 @@ const Card = ({ _id, name, prompt, photo, priority }) => {
       </div>
 
       <div className="bg-[#10131f] p-3">
-        <p className="text-white text-[13px] line-clamp-3">{prompt}</p>
+        <p className={`text-white text-[13px] line-clamp-3${isJson ? ' font-mono text-[12px]' : ''}`}>{prompt}</p>
       </div>
     </div>
   );

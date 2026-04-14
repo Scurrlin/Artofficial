@@ -10,13 +10,13 @@ export function isValidModel(modelId) {
   return !!config && config.generatable !== false;
 }
 
-export async function generateImage(prompt, modelId) {
+export async function generateImage(prompt, modelId, jsonMode = false) {
   const config = MODEL_REGISTRY[modelId];
   if (!config) {
     throw new Error(`Unknown model: ${modelId}`);
   }
 
-  const finalPrompt = config.promptPrefix
+  const finalPrompt = (!jsonMode && config.promptPrefix)
     ? `${config.promptPrefix} ${prompt}`
     : prompt;
 

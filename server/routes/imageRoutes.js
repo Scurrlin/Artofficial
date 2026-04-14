@@ -10,7 +10,7 @@ router.route('/').get((req, res) => {
 
 router.route('/').post(async (req, res) => {
   try {
-    const { prompt, model } = req.body;
+    const { prompt, model, jsonMode } = req.body;
 
     if (!model) {
       return res.status(400).json({
@@ -35,10 +35,10 @@ router.route('/').post(async (req, res) => {
       });
     }
 
-    if (trimmedPrompt.length > 1000) {
+    if (trimmedPrompt.length > 2000) {
       return res.status(400).json({
         success: false,
-        message: 'Prompt must be less than 1000 characters',
+        message: 'Prompt must be less than 2000 characters',
       });
     }
 
@@ -67,7 +67,7 @@ router.route('/').post(async (req, res) => {
       });
     }
 
-    const { base64 } = await generateImage(trimmedPrompt, model);
+    const { base64 } = await generateImage(trimmedPrompt, model, !!jsonMode);
 
     res.status(200).json({ photo: base64 });
 

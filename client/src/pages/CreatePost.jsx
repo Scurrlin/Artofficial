@@ -20,6 +20,7 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
 
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [jsonMode, setJsonMode] = useState(false);
   const abortControllerRef = useRef(null);
 
   const [dripTiles, setDripTiles] = useState(() => {
@@ -66,6 +67,7 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
           body: JSON.stringify({
             prompt: form.prompt,
             model: selectedModel,
+            jsonMode,
           }),
           signal: controller.signal,
         });
@@ -172,6 +174,9 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
                 handleSurpriseMe={handleSurpriseMe}
                 isTextarea
                 disabled={generatingImg || loading}
+                jsonMode={jsonMode}
+                onJsonModeToggle={() => setJsonMode((prev) => !prev)}
+                maxChars={2000}
               />
 
               <div className="flex gap-3">
@@ -195,7 +200,7 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
             </div>
 
             <div className="w-full lg:w-1/2 flex justify-center">
-              <div className={`relative aspect-square w-full max-w-md short:max-w-sm rounded-xl border border-[#10131f]/30 flex justify-center items-center overflow-hidden ${form.photo || generatingImg ? 'bg-[#10131f]' : ''}`}>
+              <div className={`relative aspect-square w-full max-w-[457px] short:max-w-sm rounded-xl border border-[#10131f]/30 flex justify-center items-center overflow-hidden ${form.photo || generatingImg ? 'bg-[#10131f]' : ''}`}>
                 {form.photo ? (
                   <img
                     src={form.photo}
