@@ -18,23 +18,21 @@ const GuideTabs = ({ children }) => {
 
   return (
     <div className="not-prose my-6">
-      <div className="border-b border-white/10 mb-4">
-        <div className="flex gap-1 overflow-x-auto guide-scroll">
-          {tabs.map((tab, i) => (
-            <button
-              key={tab.props.title}
-              type="button"
-              onClick={() => setActive(i)}
-              className={`px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors cursor-pointer rounded-t-md ${
-                i === active
-                  ? 'text-white border-b-2 border-[#6dadeb] bg-white/5'
-                  : 'text-white/50 hover:text-white/80'
-              }`}
-            >
-              {tab.props.title}
-            </button>
-          ))}
-        </div>
+      <div className="flex gap-1 border-b border-white/10 mb-4 overflow-x-auto guide-scroll">
+        {tabs.map((tab, i) => (
+          <button
+            key={tab.props.title}
+            type="button"
+            onClick={() => setActive(i)}
+            className={`px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors cursor-pointer rounded-t-md ${
+              i === active
+                ? 'text-white border-b-2 border-[#6dadeb] bg-white/5'
+                : 'text-white/50 hover:text-white/80'
+            }`}
+          >
+            {tab.props.title}
+          </button>
+        ))}
       </div>
       <GuideEagerContext.Provider value={true}>
         <div className="relative">
