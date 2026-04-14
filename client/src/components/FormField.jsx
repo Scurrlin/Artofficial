@@ -96,7 +96,7 @@ const FormField = ({
               className="inline-block w-1.5 h-1.5 rounded-full"
               style={{ background: jsonValid ? '#6dadeb' : '#e06b6b' }}
             />
-            {jsonValid ? 'Valid' : 'Invalid'}
+            {jsonValid ? 'Valid JSON' : 'Invalid JSON'}
           </span>
         )}
         {maxChars && value.length >= 1900 && (
@@ -104,7 +104,7 @@ const FormField = ({
             className="inline-flex items-center text-xs font-semibold py-1 px-2 rounded-[5px] bg-[#10131f] select-none tabular-nums"
             style={{ color: value.length >= maxChars ? '#e06b6b' : '#6dadeb' }}
           >
-            Max Chars: {value.length}/{maxChars}
+            {value.length}/{maxChars}
           </span>
         )}
       </div>
