@@ -76,10 +76,15 @@ textarea:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-.json-editor-wrapper {
+.json-editor-clip {
   height: 200px;
-  overflow-y: auto;
+  overflow: hidden;
   border-radius: 0.5rem;
+}
+
+.json-editor-wrapper {
+  height: 100%;
+  overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }

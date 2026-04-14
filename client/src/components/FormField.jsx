@@ -112,7 +112,8 @@ const FormField = ({
     {isTextarea ? (
       <div className="relative">
         {jsonMode ? (
-          <div className="rounded-lg border border-white/30 bg-[#1e1e1e] json-editor-wrapper">
+          <div className="rounded-lg border border-white/30 bg-[#1e1e1e] json-editor-clip">
+          <div className="json-editor-wrapper">
             <Editor
               value={value}
               onValueChange={(code) =>
@@ -122,8 +123,9 @@ const FormField = ({
               padding={12}
               placeholder='{ "scene": "describe your image..." }'
               textareaClassName="json-editor-textarea"
-              style={{ minHeight: 'calc(100% - 24px)' }}
+              style={{ minHeight: '100%' }}
             />
+          </div>
           </div>
         ) : (
           <textarea
