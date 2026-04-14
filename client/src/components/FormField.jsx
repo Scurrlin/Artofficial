@@ -122,6 +122,7 @@ const FormField = ({
               padding={12}
               placeholder='{ "scene": "describe your image..." }'
               textareaClassName="json-editor-textarea"
+              style={{ minHeight: '100%' }}
             />
           </div>
         ) : (

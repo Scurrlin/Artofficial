@@ -9,7 +9,7 @@ const customStyle = {
     background: 'rgba(255,255,255,0.06)',
     margin: 0,
     borderRadius: 0,
-    fontSize: '1rem',
+    fontSize: '0.875rem',
     lineHeight: '1.7',
     whiteSpace: 'pre-wrap',
     wordBreak: 'break-word',
@@ -19,7 +19,7 @@ const customStyle = {
   'code[class*="language-"]': {
     ...vscDarkPlus['code[class*="language-"]'],
     background: 'none',
-    fontSize: '1rem',
+    fontSize: '0.875rem',
     lineHeight: '1.7',
     whiteSpace: 'pre-wrap',
     wordBreak: 'break-word',
