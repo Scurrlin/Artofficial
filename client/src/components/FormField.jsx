@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 import Editor from 'react-simple-code-editor';
 
 function isValidJson(str) {
@@ -60,6 +60,8 @@ const FormField = ({
     [jsonMode, value],
   );
 
+  const jsonWrapperRef = useRef(null);
+
   return (
   <div>
     {labelName && srOnly && (
@@ -112,20 +114,23 @@ const FormField = ({
     {isTextarea ? (
       <div className="relative">
         {jsonMode ? (
-          <div className="rounded-lg border border-white/30 bg-[#1e1e1e] json-editor-clip">
-          <div className="json-editor-wrapper">
+          <div className="rounded-lg border border-white/30 bg-[#1e1e1e] json-editor-wrapper" ref={jsonWrapperRef}>
             <Editor
               value={value}
-              onValueChange={(code) =>
-                handleChange({ target: { name, value: code } })
-              }
+              onValueChange={(code) => {
+                handleChange({ target: { name, value: code } });
+                requestAnimationFrame(() => {
+                  if (jsonWrapperRef.current) {
+                    jsonWrapperRef.current.scrollTop = jsonWrapperRef.current.scrollHeight;
+                  }
+                });
+              }}
               highlight={highlightJson}
               padding={12}
               placeholder='{ "scene": "describe your image..." }'
               textareaClassName="json-editor-textarea"
               style={{ minHeight: '100%' }}
             />
-          </div>
           </div>
         ) : (
           <textarea
