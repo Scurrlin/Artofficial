@@ -96,7 +96,7 @@ const FormField = ({
               className="inline-block w-1.5 h-1.5 rounded-full"
               style={{ background: jsonValid ? '#6dadeb' : '#e06b6b' }}
             />
-            {jsonValid ? 'Valid JSON' : 'Invalid JSON'}
+            {jsonValid ? 'Valid' : 'Invalid'}
           </span>
         )}
         {maxChars && value.length >= 1900 && (
