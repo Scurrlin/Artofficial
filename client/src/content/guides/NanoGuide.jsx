@@ -42,8 +42,7 @@ const NanoGuide = () => (
 
     <GuideCallout variant="info">
       <strong>What you&rsquo;ll learn:</strong>
-      <br />
-      <ul className="mt-1.5 ml-1 space-y-1 list-disc pl-4">
+      <ul className="mt-3 ml-1 space-y-1 list-disc pl-4">
         <li>Model overview</li>
         <li>Full tech specs breakdown</li>
         <li>Best practices for effective prompting</li>
