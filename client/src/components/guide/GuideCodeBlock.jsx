@@ -9,7 +9,7 @@ const customStyle = {
     background: 'rgba(255,255,255,0.06)',
     margin: 0,
     borderRadius: 0,
-    fontSize: '0.875rem',
+    fontSize: '1rem',
     lineHeight: '1.7',
     whiteSpace: 'pre-wrap',
     wordBreak: 'break-word',
@@ -19,7 +19,7 @@ const customStyle = {
   'code[class*="language-"]': {
     ...vscDarkPlus['code[class*="language-"]'],
     background: 'none',
-    fontSize: '0.875rem',
+    fontSize: '1rem',
     lineHeight: '1.7',
     whiteSpace: 'pre-wrap',
     wordBreak: 'break-word',
@@ -63,7 +63,7 @@ const GuideCodeBlock = ({ language = 'text', children, label }) => {
       <button
         type="button"
         onClick={handleCopy}
-        className="absolute top-2 right-2 z-10 p-1.5 rounded-md bg-white/5 text-white/40 hover:text-white/80 hover:bg-white/10 transition-colors opacity-0 group-hover:opacity-100 cursor-pointer"
+        className="absolute top-2 right-2 z-10 p-1.5 rounded-md bg-white/5 text-white/40 cursor-pointer"
         aria-label="Copy code"
       >
         {copied ? <CheckIcon /> : <CopyIcon />}

@@ -110,7 +110,7 @@ textarea:-webkit-autofill {
 .json-editor-wrapper pre,
 .json-editor-wrapper pre * {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
-  font-size: 0.875rem !important;
+  font-size: 1rem !important;
   line-height: 1.7 !important;
   letter-spacing: normal !important;
   word-spacing: normal !important;
