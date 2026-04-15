@@ -231,7 +231,7 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
             </div>
 
             <div className="w-full lg:w-1/2 flex justify-center">
-              <div className={`relative aspect-square w-full max-w-[508px] short:max-w-sm rounded-xl border border-[#10131f]/30 flex justify-center items-center overflow-hidden ${form.photo || generatingImg ? 'bg-[#10131f]' : ''}`}>
+              <div className={`relative aspect-square w-full max-w-[509px] short:max-w-sm rounded-xl border border-[#10131f]/30 flex justify-center items-center overflow-hidden ${form.photo || generatingImg ? 'bg-[#10131f]' : ''}`}>
                 {form.photo ? (
                   <img
                     src={form.photo}

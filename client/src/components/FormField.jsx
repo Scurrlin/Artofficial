@@ -143,12 +143,12 @@ const FormField = ({
       </div>
     )}
     {isTextarea ? (
-      <div className={`relative ${fullScreenPrompt ? 'flex-1 flex flex-col' : ''}`}>
+      <div className="relative">
         {jsonMode ? (
           <div
-            className={`rounded-lg border border-white/30 bg-[#1e1e1e] json-editor-wrapper ${fullScreenPrompt ? 'flex-1' : ''}`}
+            className="rounded-lg border border-white/30 bg-[#1e1e1e] json-editor-wrapper"
             ref={jsonWrapperRef}
-            style={fullScreenPrompt ? { height: 'auto', maxHeight: 'none' } : undefined}
+            style={fullScreenPrompt ? { height: '405px', maxHeight: '405px' } : undefined}
           >
             <Editor
               value={value}
@@ -175,7 +175,7 @@ const FormField = ({
             value={value}
             onChange={handleChange}
             required
-            className={`bg-white/70 backdrop-blur-md border border-white/30 text-[#10131f] placeholder:text-gray-600 text-base rounded-lg focus:ring-[#10131f] focus:border-[#10131f] outline-none block w-full p-3 pr-[3.25rem] resize-none overflow-y-auto prompt-textarea ${fullScreenPrompt ? 'flex-1' : 'h-[125px]'}`}
+            className={`bg-white/70 backdrop-blur-md border border-white/30 text-[#10131f] placeholder:text-gray-600 text-base rounded-lg focus:ring-[#10131f] focus:border-[#10131f] outline-none block w-full p-3 pr-[3.25rem] resize-none overflow-y-auto flex-shrink-0 prompt-textarea ${fullScreenPrompt ? 'h-[405px]' : 'h-[125px]'}`}
           />
         )}
         <div className="absolute top-0 right-3 z-10 flex flex-col justify-evenly h-[125px]">
