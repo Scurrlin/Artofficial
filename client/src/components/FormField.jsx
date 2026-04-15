@@ -39,6 +39,34 @@ const CodeToggleIcon = () => (
   </svg>
 );
 
+const ExpandIcon = () => (
+  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="15 3 21 3 21 9" />
+    <polyline points="9 21 3 21 3 15" />
+    <line x1="21" y1="3" x2="14" y2="10" />
+    <line x1="3" y1="21" x2="10" y2="14" />
+  </svg>
+);
+
+const CollapseIcon = () => (
+  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="4 14 10 14 10 20" />
+    <polyline points="20 10 14 10 14 4" />
+    <line x1="14" y1="10" x2="21" y2="3" />
+    <line x1="3" y1="21" x2="10" y2="14" />
+  </svg>
+);
+
+const TrashIcon = () => (
+  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="3 6 5 6 21 6" />
+    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+    <path d="M10 11v6" />
+    <path d="M14 11v6" />
+    <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+  </svg>
+);
+
 const FormField = ({
   labelName,
   type,
@@ -53,6 +81,8 @@ const FormField = ({
   srOnly,
   jsonMode,
   onJsonModeToggle,
+  fullScreenPrompt,
+  onFullScreenToggle,
   maxChars,
 }) => {
   const jsonValid = useMemo(
@@ -63,14 +93,14 @@ const FormField = ({
   const jsonWrapperRef = useRef(null);
 
   return (
-  <div>
+  <div className={`relative ${fullScreenPrompt ? 'flex-1 flex flex-col' : ''}`}>
     {labelName && srOnly && (
       <label htmlFor={name} className="sr-only">
         {labelName}
       </label>
     )}
     {((labelName && !srOnly) || isSurpriseMe) && (
-      <div className="flex items-center gap-2 mb-2">
+      <div className={`flex items-center gap-2 ${fullScreenPrompt ? 'absolute -top-8 left-0' : 'mb-2'}`}>
         {labelName && !srOnly && (
           <label
             htmlFor={name}
@@ -112,9 +142,13 @@ const FormField = ({
       </div>
     )}
     {isTextarea ? (
-      <div className="relative">
+      <div className={`relative ${fullScreenPrompt ? 'flex-1 flex flex-col' : ''}`}>
         {jsonMode ? (
-          <div className="rounded-lg border border-white/30 bg-[#1e1e1e] json-editor-wrapper" ref={jsonWrapperRef}>
+          <div
+            className={`rounded-lg border border-white/30 bg-[#1e1e1e] json-editor-wrapper ${fullScreenPrompt ? 'flex-1' : ''}`}
+            ref={jsonWrapperRef}
+            style={fullScreenPrompt ? { height: 'auto' } : undefined}
+          >
             <Editor
               value={value}
               onValueChange={(code) => {
@@ -140,25 +174,56 @@ const FormField = ({
             value={value}
             onChange={handleChange}
             required
-            rows={2}
-            className="bg-white/70 backdrop-blur-md border border-white/30 text-[#10131f] placeholder:text-gray-600 text-base rounded-lg focus:ring-[#10131f] focus:border-[#10131f] outline-none block w-full p-3 pr-[3.25rem] resize-none overflow-y-auto prompt-textarea"
+            className={`bg-white/70 backdrop-blur-md border border-white/30 text-[#10131f] placeholder:text-gray-600 text-base rounded-lg focus:ring-[#10131f] focus:border-[#10131f] outline-none block w-full p-3 pr-[3.25rem] resize-none overflow-y-auto prompt-textarea ${fullScreenPrompt ? 'flex-1' : 'h-[125px]'}`}
           />
         )}
-        {onJsonModeToggle && (
-          <button
-            type="button"
-            onClick={onJsonModeToggle}
-            disabled={disabled}
-            title={jsonMode ? 'Switch to text prompt' : 'Switch to JSON prompt'}
-            className={`absolute top-2 right-3 z-10 p-1.5 rounded-md transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${
-              jsonMode
-                ? 'bg-white text-[#10131f] hover:bg-white/80'
-                : 'bg-[#10131f] text-white hover:bg-[#10131f]/80'
-            }`}
-          >
-            <CodeToggleIcon />
-          </button>
-        )}
+        <div className="absolute top-0 right-3 z-10 flex flex-col justify-evenly h-[125px]">
+          {onJsonModeToggle && (
+            <button
+              type="button"
+              onClick={onJsonModeToggle}
+              disabled={disabled}
+              title={jsonMode ? 'Switch to text prompt' : 'Switch to JSON prompt'}
+              className={`p-1.5 rounded-md transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${
+                jsonMode
+                  ? 'bg-white text-[#10131f] hover:bg-white/80'
+                  : 'bg-[#10131f] text-white hover:bg-[#10131f]/80'
+              }`}
+            >
+              <CodeToggleIcon />
+            </button>
+          )}
+          {onFullScreenToggle && (
+            <button
+              type="button"
+              onClick={onFullScreenToggle}
+              disabled={disabled}
+              title={fullScreenPrompt ? 'Exit full screen' : 'Full screen'}
+              className={`p-1.5 rounded-md transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${
+                jsonMode
+                  ? 'bg-white text-[#10131f] hover:bg-white/80'
+                  : 'bg-[#10131f] text-white hover:bg-[#10131f]/80'
+              }`}
+            >
+              {fullScreenPrompt ? <CollapseIcon /> : <ExpandIcon />}
+            </button>
+          )}
+          {onFullScreenToggle && (
+            <button
+              type="button"
+              onClick={() => handleChange({ target: { name, value: '' } })}
+              disabled={disabled || !value}
+              title="Clear prompt"
+              className={`p-1.5 rounded-md transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${
+                jsonMode
+                  ? 'bg-white text-[#10131f] hover:bg-white/80'
+                  : 'bg-[#10131f] text-white hover:bg-[#10131f]/80'
+              }`}
+            >
+              <TrashIcon />
+            </button>
+          )}
+        </div>
       </div>
     ) : (
       <input

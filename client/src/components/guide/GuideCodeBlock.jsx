@@ -39,6 +39,22 @@ const CheckIcon = () => (
   </svg>
 );
 
+const PreTagWithSpacer = ({ children, ...props }) => (
+  <pre {...props}>
+    <span
+      aria-hidden="true"
+      style={{
+        float: 'right',
+        width: '2.5rem',
+        height: '2.5rem',
+        marginTop: '-1em',
+        marginRight: '-1em',
+      }}
+    />
+    {children}
+  </pre>
+);
+
 const GuideCodeBlock = ({ language = 'text', children, label }) => {
   const [copied, setCopied] = useState(false);
   const code = typeof children === 'string' ? children.trim() : children;
@@ -73,6 +89,7 @@ const GuideCodeBlock = ({ language = 'text', children, label }) => {
         style={customStyle}
         showLineNumbers={false}
         wrapLongLines
+        PreTag={PreTagWithSpacer}
       >
         {code}
       </SyntaxHighlighter>

@@ -21,7 +21,10 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
   const [jsonMode, setJsonMode] = useState(false);
+  const [fullScreenPrompt, setFullScreenPrompt] = useState(false);
+  const [lockedHeight, setLockedHeight] = useState(null);
   const abortControllerRef = useRef(null);
+  const leftColRef = useRef(null);
 
   const [dripTiles, setDripTiles] = useState(() => {
     if (typeof window === 'undefined') return 2;
@@ -44,6 +47,17 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
   }, [generatingImg, loading, onBusyChange]);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleFullScreenToggle = () => {
+    setFullScreenPrompt((prev) => {
+      if (!prev && leftColRef.current) {
+        setLockedHeight(leftColRef.current.offsetHeight);
+      } else {
+        setLockedHeight(null);
+      }
+      return !prev;
+    });
+  };
 
   const handleSurpriseMe = () => {
     const randomPrompt = getRandomPrompt(form.prompt);
@@ -144,25 +158,33 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
       <section className="max-w-7xl mx-auto">
         <div className="max-w-[600px] mx-auto lg:mx-0 lg:max-w-none">
           <h1 className="font-extrabold text-[#10131f] text-[32px]">Create Image</h1>
-          <p className="mt-2 mb-6 text-[#10131f] text-[16px] ">Click the "Surprise me" button for one of 50 curated prompts!</p>
+          <p className={`mt-2 mb-6 text-[#10131f] text-[16px] ${fullScreenPrompt ? 'invisible' : ''}`}>Click the "Surprise me" button for one of 50 curated prompts!</p>
         </div>
 
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col lg:flex-row lg:items-start gap-8">
-            <div className="flex flex-col gap-5 w-full max-w-[600px] mx-auto lg:w-1/2 lg:max-w-[600px] lg:mx-0">
-              <ModelSelector
-                selectedModel={selectedModel}
-                onChange={onModelChange}
-                disabled={generatingImg || loading}
-              />
-              <FormField
-                labelName="Your Name"
-                type="text"
-                name="name"
-                placeholder="John Doe"
-                value={form.name}
-                handleChange={handleChange}
-              />
+            <div
+              ref={leftColRef}
+              className={`flex flex-col gap-5 w-full max-w-[600px] mx-auto lg:w-1/2 lg:max-w-[600px] lg:mx-0 ${fullScreenPrompt ? 'justify-end' : ''}`}
+              style={lockedHeight ? { minHeight: lockedHeight } : undefined}
+            >
+              {!fullScreenPrompt && (
+                <ModelSelector
+                  selectedModel={selectedModel}
+                  onChange={onModelChange}
+                  disabled={generatingImg || loading}
+                />
+              )}
+              {!fullScreenPrompt && (
+                <FormField
+                  labelName="Your Name"
+                  type="text"
+                  name="name"
+                  placeholder="John Doe"
+                  value={form.name}
+                  handleChange={handleChange}
+                />
+              )}
 
               <FormField
                 labelName="Prompt"
@@ -176,6 +198,8 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
                 disabled={generatingImg || loading}
                 jsonMode={jsonMode}
                 onJsonModeToggle={() => setJsonMode((prev) => !prev)}
+                fullScreenPrompt={fullScreenPrompt}
+                onFullScreenToggle={handleFullScreenToggle}
                 maxChars={2000}
               />
 
@@ -200,7 +224,7 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
             </div>
 
             <div className="w-full lg:w-1/2 flex justify-center">
-              <div className={`relative aspect-square w-full max-w-[457px] short:max-w-sm rounded-xl border border-[#10131f]/30 flex justify-center items-center overflow-hidden ${form.photo || generatingImg ? 'bg-[#10131f]' : ''}`}>
+              <div className={`relative aspect-square w-full max-w-[508px] short:max-w-sm rounded-xl border border-[#10131f]/30 flex justify-center items-center overflow-hidden ${form.photo || generatingImg ? 'bg-[#10131f]' : ''}`}>
                 {form.photo ? (
                   <img
                     src={form.photo}
