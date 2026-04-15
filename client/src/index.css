@@ -43,7 +43,6 @@ body::before {
     transition: background-color 0.2s;
 }
 
-.prompt-textarea:hover::-webkit-scrollbar-thumb,
 .prompt-textarea:focus::-webkit-scrollbar-thumb {
     background-color: #666e75;
 }
@@ -53,7 +52,6 @@ body::before {
     scrollbar-color: transparent transparent;
 }
 
-.prompt-textarea:hover,
 .prompt-textarea:focus {
     scrollbar-color: #666e75 transparent;
 }
@@ -73,7 +71,6 @@ textarea:-webkit-autofill {
   scrollbar-color: transparent transparent;
 }
 
-.json-editor-wrapper:hover,
 .json-editor-wrapper:focus-within {
   scrollbar-color: #666e75 transparent;
 }
@@ -87,7 +84,6 @@ textarea:-webkit-autofill {
   border-radius: 3px;
 }
 
-.json-editor-wrapper:hover::-webkit-scrollbar-thumb,
 .json-editor-wrapper:focus-within::-webkit-scrollbar-thumb {
   background-color: #666e75;
 }
