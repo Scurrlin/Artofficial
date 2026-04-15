@@ -174,7 +174,7 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
             <div
               ref={leftColRef}
               className={`flex flex-col gap-5 w-full max-w-[600px] mx-auto lg:w-1/2 lg:max-w-[600px] lg:mx-0 ${fullScreenPrompt ? 'justify-end' : ''}`}
-              style={lockedHeight ? { minHeight: lockedHeight } : undefined}
+              style={lockedHeight ? { height: lockedHeight } : undefined}
             >
               {!fullScreenPrompt && (
                 <ModelSelector

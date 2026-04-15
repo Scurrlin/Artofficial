@@ -94,7 +94,7 @@ const FormField = ({
   const jsonWrapperRef = useRef(null);
 
   return (
-  <div className={`relative ${fullScreenPrompt ? 'flex-1 flex flex-col mt-8' : ''}`}>
+  <div className={`relative ${fullScreenPrompt ? 'flex-1 flex flex-col mt-8 min-h-0' : ''}`}>
     {labelName && srOnly && (
       <label htmlFor={name} className="sr-only">
         {labelName}
@@ -143,12 +143,12 @@ const FormField = ({
       </div>
     )}
     {isTextarea ? (
-      <div className="relative">
+      <div className={`relative ${fullScreenPrompt ? 'flex-1 flex flex-col min-h-0' : 'overflow-hidden'}`}>
         {jsonMode ? (
           <div
-            className="rounded-lg border border-white/30 bg-[#1e1e1e] json-editor-wrapper"
+            className={`rounded-lg border border-white/30 bg-[#1e1e1e] json-editor-wrapper ${fullScreenPrompt ? 'flex-1' : ''}`}
             ref={jsonWrapperRef}
-            style={fullScreenPrompt ? { height: '405px', maxHeight: '405px' } : undefined}
+            style={fullScreenPrompt ? { height: 'auto', maxHeight: 'none', minHeight: 0 } : { height: '125px', maxHeight: '125px' }}
           >
             <Editor
               value={value}
@@ -175,7 +175,8 @@ const FormField = ({
             value={value}
             onChange={handleChange}
             required
-            className={`bg-white/70 backdrop-blur-md border border-white/30 text-[#10131f] placeholder:text-gray-600 text-base rounded-lg focus:ring-[#10131f] focus:border-[#10131f] outline-none block w-full p-3 pr-[3.25rem] resize-none overflow-y-auto flex-shrink-0 prompt-textarea ${fullScreenPrompt ? 'h-[405px]' : 'h-[125px]'}`}
+            className={`bg-white/70 backdrop-blur-md border border-white/30 text-[#10131f] placeholder:text-gray-600 text-base rounded-lg focus:ring-[#10131f] focus:border-[#10131f] outline-none block w-full p-3 pr-[3.25rem] resize-none overflow-y-auto prompt-textarea ${fullScreenPrompt ? 'flex-1' : ''}`}
+            style={fullScreenPrompt ? undefined : { height: '125px', maxHeight: '125px' }}
           />
         )}
         <div className="absolute top-0 right-3 z-10 flex flex-col justify-evenly h-[125px]">
