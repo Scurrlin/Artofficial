@@ -65,6 +65,10 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
   };
 
   const generateImage = async () => {
+    if (!form.name) {
+      toast.error('Please enter your name');
+      return;
+    }
     if (form.prompt) {
       try {
         setForm((prev) => ({ ...prev, photo: '' }));
@@ -123,6 +127,10 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!form.name) {
+      toast.error('Please enter your name');
+      return;
+    }
     if (form.prompt && form.photo) {
       setLoading(true);
       try {
@@ -175,16 +183,15 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
                   disabled={generatingImg || loading}
                 />
               )}
-              {!fullScreenPrompt && (
-                <FormField
-                  labelName="Your Name"
-                  type="text"
-                  name="name"
-                  placeholder="John Doe"
-                  value={form.name}
-                  handleChange={handleChange}
-                />
-              )}
+              <FormField
+                labelName="Your Name"
+                type="text"
+                name="name"
+                placeholder="John Doe"
+                value={form.name}
+                handleChange={handleChange}
+                fullScreenLabel={fullScreenPrompt}
+              />
 
               <FormField
                 labelName="Prompt"

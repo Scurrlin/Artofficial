@@ -63,7 +63,7 @@ textarea:-webkit-autofill {
 }
 
 .json-editor-wrapper {
-  height: 250px;
+  height: 125px;
   overflow-y: auto;
   border-radius: 0.5rem;
   scrollbar-width: thin;

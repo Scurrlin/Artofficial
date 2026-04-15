@@ -84,6 +84,7 @@ const FormField = ({
   fullScreenPrompt,
   onFullScreenToggle,
   maxChars,
+  fullScreenLabel,
 }) => {
   const jsonValid = useMemo(
     () => (jsonMode ? isValidJson(value) : null),
@@ -93,14 +94,14 @@ const FormField = ({
   const jsonWrapperRef = useRef(null);
 
   return (
-  <div className={`relative ${fullScreenPrompt ? 'flex-1 flex flex-col' : ''}`}>
+  <div className={`relative ${fullScreenPrompt ? 'flex-1 flex flex-col mt-8' : ''}`}>
     {labelName && srOnly && (
       <label htmlFor={name} className="sr-only">
         {labelName}
       </label>
     )}
     {((labelName && !srOnly) || isSurpriseMe) && (
-      <div className={`flex items-center gap-2 ${fullScreenPrompt ? 'absolute -top-8 left-0' : 'mb-2'}`}>
+      <div className={`flex items-center gap-2 ${fullScreenPrompt || fullScreenLabel ? 'absolute -top-8 left-0' : 'mb-2'}`}>
         {labelName && !srOnly && (
           <label
             htmlFor={name}
