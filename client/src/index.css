@@ -64,6 +64,7 @@ textarea:-webkit-autofill {
 
 .json-editor-wrapper {
   height: 125px;
+  max-height: 125px;
   overflow-y: auto;
   border-radius: 0.5rem;
   scrollbar-width: thin;

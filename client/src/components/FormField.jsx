@@ -148,7 +148,7 @@ const FormField = ({
           <div
             className={`rounded-lg border border-white/30 bg-[#1e1e1e] json-editor-wrapper ${fullScreenPrompt ? 'flex-1' : ''}`}
             ref={jsonWrapperRef}
-            style={fullScreenPrompt ? { height: 'auto' } : undefined}
+            style={fullScreenPrompt ? { height: 'auto', maxHeight: 'none' } : undefined}
           >
             <Editor
               value={value}
