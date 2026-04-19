@@ -5,6 +5,11 @@ import * as blackForestLabs from './providers/blackForestLabs.js';
 
 const providers = { openai, google, blackForestLabs };
 
+const SQUARE_SUFFIX_TEXT =
+  'The final image must be a 1:1 square. Ignore any other aspect ratio requested in the prompt.';
+
+const SQUARE_SUFFIX_JSON = '{ "aspect_ratio": "1:1" }';
+
 export function isValidModel(modelId) {
   const config = MODEL_REGISTRY[modelId];
   return !!config && config.generatable !== false;
@@ -16,9 +21,8 @@ export async function generateImage(prompt, modelId, jsonMode = false) {
     throw new Error(`Unknown model: ${modelId}`);
   }
 
-  const finalPrompt = (!jsonMode && config.promptPrefix)
-    ? `${config.promptPrefix} ${prompt}`
-    : prompt;
+  const suffix = jsonMode ? SQUARE_SUFFIX_JSON : SQUARE_SUFFIX_TEXT;
+  const finalPrompt = `${prompt}\n${suffix}`;
 
   const provider = providers[config.provider];
   if (!provider) {

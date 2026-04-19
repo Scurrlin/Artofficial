@@ -72,6 +72,11 @@ const NanoGuide = () => (
     </p>
 
     <h3>Precision Control</h3>
+
+    <GuideCallout variant="note">
+      <strong>Note: Art/official currently generates all images in a 1:1 square format. Any aspect-ratio requests in your prompt will not be considered.</strong>
+    </GuideCallout>
+
     <p>
       Generate or edit images to fit any project requirement, with native support for 16:9, 9:16,
       2:1, and more. Expect vibrant lighting and richer textures, whether you&rsquo;re generating

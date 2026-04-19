@@ -60,6 +60,11 @@ const GptImageGuide = () => (
 
     {/* ──────────────── 1. Introduction ──────────────── */}
     <h2>1. Introduction</h2>
+
+    <GuideCallout variant="note">
+      <strong>Note: Art/official currently generates all images in a 1:1 square format. Any aspect-ratio requests in your prompt will not be considered.</strong>
+    </GuideCallout>
+
     <p>
       <code>gpt-image-1.5</code> is our latest image generation model, designed for production-quality visuals and highly controllable creative workflows. It delivers major improvements in realism, accuracy, and editability, making it well-suited for both professional design tasks and iterative content creation. It supports both high-quality rendering and low-latency use cases.
     </p>
