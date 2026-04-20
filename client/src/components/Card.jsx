@@ -4,13 +4,19 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import toast from 'react-hot-toast';
 
 import { downloadImage, optimizedImageUrl, placeholderImageUrl, responsiveSrcSet, CARD_SIZES } from '../utils';
+import { IMAGE_MODELS, DEFAULT_MODEL_ID } from '../constants';
 
 const looksLikeJson = (s) => /^\s*[{[]/.test(s);
 
-const Card = ({ _id, name, prompt, photo, priority }) => {
+const Card = ({ _id, name, prompt, photo, priority, modelId }) => {
   const isJson = looksLikeJson(prompt);
   const [imgFailed, setImgFailed] = useState(false);
   const showFallback = !photo || imgFailed;
+  const fallbackModel =
+    IMAGE_MODELS.find((m) => m.id === modelId)
+    || IMAGE_MODELS.find((m) => m.id === DEFAULT_MODEL_ID)
+    || IMAGE_MODELS[0];
+  const fallbackIconLogo = fallbackModel.iconLogo;
 
   const copyPrompt = async () => {
     try {
@@ -27,11 +33,24 @@ const Card = ({ _id, name, prompt, photo, priority }) => {
         {showFallback ? (
           <>
             <div className="w-full h-full flex flex-col items-center justify-center gap-3 bg-white/70 backdrop-blur-md border border-white/30">
-              <img
-                src="/SClogo.png"
-                alt="Image not found"
-                className="w-1/2 h-1/2 object-contain rounded-xl"
+              <div
                 data-testid="card-fallback"
+                aria-label="Image not found"
+                role="img"
+                className="w-1/2 h-1/2 rounded-xl bg-[#10131f]"
+                style={{
+                  transform: 'translateZ(0)',
+                  maskImage: `url('${fallbackIconLogo}'), linear-gradient(#fff, #fff)`,
+                  maskSize: '75% 75%, 100% 100%',
+                  maskPosition: 'center, center',
+                  maskRepeat: 'no-repeat, no-repeat',
+                  maskComposite: 'exclude',
+                  WebkitMaskImage: `url('${fallbackIconLogo}'), linear-gradient(#fff, #fff)`,
+                  WebkitMaskSize: '75% 75%, 100% 100%',
+                  WebkitMaskPosition: 'center, center',
+                  WebkitMaskRepeat: 'no-repeat, no-repeat',
+                  WebkitMaskComposite: 'xor',
+                }}
               />
               <p className="text-[#10131f] text-sm font-semibold">Image not found</p>
             </div>

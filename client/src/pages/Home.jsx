@@ -12,6 +12,7 @@ const FALLBACK_PREVIEW_POST = {
   name: 'Art/official',
   prompt: "Fallback image shown when an asset fails to load",
   photo: '',
+  modelId: 'gpt-image-1.5',
 };
 
 const RenderCards = ({ data, title }) => {
