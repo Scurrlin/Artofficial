@@ -690,7 +690,7 @@ const FluxGuide = () => (
     <h2>Aspect Ratios and Resolution</h2>
 
     <GuideCallout variant="note">
-      <strong>Note: Art/official currently generates all images in a 1:1 square format. Any aspect-ratio requests in your prompt will not be considered.</strong>
+      <strong>Art/official currently generates all images in a 1:1 square format. Any aspect-ratio requests in your prompt will not be considered.</strong>
     </GuideCallout>
 
     <p>Choose aspect ratios based on your use case:</p>

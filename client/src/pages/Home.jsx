@@ -6,6 +6,14 @@ const Loader = React.lazy(() => import('../components/Loader'));
 
 const PRIORITY_COUNT = 1;
 
+const FALLBACK_PREVIEW_TRIGGER = 'image not found';
+const FALLBACK_PREVIEW_POST = {
+  _id: 'fallback-preview',
+  name: 'Art/official',
+  prompt: "Fallback image shown when an asset fails to load",
+  photo: '',
+};
+
 const RenderCards = ({ data, title }) => {
   if (data?.length > 0) {
     return data.map((post, index) => (
@@ -94,6 +102,11 @@ const Home = ({ stats, selectedModel }) => {
       setTimeout(() => {
         if (trimmedQuery === '') {
           setSearchedResults(null);
+          return;
+        }
+
+        if (trimmedQuery === FALLBACK_PREVIEW_TRIGGER) {
+          setSearchedResults([FALLBACK_PREVIEW_POST]);
           return;
         }
 

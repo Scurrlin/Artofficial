@@ -23,6 +23,7 @@ test('user can generate an image with a mocked response', async ({ page }) => {
 
   await page.goto('/create-post');
 
+  await page.getByLabel(/your name/i).fill('Alice');
   await page.getByPlaceholder(/enter your prompt/i).fill('A glowing owl');
   await page.getByRole('button', { name: /^generate$/i }).click();
 

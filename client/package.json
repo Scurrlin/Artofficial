@@ -9,8 +9,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test",
-    "test:ci": "vitest run --reporter=junit --outputFile=./reports/vitest/junit.xml && playwright test"
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",

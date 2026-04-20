@@ -26,16 +26,21 @@ const CreatePost = ({ onBusyChange, selectedModel, onModelChange }) => {
   const abortControllerRef = useRef(null);
   const leftColRef = useRef(null);
 
+  const computeDripTiles = (w) => {
+    if (w >= 1920) return Math.ceil(w / 480);
+    if (w >= 1280) return 4;
+    if (w >= 768) return 3;
+    return 2;
+  };
+
   const [dripTiles, setDripTiles] = useState(() => {
     if (typeof window === 'undefined') return 2;
-    const w = window.innerWidth;
-    return w >= 1280 ? 4 : w >= 768 ? 3 : 2;
+    return computeDripTiles(window.innerWidth);
   });
 
   useEffect(() => {
     const updateTiles = () => {
-      const w = window.innerWidth;
-      setDripTiles(w >= 1280 ? 4 : w >= 768 ? 3 : 2);
+      setDripTiles(computeDripTiles(window.innerWidth));
     };
     window.addEventListener('resize', updateTiles);
     return () => window.removeEventListener('resize', updateTiles);

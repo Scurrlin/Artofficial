@@ -20,6 +20,10 @@ const renderCreatePost = (props = {}) =>
     </MemoryRouter>,
   );
 
+const fillName = async (user, name = 'Alice') => {
+  await user.type(screen.getByLabelText(/your name/i), name);
+};
+
 describe('CreatePost', () => {
   beforeEach(() => {
     vi.restoreAllMocks();
@@ -29,7 +33,18 @@ describe('CreatePost', () => {
     renderCreatePost();
 
     expect(screen.getByPlaceholderText(/enter your prompt/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /generate/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /^generate$/i })).toBeInTheDocument();
+  });
+
+  it('shows a name error when name is empty', async () => {
+    const fetchSpy = vi.spyOn(globalThis, 'fetch');
+    const user = userEvent.setup();
+
+    renderCreatePost();
+    await user.click(screen.getByRole('button', { name: /^generate$/i }));
+
+    expect(fetchSpy).not.toHaveBeenCalled();
+    expect(toast.error).toHaveBeenCalledWith('Please enter your name');
   });
 
   it('does not call API when prompt is empty', async () => {
@@ -37,7 +52,8 @@ describe('CreatePost', () => {
     const user = userEvent.setup();
 
     renderCreatePost();
-    await user.click(screen.getByRole('button', { name: /generate/i }));
+    await fillName(user);
+    await user.click(screen.getByRole('button', { name: /^generate$/i }));
 
     expect(fetchSpy).not.toHaveBeenCalled();
     expect(toast.error).toHaveBeenCalledWith('Please provide a prompt');
@@ -54,8 +70,9 @@ describe('CreatePost', () => {
     const user = userEvent.setup();
     renderCreatePost();
 
+    await fillName(user);
     await user.type(screen.getByPlaceholderText(/enter your prompt/i), 'A neon phoenix');
-    await user.click(screen.getByRole('button', { name: /generate/i }));
+    await user.click(screen.getByRole('button', { name: /^generate$/i }));
 
     const img = await screen.findByAltText('A neon phoenix');
     expect(img).toHaveAttribute('src', `data:image/png;base64,${mockBase64}`);
@@ -67,10 +84,11 @@ describe('CreatePost', () => {
     const user = userEvent.setup();
     renderCreatePost();
 
+    await fillName(user);
     await user.type(screen.getByPlaceholderText(/enter your prompt/i), 'A glowing skyline');
-    await user.click(screen.getByRole('button', { name: /generate/i }));
+    await user.click(screen.getByRole('button', { name: /^generate$/i }));
 
-    expect(screen.getByRole('status')).toBeInTheDocument();
+    expect(await screen.findByRole('status')).toBeInTheDocument();
   });
 
   it('shows error toast on API failure', async () => {
@@ -84,8 +102,9 @@ describe('CreatePost', () => {
     const user = userEvent.setup();
     renderCreatePost();
 
+    await fillName(user);
     await user.type(screen.getByPlaceholderText(/enter your prompt/i), 'A golden wolf');
-    await user.click(screen.getByRole('button', { name: /generate/i }));
+    await user.click(screen.getByRole('button', { name: /^generate$/i }));
 
     await waitFor(() => {
       expect(toast.error).toHaveBeenCalledWith('Server error');
@@ -98,8 +117,9 @@ describe('CreatePost', () => {
     const user = userEvent.setup();
     renderCreatePost();
 
+    await fillName(user);
     await user.type(screen.getByPlaceholderText(/enter your prompt/i), 'Test prompt');
-    await user.click(screen.getByRole('button', { name: /generate/i }));
+    await user.click(screen.getByRole('button', { name: /^generate$/i }));
 
     await waitFor(() => {
       expect(screen.getByRole('button', { name: /generating/i })).toBeDisabled();

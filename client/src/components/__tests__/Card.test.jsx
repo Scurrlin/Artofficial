@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import Card from '../Card';
 
@@ -35,10 +35,23 @@ describe('Card', () => {
     expect(screen.getByText('Alice')).toBeInTheDocument();
   });
 
-  it('handles missing photo URL gracefully', () => {
+  it('renders SClogo fallback with "Image not found" text when photo is missing', () => {
     render(<Card {...defaultProps} photo="" />);
 
+    const fallback = screen.getByTestId('card-fallback');
+    expect(fallback).toHaveAttribute('src', '/SClogo.png');
+    expect(fallback).toHaveAttribute('alt', 'Image not found');
+    expect(screen.getByText('Image not found')).toBeInTheDocument();
+  });
+
+  it('swaps to SClogo fallback when image load errors', () => {
+    render(<Card {...defaultProps} />);
+
     const img = screen.getByAltText('A coral phoenix rising from ashes');
-    expect(img).toHaveAttribute('src', '');
+    fireEvent.error(img);
+
+    expect(screen.getByTestId('card-fallback')).toBeInTheDocument();
+    expect(screen.queryByAltText('A coral phoenix rising from ashes')).not.toBeInTheDocument();
+    expect(screen.getByText('Image not found')).toBeInTheDocument();
   });
 });

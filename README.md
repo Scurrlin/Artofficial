@@ -13,7 +13,6 @@ A full MERN stack [AI image generator](https://www.artofficial.fun/) powered by 
 * Express
 * Node.js
 * Hostinger
-* AWS CodeBuild
 
 ## Environment Variables
 
@@ -66,12 +65,4 @@ Requires the Vite dev server (started automatically by Playwright):
 
 ```bash
 npm run test:e2e
-```
-
-### CI script (used by AWS CodeBuild)
-
-Runs Vitest with JUnit output and Playwright in a single pass:
-
-```bash
-npm run test:ci
 ```

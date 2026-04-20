@@ -74,7 +74,7 @@ const NanoGuide = () => (
     <h3>Precision Control</h3>
 
     <GuideCallout variant="note">
-      <strong>Note: Art/official currently generates all images in a 1:1 square format. Any aspect-ratio requests in your prompt will not be considered.</strong>
+      <strong>Art/official currently generates all images in a 1:1 square format. Any aspect-ratio requests in your prompt will not be considered.</strong>
     </GuideCallout>
 
     <p>
