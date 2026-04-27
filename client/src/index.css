@@ -63,6 +63,7 @@ textarea:-webkit-autofill {
 }
 
 .json-editor-wrapper {
+  position: relative;
   height: 125px;
   max-height: 125px;
   overflow-y: auto;
@@ -93,9 +94,21 @@ textarea:-webkit-autofill {
   caret-color: #d4d4d4;
 }
 
+.json-editor-placeholder {
+  position: absolute;
+  inset: 0;
+  padding: 12px 3.25rem 12px 12px;
+  pointer-events: none;
+  color: #d4d4d4;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
 .json-editor-wrapper textarea,
 .json-editor-wrapper pre,
-.json-editor-wrapper pre * {
+.json-editor-wrapper pre *,
+.json-editor-placeholder {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
   font-size: 1rem !important;
   line-height: 1.7 !important;
@@ -118,10 +131,6 @@ textarea:-webkit-autofill {
   white-space: pre-wrap !important;
   word-break: break-word !important;
   overflow-wrap: break-word !important;
-}
-
-.json-editor-textarea::placeholder {
-  color: #d4d4d4;
 }
 
 .guide-scroll {

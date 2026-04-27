@@ -146,10 +146,15 @@ const FormField = ({
       <div className={`relative ${fullScreenPrompt ? 'flex-1 flex flex-col min-h-0' : 'overflow-hidden'}`}>
         {jsonMode ? (
           <div
-            className={`rounded-lg border border-white/30 bg-[#1e1e1e] json-editor-wrapper ${fullScreenPrompt ? 'flex-1' : ''}`}
+            className={`rounded-lg border border-white/30 bg-[#10131f] json-editor-wrapper ${fullScreenPrompt ? 'flex-1' : ''}`}
             ref={jsonWrapperRef}
             style={fullScreenPrompt ? { height: 'auto', maxHeight: 'none', minHeight: 0 } : { height: '125px', maxHeight: '125px' }}
           >
+            {!value && (
+              <div className="json-editor-placeholder" aria-hidden="true">
+                {`{ "scene": "describe your image..." }`}
+              </div>
+            )}
             <Editor
               value={value}
               onValueChange={(code) => {
@@ -162,7 +167,6 @@ const FormField = ({
               }}
               highlight={highlightJson}
               padding={12}
-              placeholder='{ "scene": "describe your image..." }'
               textareaClassName="json-editor-textarea"
               style={{ minHeight: '100%' }}
             />
